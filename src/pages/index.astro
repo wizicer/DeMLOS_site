@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { ArrowRight, Shield, Coins, Network, Cpu, FileText, Users, Zap, Lock, Globe } from '@lucide/astro';
+import { Icon } from 'astro-icon/components';
 import { researchNotes } from '../data/research-notes';
 
 const recentNotes = researchNotes.slice(0, 5);
@@ -14,7 +14,7 @@ const recentNotes = researchNotes.slice(0, 5);
     <div class="container-wide relative">
       <div class="max-w-4xl mx-auto text-center">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-sm font-medium mb-6">
-          <Cpu class="w-4 h-4" />
+          <Icon name="lucide:cpu" class="w-4 h-4" />
           <span>Research Initiative</span>
         </div>
         
@@ -37,7 +37,7 @@ const recentNotes = researchNotes.slice(0, 5);
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/projects" class="btn-primary">
             Explore Projects
-            <ArrowRight class="w-4 h-4" />
+            <Icon name="lucide:arrow-right" class="w-4 h-4" />
           </a>
           <a href="/research" class="btn-outline">
             Research Notes
@@ -59,20 +59,20 @@ const recentNotes = researchNotes.slice(0, 5);
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <div class="card p-8">
           <div class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/50 flex items-center justify-center mb-6">
-            <Shield class="w-6 h-6 text-green-600 dark:text-green-400" />
+            <Icon name="lucide:shield" class="w-6 h-6 text-green-600 dark:text-green-400" />
           </div>
           <h3 class="text-xl font-semibold mb-4 text-green-700 dark:text-green-400">In Scope</h3>
           <ul class="space-y-3 text-slate-600 dark:text-slate-400">
             <li class="flex items-start gap-3">
-              <Network class="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+              <Icon name="lucide:network" class="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
               <span>ML execution under non-centralized scheduling</span>
             </li>
             <li class="flex items-start gap-3">
-              <Lock class="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+              <Icon name="lucide:lock" class="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
               <span>Trust and correctness of ML in untrusted environments</span>
             </li>
             <li class="flex items-start gap-3">
-              <Coins class="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+              <Icon name="lucide:coins" class="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
               <span>Native pricing and settlement mechanisms that support long-term operation</span>
             </li>
           </ul>
@@ -80,7 +80,7 @@ const recentNotes = researchNotes.slice(0, 5);
 
         <div class="card p-8">
           <div class="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/50 flex items-center justify-center mb-6">
-            <Shield class="w-6 h-6 text-red-600 dark:text-red-400" />
+            <Icon name="lucide:shield" class="w-6 h-6 text-red-600 dark:text-red-400" />
           </div>
           <h3 class="text-xl font-semibold mb-4 text-red-700 dark:text-red-400">Out of Scope</h3>
           <ul class="space-y-3 text-slate-600 dark:text-slate-400">
@@ -114,7 +114,7 @@ const recentNotes = researchNotes.slice(0, 5);
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="card p-6 text-center">
           <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center mx-auto mb-4">
-            <Cpu class="w-6 h-6 text-primary-600 dark:text-primary-400" />
+            <Icon name="lucide:cpu" class="w-6 h-6 text-primary-600 dark:text-primary-400" />
           </div>
           <h3 class="font-semibold mb-2">Execution</h3>
           <p class="text-sm text-slate-600 dark:text-slate-400">Inference, training, and task scheduling mechanisms</p>
@@ -122,7 +122,7 @@ const recentNotes = researchNotes.slice(0, 5);
 
         <div class="card p-6 text-center">
           <div class="w-12 h-12 rounded-xl bg-accent-100 dark:bg-accent-900/50 flex items-center justify-center mx-auto mb-4">
-            <Shield class="w-6 h-6 text-accent-600 dark:text-accent-400" />
+            <Icon name="lucide:shield" class="w-6 h-6 text-accent-600 dark:text-accent-400" />
           </div>
           <h3 class="font-semibold mb-2">Verification</h3>
           <p class="text-sm text-slate-600 dark:text-slate-400">Trust models, correctness proofs, and dispute resolution</p>
@@ -130,7 +130,7 @@ const recentNotes = researchNotes.slice(0, 5);
 
         <div class="card p-6 text-center">
           <div class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/50 flex items-center justify-center mx-auto mb-4">
-            <Coins class="w-6 h-6 text-green-600 dark:text-green-400" />
+            <Icon name="lucide:coins" class="w-6 h-6 text-green-600 dark:text-green-400" />
           </div>
           <h3 class="font-semibold mb-2">Economics</h3>
           <p class="text-sm text-slate-600 dark:text-slate-400">Pricing models, incentives, and sustainability</p>
@@ -138,7 +138,7 @@ const recentNotes = researchNotes.slice(0, 5);
 
         <div class="card p-6 text-center">
           <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center mx-auto mb-4">
-            <Users class="w-6 h-6 text-orange-600 dark:text-orange-400" />
+            <Icon name="lucide:users" class="w-6 h-6 text-orange-600 dark:text-orange-400" />
           </div>
           <h3 class="font-semibold mb-2">Governance</h3>
           <p class="text-sm text-slate-600 dark:text-slate-400">Upgradeability, decision-making, and tokenomics</p>
@@ -156,7 +156,7 @@ const recentNotes = researchNotes.slice(0, 5);
         </div>
         <a href="/research" class="btn-secondary hidden sm:flex">
           View All
-          <ArrowRight class="w-4 h-4" />
+          <Icon name="lucide:arrow-right" class="w-4 h-4" />
         </a>
       </div>
 
@@ -181,7 +181,7 @@ const recentNotes = researchNotes.slice(0, 5);
 
       <a href="/research" class="btn-secondary w-full mt-6 sm:hidden">
         View All Research Notes
-        <ArrowRight class="w-4 h-4" />
+        <Icon name="lucide:arrow-right" class="w-4 h-4" />
       </a>
     </div>
   </section>

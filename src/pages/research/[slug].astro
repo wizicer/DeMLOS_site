@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { researchNotes } from '../../data/research-notes';
-import { ArrowLeft, FileText, BookOpen, Rocket, MessageSquare, ExternalLink } from '@lucide/astro';
+import { Icon } from 'astro-icon/components';
 
 export function getStaticPaths() {
   return researchNotes.map((note) => ({
@@ -17,10 +17,10 @@ if (!note) {
 }
 
 const sourceTypeIcons = {
-  paper: FileText,
-  blog: BookOpen,
-  release: Rocket,
-  discussion: MessageSquare,
+  paper: 'lucide:file-text',
+  blog: 'lucide:book-open',
+  release: 'lucide:rocket',
+  discussion: 'lucide:message-square',
 };
 
 const sourceTypeColors = {
@@ -30,14 +30,14 @@ const sourceTypeColors = {
   discussion: 'bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300',
 };
 
-const Icon = sourceTypeIcons[note.sourceType];
+const iconName = sourceTypeIcons[note.sourceType];
 ---
 
 <BaseLayout title={note.title} description={note.summary}>
   <article class="py-12 lg:py-20">
     <div class="container-narrow">
       <a href="/research" class="inline-flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 mb-8">
-        <ArrowLeft class="w-4 h-4" />
+        <Icon name="lucide:arrow-left" class="w-4 h-4" />
         Back to Research Notes
       </a>
 
@@ -45,7 +45,7 @@ const Icon = sourceTypeIcons[note.sourceType];
         <div class="flex flex-wrap items-center gap-4 mb-4">
           <time class="text-sm text-slate-500 font-mono">{note.date}</time>
           <span class={`tag ${sourceTypeColors[note.sourceType]}`}>
-            <Icon class="w-3 h-3 mr-1" />
+            <Icon name={iconName} class="w-3 h-3 mr-1" />
             {note.sourceType}
           </span>
         </div>
@@ -103,7 +103,7 @@ const Icon = sourceTypeIcons[note.sourceType];
             })}
           </div>
           <a href="/research" class="btn-secondary text-sm">
-            <ArrowLeft class="w-4 h-4" />
+            <Icon name="lucide:arrow-left" class="w-4 h-4" />
             All Research Notes
           </a>
         </div>

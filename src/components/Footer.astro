@@ -1,5 +1,5 @@
 ---
-import { Github, MessageCircle, Send } from '@lucide/astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <footer class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-auto">
@@ -33,7 +33,7 @@ import { Github, MessageCircle, Send } from '@lucide/astro';
             class="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             aria-label="GitHub"
           >
-            <Github class="w-5 h-5" />
+            <Icon name="lucide:github" class="w-5 h-5" />
           </a>
           <a
             href="https://t.me/demlos"
@@ -42,7 +42,7 @@ import { Github, MessageCircle, Send } from '@lucide/astro';
             class="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             aria-label="Telegram"
           >
-            <Send class="w-5 h-5" />
+            <Icon name="lucide:send" class="w-5 h-5" />
           </a>
           <a
             href="https://discord.gg/demlos"
@@ -51,7 +51,7 @@ import { Github, MessageCircle, Send } from '@lucide/astro';
             class="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
             aria-label="Discord"
           >
-            <MessageCircle class="w-5 h-5" />
+            <Icon name="lucide:message-circle" class="w-5 h-5" />
           </a>
         </div>
       </div>

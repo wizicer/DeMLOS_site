@@ -14,7 +14,7 @@ description: Generates production-ready Astro components, pages, and UI islands 
 
   * Static UI → `.astro` components
   * Interactive UI → framework islands (React only when needed)
-* **Icons:** Lucide (astro or react version depending on context)
+* **Icons:** astro-icon
 * **Theming:** refer to `astro-theme.md` (System/Dark/Light)
 * **Routing:** File-based routing (`src/pages`)
 

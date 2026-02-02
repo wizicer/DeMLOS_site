@@ -1,5 +1,5 @@
 ---
-import { Menu, X, Sun, Moon, Cpu } from '@lucide/astro';
+import { Icon } from 'astro-icon/components';
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -15,7 +15,7 @@ const currentPath = Astro.url.pathname;
   <nav class="container-wide">
     <div class="flex items-center justify-between h-16">
       <a href="/" class="flex items-center gap-2 font-semibold text-lg">
-        <Cpu class="w-6 h-6 text-primary-600 dark:text-primary-400" />
+        <Icon name="lucide:cpu" class="w-6 h-6 text-primary-600 dark:text-primary-400" />
         <span class="text-gradient">DeML OS</span>
       </a>
 
@@ -41,8 +41,8 @@ const currentPath = Astro.url.pathname;
           class="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800 transition-colors"
           aria-label="Toggle theme"
         >
-          <Sun class="w-5 h-5 hidden dark:block" />
-          <Moon class="w-5 h-5 block dark:hidden" />
+          <Icon name="lucide:sun" class="w-5 h-5 hidden dark:block" />
+          <Icon name="lucide:moon" class="w-5 h-5 block dark:hidden" />
         </button>
 
         <button
@@ -50,8 +50,8 @@ const currentPath = Astro.url.pathname;
           class="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800 transition-colors md:hidden"
           aria-label="Toggle menu"
         >
-          <Menu class="w-5 h-5" id="menu-icon" />
-          <X class="w-5 h-5 hidden" id="close-icon" />
+          <Icon name="lucide:menu" class="w-5 h-5" id="menu-icon" />
+          <Icon name="lucide:x" class="w-5 h-5 hidden" id="close-icon" />
         </button>
       </div>
     </div>
