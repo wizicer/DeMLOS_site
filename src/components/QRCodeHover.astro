@@ -10,13 +10,7 @@ interface Props {
 
 const { config, label, class: className } = Astro.props;
 
-const now = new Date();
-const expiryDate = new Date(config.primary.expiryDate);
-const isExpired = now > expiryDate;
-
-const activeConfig = isExpired ? config.secondary : config.primary;
-
-const qrDataUrl = await QRCode.toDataURL(activeConfig.content, {
+const primaryQrDataUrl = await QRCode.toDataURL(config.primary.content, {
   width: 200,
   margin: 2,
   color: {
@@ -24,33 +18,85 @@ const qrDataUrl = await QRCode.toDataURL(activeConfig.content, {
     light: "#ffffff",
   },
 });
+
+const secondaryQrDataUrl = await QRCode.toDataURL(config.secondary.content, {
+  width: 200,
+  margin: 2,
+  color: {
+    dark: "#1e293b",
+    light: "#ffffff",
+  },
+});
+
+const expiryDate = config.primary.expiryDate;
 ---
 
-<div class={`qr-hover-container ${className || ""}`}>
+<div class={`qr-hover-container ${className || ""}`} data-expiry={expiryDate}>
   <slot />
   <div class="qr-popup">
     <div class="qr-content">
-      <div class="qr-image-wrapper">
+      <div class="qr-image-wrapper qr-primary">
         <img
-          src={qrDataUrl}
+          src={primaryQrDataUrl}
           alt={`QR Code for ${label || "link"}`}
           class="qr-image"
         />
         {
-          activeConfig.centerIcon && (
-            <div class="qr-center-icon">{activeConfig.centerIcon}</div>
+          config.primary.centerIcon && (
+            <div class="qr-center-icon">{config.primary.centerIcon}</div>
+          )
+        }
+      </div>
+      <div class="qr-image-wrapper qr-secondary" style="display: none;">
+        <img
+          src={secondaryQrDataUrl}
+          alt={`QR Code for ${label || "link"} (backup)`}
+          class="qr-image"
+        />
+        {
+          config.secondary.centerIcon && (
+            <div class="qr-center-icon">{config.secondary.centerIcon}</div>
           )
         }
       </div>
       {label && <p class="qr-label">{label}</p>}
-      {
-        isExpired && (
-          <p class="qr-expired-notice">Primary code expired, showing backup</p>
-        )
-      }
     </div>
   </div>
 </div>
+
+<script>
+  function checkQRExpiry() {
+    const containers = document.querySelectorAll(".qr-hover-container");
+
+    containers.forEach((container) => {
+      const expiryDate = container.getAttribute("data-expiry");
+      if (!expiryDate) return;
+
+      const now = new Date();
+      const expiry = new Date(expiryDate);
+      const isExpired = now > expiry;
+
+      const primaryWrapper = container.querySelector(
+        ".qr-primary"
+      ) as HTMLElement;
+      const secondaryWrapper = container.querySelector(
+        ".qr-secondary"
+      ) as HTMLElement;
+
+      if (isExpired) {
+        if (primaryWrapper) primaryWrapper.style.display = "none";
+        if (secondaryWrapper) secondaryWrapper.style.display = "block";
+      } else {
+        if (primaryWrapper) primaryWrapper.style.display = "block";
+        if (secondaryWrapper) secondaryWrapper.style.display = "none";
+      }
+    });
+  }
+
+  checkQRExpiry();
+
+  document.addEventListener("astro:page-load", checkQRExpiry);
+</script>
 
 <style>
   .qr-hover-container {
@@ -130,14 +176,6 @@ const qrDataUrl = await QRCode.toDataURL(activeConfig.content, {
 
   :global(.dark) .qr-label {
     color: #cbd5e1;
-  }
-
-  .qr-expired-notice {
-    margin-top: 8px;
-    margin-bottom: 0;
-    font-size: 12px;
-    color: #f59e0b;
-    text-align: center;
   }
 
   .qr-popup::after {
