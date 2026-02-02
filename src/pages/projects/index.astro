@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects } from '../../data/projects';
+import { ExternalLink, Github, FileText, CheckCircle, XCircle, AlertCircle } from 'lucide-astro';
+
+const statusColors = {
+  mainnet: 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
+  testnet: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300',
+  development: 'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300',
+};
+---
+
+<BaseLayout title="Projects" description="Structured overview of decentralized ML systems with consistent evaluation criteria">
+  <section class="py-12 lg:py-20">
+    <div class="container-wide">
+      <div class="max-w-3xl mb-12">
+        <h1 class="text-4xl font-bold mb-4">Projects</h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 mb-4">
+          A structured overview of systems related to DeML OS. The goal is comparison, not promotion.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400">
+          Each project is evaluated along consistent system-level dimensions including task types, 
+          verification mechanisms, economics, and governance.
+        </p>
+      </div>
+
+      <div class="card overflow-hidden mb-12">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="bg-slate-50 dark:bg-slate-800/50">
+              <tr>
+                <th class="px-4 py-3 text-left font-semibold">Project</th>
+                <th class="px-4 py-3 text-left font-semibold">Status</th>
+                <th class="px-4 py-3 text-center font-semibold">Inference</th>
+                <th class="px-4 py-3 text-center font-semibold">Training</th>
+                <th class="px-4 py-3 text-left font-semibold">Verification</th>
+                <th class="px-4 py-3 text-left font-semibold">Token</th>
+                <th class="px-4 py-3 text-right font-semibold">Workers</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+              {projects.map((project) => (
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <td class="px-4 py-4">
+                    <a href={`/projects/${project.slug}`} class="font-medium text-primary-600 dark:text-primary-400 hover:underline">
+                      {project.name}
+                    </a>
+                  </td>
+                  <td class="px-4 py-4">
+                    <span class={`tag ${statusColors[project.status]}`}>
+                      {project.status}
+                    </span>
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    {project.taskTypes.inference ? (
+                      <CheckCircle class="w-5 h-5 text-green-500 mx-auto" />
+                    ) : (
+                      <XCircle class="w-5 h-5 text-slate-300 dark:text-slate-600 mx-auto" />
+                    )}
+                  </td>
+                  <td class="px-4 py-4 text-center">
+                    {project.taskTypes.training ? (
+                      <CheckCircle class="w-5 h-5 text-green-500 mx-auto" />
+                    ) : (
+                      <XCircle class="w-5 h-5 text-slate-300 dark:text-slate-600 mx-auto" />
+                    )}
+                  </td>
+                  <td class="px-4 py-4 text-slate-600 dark:text-slate-400 max-w-xs truncate">
+                    {project.verification.mechanism.split(' ').slice(0, 4).join(' ')}...
+                  </td>
+                  <td class="px-4 py-4 font-mono text-sm">
+                    {project.economics.tokenSymbol || '-'}
+                  </td>
+                  <td class="px-4 py-4 text-right font-mono">
+                    {project.network.workerCount?.toLocaleString() || '-'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold mb-6">All Projects</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        {projects.map((project) => (
+          <a href={`/projects/${project.slug}`} class="card p-6 group">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="text-xl font-semibold group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  {project.name}
+                </h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400">{project.tagline}</p>
+              </div>
+              <span class={`tag ${statusColors[project.status]}`}>
+                {project.status}
+              </span>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.tags.map((tag) => (
+                <span class="tag-neutral">{tag}</span>
+              ))}
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 text-center text-sm">
+              <div>
+                <div class="font-semibold text-lg">{project.network.workerCount?.toLocaleString() || '-'}</div>
+                <div class="text-slate-500 dark:text-slate-400">Workers</div>
+              </div>
+              <div>
+                <div class="font-semibold text-lg">{project.network.historicTasks?.toLocaleString() || '-'}</div>
+                <div class="text-slate-500 dark:text-slate-400">Tasks</div>
+              </div>
+              <div>
+                <div class="font-semibold text-lg">{project.economics.tokenSymbol || '-'}</div>
+                <div class="text-slate-500 dark:text-slate-400">Token</div>
+              </div>
+            </div>
+
+            <div class="flex gap-3 mt-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+              {project.website && (
+                <span class="text-slate-400 dark:text-slate-500 text-sm flex items-center gap-1">
+                  <ExternalLink class="w-3 h-3" /> Website
+                </span>
+              )}
+              {project.github && (
+                <span class="text-slate-400 dark:text-slate-500 text-sm flex items-center gap-1">
+                  <Github class="w-3 h-3" /> GitHub
+                </span>
+              )}
+              {project.whitepaper && (
+                <span class="text-slate-400 dark:text-slate-500 text-sm flex items-center gap-1">
+                  <FileText class="w-3 h-3" /> Docs
+                </span>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

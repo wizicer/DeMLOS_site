@@ -1,0 +1,274 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { projects, getProjectBySlug } from '../../data/projects';
+import { getRelatedNotes } from '../../data/research-notes';
+import { 
+  ExternalLink, Github, FileText, Twitter, MessageCircle,
+  CheckCircle, XCircle, AlertTriangle, ArrowLeft, 
+  Cpu, Shield, Coins, Users, Server, Activity
+} from 'lucide-astro';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const project = getProjectBySlug(slug as string);
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+
+const relatedNotes = getRelatedNotes(project.slug);
+
+const statusColors = {
+  mainnet: 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
+  testnet: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300',
+  development: 'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-300',
+};
+---
+
+<BaseLayout title={project.name} description={project.tagline}>
+  <article class="py-12 lg:py-20">
+    <div class="container-narrow">
+      <a href="/projects" class="inline-flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 mb-8">
+        <ArrowLeft class="w-4 h-4" />
+        Back to Projects
+      </a>
+
+      <header class="mb-12">
+        <div class="flex flex-wrap items-center gap-4 mb-4">
+          <h1 class="text-4xl font-bold">{project.name}</h1>
+          <span class={`tag ${statusColors[project.status]}`}>
+            {project.status}
+          </span>
+        </div>
+        <p class="text-xl text-slate-600 dark:text-slate-400 mb-6">{project.tagline}</p>
+        
+        <div class="flex flex-wrap gap-3">
+          {project.website && (
+            <a href={project.website} target="_blank" rel="noopener noreferrer" class="btn-secondary text-sm">
+              <ExternalLink class="w-4 h-4" />
+              Website
+            </a>
+          )}
+          {project.github && (
+            <a href={project.github} target="_blank" rel="noopener noreferrer" class="btn-secondary text-sm">
+              <Github class="w-4 h-4" />
+              GitHub
+            </a>
+          )}
+          {project.whitepaper && (
+            <a href={project.whitepaper} target="_blank" rel="noopener noreferrer" class="btn-secondary text-sm">
+              <FileText class="w-4 h-4" />
+              Documentation
+            </a>
+          )}
+          {project.twitter && (
+            <a href={project.twitter} target="_blank" rel="noopener noreferrer" class="btn-secondary text-sm">
+              <Twitter class="w-4 h-4" />
+              Twitter
+            </a>
+          )}
+          {project.discord && (
+            <a href={project.discord} target="_blank" rel="noopener noreferrer" class="btn-secondary text-sm">
+              <MessageCircle class="w-4 h-4" />
+              Discord
+            </a>
+          )}
+        </div>
+      </header>
+
+      <div class="prose-custom mb-12">
+        {project.description.split('\n\n').map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        <div class="card p-4 text-center">
+          <div class="text-2xl font-bold">{project.network.workerCount?.toLocaleString() || '-'}</div>
+          <div class="text-sm text-slate-500 dark:text-slate-400">Active Workers</div>
+        </div>
+        <div class="card p-4 text-center">
+          <div class="text-2xl font-bold">{project.network.historicTasks?.toLocaleString() || '-'}</div>
+          <div class="text-sm text-slate-500 dark:text-slate-400">Historic Tasks</div>
+        </div>
+        <div class="card p-4 text-center">
+          <div class="text-2xl font-bold font-mono">{project.economics.tokenSymbol || '-'}</div>
+          <div class="text-sm text-slate-500 dark:text-slate-400">Token</div>
+        </div>
+        <div class="card p-4 text-center">
+          <div class="text-2xl font-bold capitalize">{project.outputSemantics}</div>
+          <div class="text-sm text-slate-500 dark:text-slate-400">Output Type</div>
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        <section class="card p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center">
+              <Cpu class="w-5 h-5 text-primary-600 dark:text-primary-400" />
+            </div>
+            <h2 class="text-xl font-semibold">Task Types</h2>
+          </div>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div class="flex items-center gap-3">
+              {project.taskTypes.inference ? (
+                <CheckCircle class="w-5 h-5 text-green-500" />
+              ) : (
+                <XCircle class="w-5 h-5 text-slate-300 dark:text-slate-600" />
+              )}
+              <span>Inference</span>
+            </div>
+            <div class="flex items-center gap-3">
+              {project.taskTypes.training ? (
+                <CheckCircle class="w-5 h-5 text-green-500" />
+              ) : (
+                <XCircle class="w-5 h-5 text-slate-300 dark:text-slate-600" />
+              )}
+              <span>Training</span>
+            </div>
+            <div class="flex items-center gap-3">
+              {project.taskTypes.finetuning ? (
+                <CheckCircle class="w-5 h-5 text-green-500" />
+              ) : (
+                <XCircle class="w-5 h-5 text-slate-300 dark:text-slate-600" />
+              )}
+              <span>Fine-tuning</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-accent-100 dark:bg-accent-900/50 flex items-center justify-center">
+              <Shield class="w-5 h-5 text-accent-600 dark:text-accent-400" />
+            </div>
+            <h2 class="text-xl font-semibold">Verification</h2>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Mechanism</h3>
+              <p>{project.verification.mechanism}</p>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Trust Model</h3>
+              <p>{project.verification.trustModel}</p>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-2">Known Risks</h3>
+              <ul class="space-y-2">
+                {project.verification.knownRisks.map((risk) => (
+                  <li class="flex items-start gap-2 text-sm">
+                    <AlertTriangle class="w-4 h-4 text-yellow-500 mt-0.5 shrink-0" />
+                    <span>{risk}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="card p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-green-100 dark:bg-green-900/50 flex items-center justify-center">
+              <Coins class="w-5 h-5 text-green-600 dark:text-green-400" />
+            </div>
+            <h2 class="text-xl font-semibold">Economics</h2>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <h3 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Pricing Model</h3>
+              <p>{project.economics.pricingModel}</p>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Subsidized</h3>
+              <p>{project.economics.isSubsidized ? 'Yes (token emissions)' : 'No (market-based)'}</p>
+            </div>
+            {project.metrics.inferencePrice && (
+              <div>
+                <h3 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Inference Price</h3>
+                <p class="font-mono">{project.metrics.inferencePrice}</p>
+              </div>
+            )}
+            {project.metrics.trainingPrice && (
+              <div>
+                <h3 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Training Price</h3>
+                <p class="font-mono">{project.metrics.trainingPrice}</p>
+              </div>
+            )}
+            {project.metrics.verificationOverhead && (
+              <div>
+                <h3 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Verification Overhead</h3>
+                <p class="font-mono">{project.metrics.verificationOverhead}</p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        <section class="card p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
+              <Server class="w-5 h-5 text-blue-600 dark:text-blue-400" />
+            </div>
+            <h2 class="text-xl font-semibold">Network</h2>
+          </div>
+          <div>
+            <h3 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Worker Requirements</h3>
+            <p>{project.network.workerRequirements}</p>
+          </div>
+        </section>
+
+        <section class="card p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
+              <Users class="w-5 h-5 text-orange-600 dark:text-orange-400" />
+            </div>
+            <h2 class="text-xl font-semibold">Governance</h2>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <h3 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Model</h3>
+              <p>{project.governance.model}</p>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-1">Upgradeability</h3>
+              <p>{project.governance.upgradeability}</p>
+            </div>
+          </div>
+        </section>
+
+        {relatedNotes.length > 0 && (
+          <section class="card p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                <Activity class="w-5 h-5 text-slate-600 dark:text-slate-400" />
+              </div>
+              <h2 class="text-xl font-semibold">Related Research Notes</h2>
+            </div>
+            <div class="space-y-3">
+              {relatedNotes.map((note) => (
+                <a href={`/research/${note.slug}`} class="block p-3 rounded-lg bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                  <div class="flex items-center gap-3">
+                    <time class="text-sm text-slate-500 font-mono">{note.date}</time>
+                    <span class="tag-neutral text-xs">{note.sourceType}</span>
+                  </div>
+                  <h3 class="font-medium mt-1">{note.title}</h3>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+
+      <div class="flex flex-wrap gap-2 mt-8">
+        {project.tags.map((tag) => (
+          <span class="tag-primary">{tag}</span>
+        ))}
+      </div>
+    </div>
+  </article>
+</BaseLayout>
