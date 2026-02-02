@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { researchNotes, getNotesByMonth } from '../../data/research-notes';
-import { FileText, BookOpen, Rocket, MessageSquare, ArrowRight } from 'lucide-astro';
+import { FileText, BookOpen, Rocket, MessageSquare, ArrowRight } from '@lucide/astro';
 
 const notesByMonth = getNotesByMonth();
 const months = Array.from(notesByMonth.keys()).sort().reverse();

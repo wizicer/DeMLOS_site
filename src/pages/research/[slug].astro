@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { researchNotes } from '../../data/research-notes';
-import { ArrowLeft, FileText, BookOpen, Rocket, MessageSquare, ExternalLink } from 'lucide-astro';
+import { ArrowLeft, FileText, BookOpen, Rocket, MessageSquare, ExternalLink } from '@lucide/astro';
 
 export function getStaticPaths() {
   return researchNotes.map((note) => ({
