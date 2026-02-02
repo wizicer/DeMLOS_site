@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { researchNotes } from '../../data/research-notes';
-import { Icon } from 'astro-icon/components';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { researchNotes } from "../../data/research-notes";
+import { Icon } from "astro-icon/components";
 
 export function getStaticPaths() {
   return researchNotes.map((note) => ({
@@ -13,21 +13,23 @@ const { slug } = Astro.params;
 const note = researchNotes.find((n) => n.slug === slug);
 
 if (!note) {
-  return Astro.redirect('/404');
+  return Astro.redirect("/404");
 }
 
 const sourceTypeIcons = {
-  paper: 'lucide:file-text',
-  blog: 'lucide:book-open',
-  release: 'lucide:rocket',
-  discussion: 'lucide:message-square',
+  paper: "lucide:file-text",
+  blog: "lucide:book-open",
+  release: "lucide:rocket",
+  discussion: "lucide:message-square",
 };
 
 const sourceTypeColors = {
-  paper: 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300',
-  blog: 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
-  release: 'bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300',
-  discussion: 'bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300',
+  paper: "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300",
+  blog: "bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300",
+  release:
+    "bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300",
+  discussion:
+    "bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300",
 };
 
 const iconName = sourceTypeIcons[note.sourceType];
@@ -36,7 +38,10 @@ const iconName = sourceTypeIcons[note.sourceType];
 <BaseLayout title={note.title} description={note.summary}>
   <article class="py-12 lg:py-20">
     <div class="container-narrow">
-      <a href="/research" class="inline-flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 mb-8">
+      <a
+        href="/research"
+        class="inline-flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 mb-8"
+      >
         <Icon name="lucide:arrow-left" class="w-4 h-4" />
         Back to Research Notes
       </a>
@@ -49,58 +54,66 @@ const iconName = sourceTypeIcons[note.sourceType];
             {note.sourceType}
           </span>
         </div>
-        
+
         <h1 class="text-3xl md:text-4xl font-bold mb-4">{note.title}</h1>
-        
+
         <p class="text-lg text-slate-600 dark:text-slate-400 mb-6">
           {note.summary}
         </p>
 
         <div class="flex flex-wrap gap-2">
-          {note.tags.map((tag) => (
-            <span class="tag-primary">{tag}</span>
-          ))}
-          {note.relatedProjects?.map((project) => (
-            <a 
-              href={`/projects/${project.toLowerCase().replace(/\s+/g, '-')}`}
-              class="tag-accent hover:opacity-80 transition-opacity"
-            >
-              {project}
-            </a>
-          ))}
+          {note.tags.map((tag) => <span class="tag-primary">{tag}</span>)}
+          {
+            note.relatedProjects?.map((project) => (
+              <a
+                href={`/projects/${project.toLowerCase().replace(/\s+/g, "-")}`}
+                class="tag-accent hover:opacity-80 transition-opacity"
+              >
+                {project}
+              </a>
+            ))
+          }
         </div>
       </header>
 
       <div class="prose-custom">
-        <Fragment set:html={note.content
-          .split('\n')
-          .map(line => {
-            if (line.startsWith('## ')) return `<h2>${line.slice(3)}</h2>`;
-            if (line.startsWith('### ')) return `<h3>${line.slice(4)}</h3>`;
-            if (line.startsWith('- **')) return `<li><strong>${line.slice(4).replace('**:', ':</strong>')}</li>`;
-            if (line.startsWith('- ')) return `<li>${line.slice(2)}</li>`;
-            if (line.startsWith('1. ')) return `<li>${line.slice(3)}</li>`;
-            if (line.startsWith('| ')) return line;
-            if (line.startsWith('```')) return line;
-            if (line.trim() === '') return '<br/>';
-            return `<p>${line}</p>`;
-          })
-          .join('\n')
-          .replace(/<br\/>\n<h/g, '<h')
-          .replace(/<\/li>\n<li>/g, '</li><li>')
-          .replace(/<br\/>\n<li>/g, '<ul><li>')
-          .replace(/<\/li>\n<br\/>/g, '</li></ul>')
-        } />
+        <Fragment
+          set:html={note.content
+            .split("\n")
+            .map((line) => {
+              if (line.startsWith("## ")) return `<h2>${line.slice(3)}</h2>`;
+              if (line.startsWith("### ")) return `<h3>${line.slice(4)}</h3>`;
+              if (line.startsWith("- **"))
+                return `<li><strong>${line.slice(4).replace("**:", ":</strong>")}</li>`;
+              if (line.startsWith("- ")) return `<li>${line.slice(2)}</li>`;
+              if (line.startsWith("1. ")) return `<li>${line.slice(3)}</li>`;
+              if (line.startsWith("| ")) return line;
+              if (line.startsWith("```")) return line;
+              if (line.trim() === "") return "<br/>";
+              return `<p>${line}</p>`;
+            })
+            .join("\n")
+            .replace(/<br\/>\n<h/g, "<h")
+            .replace(/<\/li>\n<li>/g, "</li><li>")
+            .replace(/<br\/>\n<li>/g, "<ul><li>")
+            .replace(/<\/li>\n<br\/>/g, "</li></ul>")}
+        />
       </div>
 
-      <footer class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <footer
+        class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800"
+      >
+        <div
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+        >
           <div class="text-sm text-slate-500 dark:text-slate-400">
-            Published on {new Date(note.date).toLocaleDateString('en-US', { 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric' 
-            })}
+            Published on {
+              new Date(note.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            }
           </div>
           <a href="/research" class="btn-secondary text-sm">
             <Icon name="lucide:arrow-left" class="w-4 h-4" />

@@ -2,7 +2,7 @@ export interface ResearchNote {
   slug: string;
   title: string;
   date: string;
-  sourceType: 'paper' | 'blog' | 'release' | 'discussion';
+  sourceType: "paper" | "blog" | "release" | "discussion";
   summary: string;
   content: string;
   tags: string[];
@@ -11,11 +11,13 @@ export interface ResearchNote {
 
 export const researchNotes: ResearchNote[] = [
   {
-    slug: 'zkml-scaling-breakthrough',
-    title: 'ZKML Scaling Breakthrough: Verifiable Neural Networks at Production Scale',
-    date: '2026-01-28',
-    sourceType: 'paper',
-    summary: 'New research demonstrates practical ZKML verification for transformer models up to 1B parameters with sub-second proof generation.',
+    slug: "zkml-scaling-breakthrough",
+    title:
+      "ZKML Scaling Breakthrough: Verifiable Neural Networks at Production Scale",
+    date: "2026-01-28",
+    sourceType: "paper",
+    summary:
+      "New research demonstrates practical ZKML verification for transformer models up to 1B parameters with sub-second proof generation.",
     content: `
 ## Overview
 
@@ -41,15 +43,16 @@ This breakthrough addresses one of the key bottlenecks in decentralized ML: the 
 - What is the hardware requirement for provers?
 - Can this be combined with optimistic verification for hybrid systems?
     `,
-    tags: ['verification', 'execution', 'blockchain'],
-    relatedProjects: ['Gensyn', 'Modulus'],
+    tags: ["verification", "execution", "blockchain"],
+    relatedProjects: ["Gensyn", "Modulus"],
   },
   {
-    slug: 'bittensor-subnet-economics',
-    title: 'Analysis: Bittensor Subnet Economic Dynamics After 6 Months',
-    date: '2026-01-22',
-    sourceType: 'blog',
-    summary: 'Deep dive into the economic performance and miner behavior across Bittensor subnets, revealing emergent patterns in decentralized AI markets.',
+    slug: "bittensor-subnet-economics",
+    title: "Analysis: Bittensor Subnet Economic Dynamics After 6 Months",
+    date: "2026-01-22",
+    sourceType: "blog",
+    summary:
+      "Deep dive into the economic performance and miner behavior across Bittensor subnets, revealing emergent patterns in decentralized AI markets.",
     content: `
 ## Overview
 
@@ -76,15 +79,16 @@ Six months after the launch of Bittensor's subnet architecture, we now have suff
 
 The subnet model successfully enables market-driven resource allocation, but raises questions about long-term sustainability without external demand sources.
     `,
-    tags: ['incentive', 'governance', 'application'],
-    relatedProjects: ['Bittensor'],
+    tags: ["incentive", "governance", "application"],
+    relatedProjects: ["Bittensor"],
   },
   {
-    slug: 'gensyn-testnet-results',
-    title: 'Gensyn Testnet Performance: Distributed Training at Scale',
-    date: '2026-01-15',
-    sourceType: 'release',
-    summary: 'Gensyn releases testnet results showing successful distributed training of a 7B parameter model across 500+ heterogeneous nodes.',
+    slug: "gensyn-testnet-results",
+    title: "Gensyn Testnet Performance: Distributed Training at Scale",
+    date: "2026-01-15",
+    sourceType: "release",
+    summary:
+      "Gensyn releases testnet results showing successful distributed training of a 7B parameter model across 500+ heterogeneous nodes.",
     content: `
 ## Testnet Highlights
 
@@ -116,15 +120,16 @@ Gensyn's public testnet has completed its first large-scale distributed training
 
 Gensyn plans to expand testnet capacity and introduce the staking mechanism in Q2 2026.
     `,
-    tags: ['execution', 'verification', 'hardware'],
-    relatedProjects: ['Gensyn'],
+    tags: ["execution", "verification", "hardware"],
+    relatedProjects: ["Gensyn"],
   },
   {
-    slug: 'akash-ml-workloads',
-    title: 'Akash Network Introduces ML-Optimized Container Specs',
-    date: '2026-01-10',
-    sourceType: 'release',
-    summary: 'Akash launches new container specifications designed for ML inference workloads, featuring GPU memory management and model caching.',
+    slug: "akash-ml-workloads",
+    title: "Akash Network Introduces ML-Optimized Container Specs",
+    date: "2026-01-10",
+    sourceType: "release",
+    summary:
+      "Akash launches new container specifications designed for ML inference workloads, featuring GPU memory management and model caching.",
     content: `
 ## New ML Features
 
@@ -165,15 +170,16 @@ Akash Network has released a significant update targeting ML inference workloads
 
 Akash offers significant cost savings but trails on latency and reliability. Suitable for cost-sensitive, latency-tolerant applications.
     `,
-    tags: ['execution', 'interface', 'hardware'],
-    relatedProjects: ['Akash Network'],
+    tags: ["execution", "interface", "hardware"],
+    relatedProjects: ["Akash Network"],
   },
   {
-    slug: 'verifiable-inference-survey',
-    title: 'Survey: State of Verifiable Inference in 2026',
-    date: '2026-01-05',
-    sourceType: 'paper',
-    summary: 'Comprehensive academic survey covering all major approaches to verifiable ML inference, from ZK proofs to optimistic verification.',
+    slug: "verifiable-inference-survey",
+    title: "Survey: State of Verifiable Inference in 2026",
+    date: "2026-01-05",
+    sourceType: "paper",
+    summary:
+      "Comprehensive academic survey covering all major approaches to verifiable ML inference, from ZK proofs to optimistic verification.",
     content: `
 ## Survey Scope
 
@@ -214,15 +220,16 @@ This comprehensive survey covers the landscape of verifiable inference mechanism
 
 The survey concludes that hybrid approaches combining optimistic verification with ZK or TEE fallbacks offer the best tradeoffs for production systems.
     `,
-    tags: ['verification', 'execution', 'blockchain'],
-    relatedProjects: ['Gensyn', 'Bittensor', 'Livepeer'],
+    tags: ["verification", "execution", "blockchain"],
+    relatedProjects: ["Gensyn", "Bittensor", "Livepeer"],
   },
   {
-    slug: 'sentient-model-marketplace',
-    title: 'Sentient Launches Decentralized Model Marketplace',
-    date: '2025-12-28',
-    sourceType: 'release',
-    summary: 'Sentient unveils a new marketplace for AI models with built-in royalty tracking and usage-based compensation for model creators.',
+    slug: "sentient-model-marketplace",
+    title: "Sentient Launches Decentralized Model Marketplace",
+    date: "2025-12-28",
+    sourceType: "release",
+    summary:
+      "Sentient unveils a new marketplace for AI models with built-in royalty tracking and usage-based compensation for model creators.",
     content: `
 ## Marketplace Overview
 
@@ -262,15 +269,16 @@ The marketplace uses a combination of:
 
 This addresses a key gap in the DeML ecosystem: how to compensate model creators in a decentralized setting. The approach shows promise but faces challenges in preventing off-chain usage.
     `,
-    tags: ['incentive', 'governance', 'application'],
-    relatedProjects: ['Sentient'],
+    tags: ["incentive", "governance", "application"],
+    relatedProjects: ["Sentient"],
   },
   {
-    slug: 'federated-learning-blockchain',
-    title: 'Research: Blockchain-Coordinated Federated Learning',
-    date: '2025-12-20',
-    sourceType: 'paper',
-    summary: 'New research proposes using blockchain for coordination in federated learning, addressing aggregation trust and contribution verification.',
+    slug: "federated-learning-blockchain",
+    title: "Research: Blockchain-Coordinated Federated Learning",
+    date: "2025-12-20",
+    sourceType: "paper",
+    summary:
+      "New research proposes using blockchain for coordination in federated learning, addressing aggregation trust and contribution verification.",
     content: `
 ## Research Overview
 
@@ -318,15 +326,16 @@ Traditional federated learning relies on a central aggregator, creating:
 
 This research provides theoretical foundations for decentralized training coordination, though practical deployment requires further optimization.
     `,
-    tags: ['execution', 'verification', 'blockchain'],
-    relatedProjects: ['Gensyn', 'Bittensor'],
+    tags: ["execution", "verification", "blockchain"],
+    relatedProjects: ["Gensyn", "Bittensor"],
   },
   {
-    slug: '0g-storage-layer',
-    title: '0G Introduces Specialized Storage Layer for ML Artifacts',
-    date: '2025-12-15',
-    sourceType: 'release',
-    summary: '0G launches a storage solution optimized for ML workflows, featuring streaming access and deduplication for model weights and datasets.',
+    slug: "0g-storage-layer",
+    title: "0G Introduces Specialized Storage Layer for ML Artifacts",
+    date: "2025-12-15",
+    sourceType: "release",
+    summary:
+      "0G launches a storage solution optimized for ML workflows, featuring streaming access and deduplication for model weights and datasets.",
     content: `
 ## Product Overview
 
@@ -375,15 +384,16 @@ This research provides theoretical foundations for decentralized training coordi
 
 This addresses a critical infrastructure gap for decentralized ML. The ability to stream model weights without full downloads significantly reduces barrier to entry for inference providers.
     `,
-    tags: ['hardware', 'interface', 'execution'],
-    relatedProjects: ['0g'],
+    tags: ["hardware", "interface", "execution"],
+    relatedProjects: ["0g"],
   },
   {
-    slug: 'livepeer-ai-subnets',
-    title: 'Livepeer Expands Beyond Video: AI Subnet Architecture',
-    date: '2025-12-10',
-    sourceType: 'blog',
-    summary: 'Livepeer announces plans to expand their orchestrator network to support general AI workloads through a subnet architecture.',
+    slug: "livepeer-ai-subnets",
+    title: "Livepeer Expands Beyond Video: AI Subnet Architecture",
+    date: "2025-12-10",
+    sourceType: "blog",
+    summary:
+      "Livepeer announces plans to expand their orchestrator network to support general AI workloads through a subnet architecture.",
     content: `
 ## Announcement Overview
 
@@ -424,15 +434,16 @@ Livepeer, known for decentralized video transcoding, is expanding to support gen
 
 Livepeer's existing orchestrator network (2,400+ nodes) provides a strong foundation. The key challenge will be adapting their video-optimized verification to AI workloads.
     `,
-    tags: ['execution', 'governance', 'application'],
-    relatedProjects: ['Livepeer'],
+    tags: ["execution", "governance", "application"],
+    relatedProjects: ["Livepeer"],
   },
   {
-    slug: 'fluence-aqua-ml',
-    title: 'Fluence Releases Aqua-ML: Composable AI Pipelines',
-    date: '2025-12-05',
-    sourceType: 'release',
-    summary: 'Fluence introduces Aqua-ML, extending their Aqua language to support declarative ML pipeline composition across decentralized compute.',
+    slug: "fluence-aqua-ml",
+    title: "Fluence Releases Aqua-ML: Composable AI Pipelines",
+    date: "2025-12-05",
+    sourceType: "release",
+    summary:
+      "Fluence introduces Aqua-ML, extending their Aqua language to support declarative ML pipeline composition across decentralized compute.",
     content: `
 ## Product Overview
 
@@ -485,15 +496,16 @@ pipeline ImageAnalysis:
 
 Aqua-ML addresses a key developer experience gap in decentralized AI. The declarative approach significantly simplifies building applications on heterogeneous decentralized infrastructure.
     `,
-    tags: ['interface', 'execution', 'application'],
-    relatedProjects: ['Fluence'],
+    tags: ["interface", "execution", "application"],
+    relatedProjects: ["Fluence"],
   },
   {
-    slug: 'autonolas-agent-coordination',
-    title: 'Autonolas: Decentralized Agent Coordination Mechanisms',
-    date: '2025-11-28',
-    sourceType: 'paper',
-    summary: 'Research paper from Autonolas team on coordination mechanisms for decentralized autonomous AI agents.',
+    slug: "autonolas-agent-coordination",
+    title: "Autonolas: Decentralized Agent Coordination Mechanisms",
+    date: "2025-11-28",
+    sourceType: "paper",
+    summary:
+      "Research paper from Autonolas team on coordination mechanisms for decentralized autonomous AI agents.",
     content: `
 ## Research Overview
 
@@ -541,15 +553,16 @@ Autonolas has implemented these mechanisms in their agent framework:
 
 This work is foundational for the emerging field of decentralized AI agents. The formal treatment provides confidence for production deployments.
     `,
-    tags: ['governance', 'application', 'verification'],
-    relatedProjects: ['Autonolas'],
+    tags: ["governance", "application", "verification"],
+    relatedProjects: ["Autonolas"],
   },
   {
-    slug: 'hardware-attestation-ml',
-    title: 'Hardware Attestation for ML: Challenges and Solutions',
-    date: '2025-11-20',
-    sourceType: 'paper',
-    summary: 'Academic survey on using hardware attestation (TPM, SGX, SEV) for verifying ML computation in untrusted environments.',
+    slug: "hardware-attestation-ml",
+    title: "Hardware Attestation for ML: Challenges and Solutions",
+    date: "2025-11-20",
+    sourceType: "paper",
+    summary:
+      "Academic survey on using hardware attestation (TPM, SGX, SEV) for verifying ML computation in untrusted environments.",
     content: `
 ## Survey Scope
 
@@ -603,28 +616,28 @@ For DeML systems, the survey recommends:
 2. Use as one layer in defense-in-depth
 3. Plan for hardware compromise scenarios
     `,
-    tags: ['hardware', 'verification', 'execution'],
+    tags: ["hardware", "verification", "execution"],
     relatedProjects: [],
   },
 ];
 
 export function getNotesByMonth(): Map<string, ResearchNote[]> {
   const byMonth = new Map<string, ResearchNote[]>();
-  
+
   for (const note of researchNotes) {
     const month = note.date.substring(0, 7);
     const existing = byMonth.get(month) || [];
     existing.push(note);
     byMonth.set(month, existing);
   }
-  
+
   return byMonth;
 }
 
 export function getRelatedNotes(projectSlug: string): ResearchNote[] {
-  return researchNotes.filter(
-    (note) => note.relatedProjects?.some(
-      (p) => p.toLowerCase().replace(/\s+/g, '-') === projectSlug
+  return researchNotes.filter((note) =>
+    note.relatedProjects?.some(
+      (p) => p.toLowerCase().replace(/\s+/g, "-") === projectSlug
     )
   );
 }

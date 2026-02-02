@@ -1,47 +1,62 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { Icon } from 'astro-icon/components';
-import { researchNotes } from '../data/research-notes';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
+import { researchNotes } from "../data/research-notes";
 
 const recentNotes = researchNotes.slice(0, 5);
 ---
 
 <BaseLayout title="Home">
   <section class="relative overflow-hidden py-20 lg:py-32">
-    <div class="absolute inset-0 bg-gradient-to-br from-primary-50 via-transparent to-accent-50 dark:from-primary-950/30 dark:via-transparent dark:to-accent-950/30"></div>
-    <div class="absolute inset-0 bg-[url('/grid.svg')] opacity-30 dark:opacity-20"></div>
-    
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-primary-50 via-transparent to-accent-50 dark:from-primary-950/30 dark:via-transparent dark:to-accent-950/30"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-[url('/grid.svg')] opacity-30 dark:opacity-20"
+    >
+    </div>
+
     <div class="container-wide relative">
       <div class="max-w-4xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-sm font-medium mb-6">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-300 text-sm font-medium mb-6"
+        >
           <Icon name="lucide:cpu" class="w-4 h-4" />
           <span>Research Initiative</span>
         </div>
-        
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
+
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in"
+        >
           <span class="text-gradient">DeML OS</span>
         </h1>
-        
-        <p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-4 animate-slide-up">
+
+        <p
+          class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-4 animate-slide-up"
+        >
           Decentralized Machine Learning Operating System
         </p>
-        
-        <p class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-10">
+
+        <p
+          class="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-10"
+        >
           We focus on a core question at the intersection of Web3 and AI:
         </p>
-        
-        <blockquote class="text-xl md:text-2xl font-medium text-slate-800 dark:text-slate-200 italic mb-10 px-6 border-l-4 border-primary-500 text-left max-w-2xl mx-auto">
-          "Can ML be executed, verified, settled, and constrained without a central platform?"
+
+        <blockquote
+          class="text-xl md:text-2xl font-medium text-slate-800 dark:text-slate-200 italic mb-10 px-6 border-l-4 border-primary-500 text-left max-w-2xl mx-auto"
+        >
+          "Can ML be executed, verified, settled, and constrained without a
+          central platform?"
         </blockquote>
-        
+
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/projects" class="btn-primary">
             Explore Projects
             <Icon name="lucide:arrow-right" class="w-4 h-4" />
           </a>
-          <a href="/research" class="btn-outline">
-            Research Notes
-          </a>
+          <a href="/research" class="btn-outline"> Research Notes </a>
         </div>
       </div>
     </div>
@@ -58,35 +73,66 @@ const recentNotes = researchNotes.slice(0, 5);
 
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         <div class="card p-8">
-          <div class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/50 flex items-center justify-center mb-6">
-            <Icon name="lucide:shield" class="w-6 h-6 text-green-600 dark:text-green-400" />
+          <div
+            class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/50 flex items-center justify-center mb-6"
+          >
+            <Icon
+              name="lucide:shield"
+              class="w-6 h-6 text-green-600 dark:text-green-400"
+            />
           </div>
-          <h3 class="text-xl font-semibold mb-4 text-green-700 dark:text-green-400">In Scope</h3>
+          <h3
+            class="text-xl font-semibold mb-4 text-green-700 dark:text-green-400"
+          >
+            In Scope
+          </h3>
           <ul class="space-y-3 text-slate-600 dark:text-slate-400">
             <li class="flex items-start gap-3">
-              <Icon name="lucide:network" class="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+              <Icon
+                name="lucide:network"
+                class="w-5 h-5 mt-0.5 text-green-500 shrink-0"
+              />
               <span>ML execution under non-centralized scheduling</span>
             </li>
             <li class="flex items-start gap-3">
-              <Icon name="lucide:lock" class="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
+              <Icon
+                name="lucide:lock"
+                class="w-5 h-5 mt-0.5 text-green-500 shrink-0"
+              />
               <span>Trust and correctness of ML in untrusted environments</span>
             </li>
             <li class="flex items-start gap-3">
-              <Icon name="lucide:coins" class="w-5 h-5 mt-0.5 text-green-500 shrink-0" />
-              <span>Native pricing and settlement mechanisms that support long-term operation</span>
+              <Icon
+                name="lucide:coins"
+                class="w-5 h-5 mt-0.5 text-green-500 shrink-0"
+              />
+              <span
+                >Native pricing and settlement mechanisms that support long-term
+                operation</span
+              >
             </li>
           </ul>
         </div>
 
         <div class="card p-8">
-          <div class="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/50 flex items-center justify-center mb-6">
-            <Icon name="lucide:shield" class="w-6 h-6 text-red-600 dark:text-red-400" />
+          <div
+            class="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/50 flex items-center justify-center mb-6"
+          >
+            <Icon
+              name="lucide:shield"
+              class="w-6 h-6 text-red-600 dark:text-red-400"
+            />
           </div>
-          <h3 class="text-xl font-semibold mb-4 text-red-700 dark:text-red-400">Out of Scope</h3>
+          <h3 class="text-xl font-semibold mb-4 text-red-700 dark:text-red-400">
+            Out of Scope
+          </h3>
           <ul class="space-y-3 text-slate-600 dark:text-slate-400">
             <li class="flex items-start gap-3">
               <span class="w-5 h-5 mt-0.5 text-red-400 shrink-0">✗</span>
-              <span>Systems that only change payment methods without changing ML execution</span>
+              <span
+                >Systems that only change payment methods without changing ML
+                execution</span
+              >
             </li>
             <li class="flex items-start gap-3">
               <span class="w-5 h-5 mt-0.5 text-red-400 shrink-0">✗</span>
@@ -113,35 +159,63 @@ const recentNotes = researchNotes.slice(0, 5);
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <div class="card p-6 text-center">
-          <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center mx-auto mb-4">
-            <Icon name="lucide:cpu" class="w-6 h-6 text-primary-600 dark:text-primary-400" />
+          <div
+            class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center mx-auto mb-4"
+          >
+            <Icon
+              name="lucide:cpu"
+              class="w-6 h-6 text-primary-600 dark:text-primary-400"
+            />
           </div>
           <h3 class="font-semibold mb-2">Execution</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Inference, training, and task scheduling mechanisms</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400">
+            Inference, training, and task scheduling mechanisms
+          </p>
         </div>
 
         <div class="card p-6 text-center">
-          <div class="w-12 h-12 rounded-xl bg-accent-100 dark:bg-accent-900/50 flex items-center justify-center mx-auto mb-4">
-            <Icon name="lucide:shield" class="w-6 h-6 text-accent-600 dark:text-accent-400" />
+          <div
+            class="w-12 h-12 rounded-xl bg-accent-100 dark:bg-accent-900/50 flex items-center justify-center mx-auto mb-4"
+          >
+            <Icon
+              name="lucide:shield"
+              class="w-6 h-6 text-accent-600 dark:text-accent-400"
+            />
           </div>
           <h3 class="font-semibold mb-2">Verification</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Trust models, correctness proofs, and dispute resolution</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400">
+            Trust models, correctness proofs, and dispute resolution
+          </p>
         </div>
 
         <div class="card p-6 text-center">
-          <div class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/50 flex items-center justify-center mx-auto mb-4">
-            <Icon name="lucide:coins" class="w-6 h-6 text-green-600 dark:text-green-400" />
+          <div
+            class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/50 flex items-center justify-center mx-auto mb-4"
+          >
+            <Icon
+              name="lucide:coins"
+              class="w-6 h-6 text-green-600 dark:text-green-400"
+            />
           </div>
           <h3 class="font-semibold mb-2">Economics</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Pricing models, incentives, and sustainability</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400">
+            Pricing models, incentives, and sustainability
+          </p>
         </div>
 
         <div class="card p-6 text-center">
-          <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center mx-auto mb-4">
-            <Icon name="lucide:users" class="w-6 h-6 text-orange-600 dark:text-orange-400" />
+          <div
+            class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center mx-auto mb-4"
+          >
+            <Icon
+              name="lucide:users"
+              class="w-6 h-6 text-orange-600 dark:text-orange-400"
+            />
           </div>
           <h3 class="font-semibold mb-2">Governance</h3>
-          <p class="text-sm text-slate-600 dark:text-slate-400">Upgradeability, decision-making, and tokenomics</p>
+          <p class="text-sm text-slate-600 dark:text-slate-400">
+            Upgradeability, decision-making, and tokenomics
+          </p>
         </div>
       </div>
     </div>
@@ -151,8 +225,12 @@ const recentNotes = researchNotes.slice(0, 5);
     <div class="container-wide">
       <div class="flex items-center justify-between mb-12">
         <div>
-          <h2 class="text-3xl md:text-4xl font-bold mb-2">Recent Research Notes</h2>
-          <p class="text-slate-600 dark:text-slate-400">Latest developments in decentralized ML</p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-2">
+            Recent Research Notes
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400">
+            Latest developments in decentralized ML
+          </p>
         </div>
         <a href="/research" class="btn-secondary hidden sm:flex">
           View All
@@ -161,22 +239,29 @@ const recentNotes = researchNotes.slice(0, 5);
       </div>
 
       <div class="grid gap-4">
-        {recentNotes.map((note) => (
-          <a href={`/research/${note.slug}`} class="card p-6 flex flex-col sm:flex-row sm:items-center gap-4 group">
-            <div class="flex items-center gap-4 shrink-0">
-              <time class="text-sm text-slate-500 dark:text-slate-500 font-mono w-24">{note.date}</time>
-              <span class="tag-neutral">{note.sourceType}</span>
-            </div>
-            <h3 class="font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors flex-1">
-              {note.title}
-            </h3>
-            <div class="flex gap-2 flex-wrap">
-              {note.tags.slice(0, 2).map((tag) => (
-                <span class="tag-primary">{tag}</span>
-              ))}
-            </div>
-          </a>
-        ))}
+        {
+          recentNotes.map((note) => (
+            <a
+              href={`/research/${note.slug}`}
+              class="card p-6 flex flex-col sm:flex-row sm:items-center gap-4 group"
+            >
+              <div class="flex items-center gap-4 shrink-0">
+                <time class="text-sm text-slate-500 dark:text-slate-500 font-mono w-24">
+                  {note.date}
+                </time>
+                <span class="tag-neutral">{note.sourceType}</span>
+              </div>
+              <h3 class="font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors flex-1">
+                {note.title}
+              </h3>
+              <div class="flex gap-2 flex-wrap">
+                {note.tags.slice(0, 2).map((tag) => (
+                  <span class="tag-primary">{tag}</span>
+                ))}
+              </div>
+            </a>
+          ))
+        }
       </div>
 
       <a href="/research" class="btn-secondary w-full mt-6 sm:hidden">
@@ -188,18 +273,31 @@ const recentNotes = researchNotes.slice(0, 5);
 
   <section class="py-20">
     <div class="container-wide">
-      <div class="card p-8 md:p-12 bg-gradient-to-br from-primary-600 to-accent-600 text-white">
+      <div
+        class="card p-8 md:p-12 bg-gradient-to-br from-primary-600 to-accent-600 text-white"
+      >
         <div class="max-w-3xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">Join the Research Community</h2>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Join the Research Community
+          </h2>
           <p class="text-primary-100 mb-8 text-lg">
-            If you are interested in distributed systems, ML systems, verifiable computation, 
-            or crypto-economic mechanisms at the system layer, you are welcome to join the discussion.
+            If you are interested in distributed systems, ML systems, verifiable
+            computation, or crypto-economic mechanisms at the system layer, you
+            are welcome to join the discussion.
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/about" class="btn bg-white text-primary-700 hover:bg-primary-50">
+            <a
+              href="/about"
+              class="btn bg-white text-primary-700 hover:bg-primary-50"
+            >
               Learn More
             </a>
-            <a href="https://github.com/demlos" target="_blank" rel="noopener noreferrer" class="btn border-2 border-white text-white hover:bg-white/10">
+            <a
+              href="https://github.com/demlos"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn border-2 border-white text-white hover:bg-white/10"
+            >
               GitHub
             </a>
           </div>

@@ -1,81 +1,105 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { Icon } from 'astro-icon/components';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Icon } from "astro-icon/components";
 ---
 
-<BaseLayout title="About" description="Learn about DeML OS - an open, research-oriented effort for decentralized machine learning systems">
+<BaseLayout
+  title="About"
+  description="Learn about DeML OS - an open, research-oriented effort for decentralized machine learning systems"
+>
   <section class="py-12 lg:py-20">
     <div class="container-narrow">
       <header class="mb-12">
         <h1 class="text-4xl font-bold mb-4">About DeML OS</h1>
         <p class="text-xl text-slate-600 dark:text-slate-400">
-          An open, research-oriented effort to define the system layer for decentralized machine learning.
+          An open, research-oriented effort to define the system layer for
+          decentralized machine learning.
         </p>
       </header>
 
       <div class="prose-custom mb-16">
         <p>
-          We are not building a single product. We are working on shared abstractions, 
-          evaluation frameworks, and system understanding for the emerging field of 
-          decentralized machine learning.
+          We are not building a single product. We are working on shared
+          abstractions, evaluation frameworks, and system understanding for the
+          emerging field of decentralized machine learning.
         </p>
         <p>
-          The intersection of Web3 and AI presents fundamental questions about how 
-          machine learning can be executed, verified, settled, and constrained without 
-          relying on central platforms. These questions require rigorous technical 
-          analysis, not marketing narratives.
+          The intersection of Web3 and AI presents fundamental questions about
+          how machine learning can be executed, verified, settled, and
+          constrained without relying on central platforms. These questions
+          require rigorous technical analysis, not marketing narratives.
         </p>
         <p>
-          DeML OS serves as a neutral ground for researchers, engineers, and practitioners 
-          to explore these questions together, sharing knowledge and building common 
-          understanding of the technical landscape.
+          DeML OS serves as a neutral ground for researchers, engineers, and
+          practitioners to explore these questions together, sharing knowledge
+          and building common understanding of the technical landscape.
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-8 mb-16">
         <div class="card p-6">
-          <div class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center mb-4">
-            <Icon name="lucide:target" class="w-6 h-6 text-primary-600 dark:text-primary-400" />
+          <div
+            class="w-12 h-12 rounded-xl bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center mb-4"
+          >
+            <Icon
+              name="lucide:target"
+              class="w-6 h-6 text-primary-600 dark:text-primary-400"
+            />
           </div>
           <h2 class="text-xl font-semibold mb-3">Our Mission</h2>
           <p class="text-slate-600 dark:text-slate-400">
-            To provide objective, technical analysis of decentralized ML systems. 
-            We evaluate projects on their technical merits, not their marketing or 
-            token performance.
+            To provide objective, technical analysis of decentralized ML
+            systems. We evaluate projects on their technical merits, not their
+            marketing or token performance.
           </p>
         </div>
 
         <div class="card p-6">
-          <div class="w-12 h-12 rounded-xl bg-accent-100 dark:bg-accent-900/50 flex items-center justify-center mb-4">
-            <Icon name="lucide:book-open" class="w-6 h-6 text-accent-600 dark:text-accent-400" />
+          <div
+            class="w-12 h-12 rounded-xl bg-accent-100 dark:bg-accent-900/50 flex items-center justify-center mb-4"
+          >
+            <Icon
+              name="lucide:book-open"
+              class="w-6 h-6 text-accent-600 dark:text-accent-400"
+            />
           </div>
           <h2 class="text-xl font-semibold mb-3">Research Focus</h2>
           <p class="text-slate-600 dark:text-slate-400">
-            We track developments in execution, verification, economics, and governance 
-            of decentralized ML systems, maintaining a high-signal research log for 
-            the community.
+            We track developments in execution, verification, economics, and
+            governance of decentralized ML systems, maintaining a high-signal
+            research log for the community.
           </p>
         </div>
 
         <div class="card p-6">
-          <div class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/50 flex items-center justify-center mb-4">
-            <Icon name="lucide:code" class="w-6 h-6 text-green-600 dark:text-green-400" />
+          <div
+            class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/50 flex items-center justify-center mb-4"
+          >
+            <Icon
+              name="lucide:code"
+              class="w-6 h-6 text-green-600 dark:text-green-400"
+            />
           </div>
           <h2 class="text-xl font-semibold mb-3">Open Source</h2>
           <p class="text-slate-600 dark:text-slate-400">
-            All our research, frameworks, and tools are open source. We believe in 
-            building public goods for the decentralized ML ecosystem.
+            All our research, frameworks, and tools are open source. We believe
+            in building public goods for the decentralized ML ecosystem.
           </p>
         </div>
 
         <div class="card p-6">
-          <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center mb-4">
-            <Icon name="lucide:globe" class="w-6 h-6 text-orange-600 dark:text-orange-400" />
+          <div
+            class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center mb-4"
+          >
+            <Icon
+              name="lucide:globe"
+              class="w-6 h-6 text-orange-600 dark:text-orange-400"
+            />
           </div>
           <h2 class="text-xl font-semibold mb-3">Neutral Ground</h2>
           <p class="text-slate-600 dark:text-slate-400">
-            We are not affiliated with any specific project. Our goal is comparison 
-            and understanding, not promotion or competition.
+            We are not affiliated with any specific project. Our goal is
+            comparison and understanding, not promotion or competition.
           </p>
         </div>
       </div>
@@ -84,7 +108,8 @@ import { Icon } from 'astro-icon/components';
         <h2 class="text-2xl font-bold mb-6">Who Should Join</h2>
         <div class="card p-6">
           <p class="text-slate-600 dark:text-slate-400 mb-4">
-            If you are interested in any of the following areas, you are welcome to join the discussion:
+            If you are interested in any of the following areas, you are welcome
+            to join the discussion:
           </p>
           <ul class="grid sm:grid-cols-2 gap-3">
             <li class="flex items-center gap-3">
@@ -129,22 +154,24 @@ import { Icon } from 'astro-icon/components';
           <div class="card p-6">
             <h3 class="font-semibold mb-2">Submit Research Notes</h3>
             <p class="text-slate-600 dark:text-slate-400">
-              Found an interesting paper, release, or discussion? Submit it for inclusion 
-              in our research log. We review all submissions for relevance and quality.
+              Found an interesting paper, release, or discussion? Submit it for
+              inclusion in our research log. We review all submissions for
+              relevance and quality.
             </p>
           </div>
           <div class="card p-6">
             <h3 class="font-semibold mb-2">Project Updates</h3>
             <p class="text-slate-600 dark:text-slate-400">
-              Working on a project we cover? Help us keep information accurate by 
-              submitting updates or corrections through our GitHub repository.
+              Working on a project we cover? Help us keep information accurate
+              by submitting updates or corrections through our GitHub
+              repository.
             </p>
           </div>
           <div class="card p-6">
             <h3 class="font-semibold mb-2">Join Discussions</h3>
             <p class="text-slate-600 dark:text-slate-400">
-              Participate in technical discussions on our Telegram, Discord, or GitHub. 
-              We welcome diverse perspectives and constructive debate.
+              Participate in technical discussions on our Telegram, Discord, or
+              GitHub. We welcome diverse perspectives and constructive debate.
             </p>
           </div>
         </div>
@@ -153,43 +180,61 @@ import { Icon } from 'astro-icon/components';
       <section>
         <h2 class="text-2xl font-bold mb-6">Contact & Community</h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <a 
-            href="https://t.me/demlos" 
-            target="_blank" 
+          <a
+            href="https://t.me/demlos"
+            target="_blank"
             rel="noopener noreferrer"
             class="card p-6 text-center group hover:border-primary-300 dark:hover:border-primary-700 transition-colors"
           >
-            <Icon name="lucide:send" class="w-8 h-8 mx-auto mb-3 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors" />
+            <Icon
+              name="lucide:send"
+              class="w-8 h-8 mx-auto mb-3 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
+            />
             <h3 class="font-semibold mb-1">Telegram</h3>
             <p class="text-sm text-slate-500 dark:text-slate-400">@demlos</p>
           </a>
 
-          <a 
-            href="https://discord.gg/demlos" 
-            target="_blank" 
+          <a
+            href="https://discord.gg/demlos"
+            target="_blank"
             rel="noopener noreferrer"
             class="card p-6 text-center group hover:border-primary-300 dark:hover:border-primary-700 transition-colors"
           >
-            <Icon name="lucide:message-circle" class="w-8 h-8 mx-auto mb-3 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors" />
+            <Icon
+              name="lucide:message-circle"
+              class="w-8 h-8 mx-auto mb-3 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
+            />
             <h3 class="font-semibold mb-1">Discord</h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400">discord.gg/demlos</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+              discord.gg/demlos
+            </p>
           </a>
 
-          <a 
-            href="https://github.com/demlos" 
-            target="_blank" 
+          <a
+            href="https://github.com/demlos"
+            target="_blank"
             rel="noopener noreferrer"
             class="card p-6 text-center group hover:border-primary-300 dark:hover:border-primary-700 transition-colors"
           >
-            <Icon name="lucide:github" class="w-8 h-8 mx-auto mb-3 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors" />
+            <Icon
+              name="lucide:github"
+              class="w-8 h-8 mx-auto mb-3 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors"
+            />
             <h3 class="font-semibold mb-1">GitHub</h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400">github.com/demlos</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+              github.com/demlos
+            </p>
           </a>
 
           <div class="card p-6 text-center">
-            <Icon name="lucide:users" class="w-8 h-8 mx-auto mb-3 text-slate-400" />
+            <Icon
+              name="lucide:users"
+              class="w-8 h-8 mx-auto mb-3 text-slate-400"
+            />
             <h3 class="font-semibold mb-1">WeChat</h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400">Contact for invite</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+              Contact for invite
+            </p>
           </div>
         </div>
       </section>
