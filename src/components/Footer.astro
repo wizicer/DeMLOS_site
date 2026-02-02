@@ -1,5 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
+import QRCodeHover from "./QRCodeHover.astro";
+import { qrCodes } from "../config/qrcodes";
 ---
 
 <footer
@@ -72,6 +74,15 @@ import { Icon } from "astro-icon/components";
           >
             <Icon name="lucide:send" class="w-5 h-5" />
           </a>
+          <div
+            class="p-2 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors cursor-pointer"
+          >
+            <QRCodeHover config={qrCodes.wechat} label="Scan to join WeChat">
+              <a rel="noopener noreferrer" aria-label="WeChat">
+                <Icon name="lucide:users" class="w-5 h-5" />
+              </a>
+            </QRCodeHover>
+          </div>
           <!-- <a
             href="https://discord.gg/demlos"
             target="_blank"
