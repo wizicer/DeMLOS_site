@@ -4,10 +4,14 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
+    "dev:today": "concurrently \"npm run today\" \"npm run dev\" \"npm run open:today\"",
+    "open:today": "tsx scripts/open-today.js",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "today": "tsx scripts/cli.js today",
+    "screenshot": "tsx scripts/cli.js screenshot",
+    "notify": "tsx scripts/cli.js notify"
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",
@@ -15,8 +19,16 @@
     "@types/qrcode": "^1.5.6",
     "astro": "^5.17.1",
     "astro-icon": "^1.1.1",
+    "axios": "^1.13.4",
+    "commander": "^14.0.3",
+    "concurrently": "^9.2.1",
+    "crypto": "^1.0.1",
+    "dotenv": "^17.2.3",
     "marked": "^17.0.1",
+    "node-telegram-bot-api": "^0.67.0",
+    "puppeteer": "^24.31.0",
     "qrcode": "^1.5.4",
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "^3.4.0",
+    "tsx": "^4.21.0"
   }
 }

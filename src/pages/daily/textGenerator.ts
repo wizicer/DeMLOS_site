@@ -184,7 +184,7 @@ export const generateTextContent = (
       });
     }
 
-    text += `---\n${translations[language].viewWeb} https://deml.space/research/${card.date}?lang=${language}\n`;
+    text += `---\n${translations[language].viewWeb} https://deml.space/daily/${card.date}?lang=${language}\n`;
     text += `${translations[language].collectedBy}`;
   });
 
