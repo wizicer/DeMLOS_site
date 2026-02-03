@@ -70,13 +70,13 @@ const getText = (content: any, lang: "en" | "zh"): string => {
 
 const getWeekdayColor = (weekdayNum: number): string => {
   const colors = [
-    "#e91e63", // Sunday - Pink
-    "#e74c3c", // Monday - Red
-    "#f39c12", // Tuesday - Orange
-    "#f1c40f", // Wednesday - Yellow
-    "#2ecc71", // Thursday - Green
-    "#3498db", // Friday - Blue
-    "#9b59b6", // Saturday - Purple
+    "#d81b60", // Sunday:   [Magma Pink]
+    "#2962ff", // Monday:   [Cobalt Blue]
+    "#00695c", // Tuesday:  [PCB Teal]
+    "#6200ea", // Wednesday:[Logic Purple]
+    "#0097a7", // Thursday: [Cyan Process]
+    "#ef6c00", // Friday:   [Safety Orange]
+    "#2e7d32", // Saturday: [Circuit Green]
   ];
   return colors[weekdayNum];
 };
@@ -95,24 +95,20 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=480" />
-    <title>zkDaily - {dayKey}</title>
+    <title>DeML OS - {dayKey}</title>
     <style define:vars={{ primaryColor: weekdayColor }}>
       :root {
-        --color-monday: #e74c3c;
-        --color-tuesday: #f39c12;
-        --color-wednesday: #f1c40f;
-        --color-thursday: #2ecc71;
-        --color-friday: #3498db;
-        --color-saturday: #9b59b6;
-        --color-sunday: #e91e63;
         --primary-color: var(--primaryColor);
-        --primary-light: color-mix(in srgb, var(--primaryColor), white 70%);
-        --primary-dark: #2980b9;
-        --text-primary: #2c3e50;
-        --text-secondary: #7f8c8d;
-        --border-color: #e1e8ed;
-        --card-bg: #ffffff;
-        --link-color: #e65c1a;
+        --bg-body: color-mix(in srgb, var(--primary-color), white 96%);
+        --bg-card: #ffffff;
+        --bg-panel: color-mix(in srgb, var(--primary-color), white 92%);
+
+        --text-main: #2c3e50;
+        --text-dim: #7f8c8d;
+        --theme-color: var(--primary-color);
+
+        --border-line: color-mix(in srgb, var(--primary-color), white 80%);
+        --border-strong: color-mix(in srgb, var(--primary-color), white 60%);
       }
 
       body {
@@ -120,12 +116,17 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
         padding: 0;
         width: 480px;
         font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, sans-serif;
-        background-color: #e3f2fd;
+          "Roboto",
+          "Segoe UI",
+          -apple-system,
+          sans-serif;
+        background-color: var(--bg-body);
+        background-image:
+          linear-gradient(var(--border-line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border-line) 1px, transparent 1px);
+        background-size: 20px 20px;
         box-sizing: border-box;
-        position: relative;
-        overflow-y: auto;
+        color: var(--text-main);
       }
 
       .app-controls {
@@ -137,44 +138,44 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
 
       .copy-button,
       .lang-button {
-        padding: 8px 16px;
-        background: #1a1a1a;
-        color: white;
-        border: none;
-        border-radius: 4px;
+        padding: 6px 12px;
+        background: #fff;
+        color: var(--text-main);
+        border: 1px solid var(--border-strong);
+        box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
         cursor: pointer;
-        font-size: 14px;
-        transition: all 0.3s;
+        font-size: 12px;
+        font-weight: 600;
+        transition: all 0.2s;
         opacity: 0;
       }
 
       .copy-button:hover,
       .lang-button:hover {
-        background: #333;
+        background: var(--bg-panel);
+        border-color: var(--theme-color);
+        color: var(--theme-color);
         opacity: 1;
       }
 
       .news-container {
         display: flex;
         flex-direction: column;
-        gap: 20px;
-        width: 465px;
-        height: 100%;
-        margin: 10px;
+        gap: 24px;
+        width: 440px;
+        margin: 20px;
         overflow-y: auto;
-        position: relative;
-        padding-bottom: 20px;
       }
 
       .news-card {
         position: relative;
-        background: var(--card-bg);
-        border-radius: 20px;
-        padding: 24px;
-        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.08);
-        page-break-after: always;
-        width: 461px;
-        min-height: 626px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-strong);
+        border-top: 4px solid var(--theme-color);
+        padding: 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        width: 440px;
+        min-height: 600px;
         box-sizing: border-box;
         overflow: hidden;
         display: flex;
@@ -182,128 +183,125 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
         margin-bottom: 20px;
       }
 
-      .news-card:last-child {
-        margin-bottom: 0;
-      }
-
       .card-header {
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
-        align-items: flex-start;
-        margin-bottom: 12px;
+        align-items: center;
+        padding: 16px 20px;
+        background: var(--bg-panel);
+        border-bottom: 1px solid var(--border-strong);
+        margin-bottom: 0;
       }
 
       .github-title {
         display: flex;
         flex-direction: column;
-        gap: 4px;
-      }
-
-      .en .github-title .highlight {
-        margin-left: -10px;
-      }
-
-      .en .github-title .title-text {
-        font-size: 26px;
-        font-weight: bold;
-        letter-spacing: -1px;
-        margin-left: -6px;
+        gap: 2px;
       }
 
       .title-icon {
-        font-size: 28px;
-        font-weight: bold;
+        font-size: 20px;
+        font-weight: 800;
         display: flex;
         align-items: center;
         gap: 8px;
+        color: var(--text-main);
+        letter-spacing: -0.5px;
       }
 
-      .subtitle-text {
-        font-size: 22px;
-        color: var(--text-primary);
-        position: relative;
-        z-index: 1;
-        padding: 0 2px;
-      }
-
-      .subtitle-text::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 3px;
-        width: 100%;
-        height: 40%;
-        background-color: var(--primary-color);
-        opacity: 0.4;
-        z-index: -1;
-        border-radius: 2px;
+      .title-text {
+        color: var(--text-main);
       }
 
       .highlight {
-        background-color: var(--primary-color);
-        padding: 2px 8px;
-        border-radius: 4px;
-        font-weight: bold;
+        background: transparent;
+        color: var(--theme-color);
+        font-size: 0.6em;
+        font-weight: normal;
+        border: 1px solid var(--theme-color);
+        padding: 1px 4px;
+        border-radius: 2px;
+        vertical-align: middle;
+        text-transform: uppercase;
+      }
+
+      .subtitle-text {
+        font-size: 12px;
+        color: var(--text-dim);
+        font-family: monospace;
+        text-transform: uppercase;
+      }
+
+      .subtitle-text::before {
+        display: none;
       }
 
       .date {
         display: flex;
-        flex-direction: column;
-        border-radius: 8px;
-        overflow: hidden;
-        width: 90px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-top: 4px;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 12px;
+        background: transparent;
+        box-shadow: none;
+        width: auto;
+        border: none;
+        margin-top: 0;
       }
 
       .date-weekday {
-        background: var(--primary-color);
-        color: var(--text-primary);
-        text-align: center;
-        padding: 4px 0;
-        font-size: 16px;
-        font-weight: bold;
+        background: transparent;
+        color: var(--text-dim);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: 0;
+        text-align: right;
       }
 
       .date-details {
-        background: white;
-        color: var(--text-primary);
-        text-align: center;
-        padding: 4px 0;
-        border: 1px solid #eee;
-        border-top: none;
+        background: transparent;
+        color: var(--text-main);
+        border: none;
+        padding: 0;
+        text-align: right;
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        border-left: 2px solid var(--border-strong);
+        padding-left: 12px;
       }
 
       .date-number {
-        font-size: 20px;
-        font-weight: bold;
+        font-size: 24px;
+        font-weight: 300;
+        font-family: "Segoe UI", sans-serif;
+        color: var(--theme-color);
         line-height: 1;
       }
 
       .date-year {
-        font-size: 14px;
-        color: var(--text-secondary);
-        margin-bottom: 2px;
+        font-size: 10px;
+        color: var(--text-dim);
+        letter-spacing: 1px;
       }
 
       .card-subtitle {
-        border-bottom: 2px solid #ebf5fb;
-        margin: 12px 0;
+        height: 1px;
+        background: transparent;
+        border-bottom: none;
+        margin: 0;
+      }
+
+      .projects {
+        padding: 20px;
       }
 
       .project-item {
         display: flex;
         gap: 16px;
-        padding-bottom: 24px;
-        margin-bottom: 24px;
-        overflow: hidden;
-      }
-
-      .project-item:not(:last-child) {
-        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px dashed var(--border-strong);
       }
 
       .project-item:last-child {
@@ -314,70 +312,72 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 4px;
-        margin-right: 8px;
-        position: relative;
-        justify-content: flex-start;
-        min-width: 64px;
+        gap: 8px;
+        min-width: 50px;
+      }
+
+      .project-icon {
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--border-line);
+        border-radius: 4px;
+        padding: 4px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .project-icon img,
+      .project-icon svg {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .project-type {
+        font-size: 9px;
+        color: var(--text-dim);
+        text-transform: uppercase;
+        background: var(--bg-panel);
+        padding: 2px 4px;
+        border-radius: 2px;
+        width: 100%;
+        text-align: center;
+        font-weight: 600;
       }
 
       .project-qr {
         margin-top: auto;
-        opacity: 0.7;
-        transition: opacity 0.3s ease;
-      }
-
-      .project-qr:hover {
-        opacity: 1;
-      }
-
-      .project-qr canvas {
-        width: 64px;
-        height: 64px;
-      }
-
-      .project-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 48px;
-        height: 48px;
-        font-size: 32px;
-      }
-
-      .project-icon img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+        opacity: 0.6;
+        border: 1px solid var(--border-line);
+        padding: 2px;
       }
 
       .project-content {
         flex: 1;
         min-width: 0;
-        overflow: hidden;
-        word-wrap: break-word;
       }
 
       .project-name {
-        color: var(--link-color);
-        margin: 0 0 8px 0;
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 1.4;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+        color: var(--text-main);
+        font-size: 16px;
+        font-weight: 700;
         text-decoration: none;
+        display: block;
+        margin-bottom: 4px;
+        letter-spacing: -0.2px;
       }
 
       .project-name:hover {
-        text-decoration: underline;
+        color: var(--theme-color);
       }
 
       .project-url {
         color: var(--link-color);
-        text-decoration: none;
-        font-size: 14px;
+        font-size: 12px;
+        font-family: monospace;
         display: block;
         margin-bottom: 8px;
         overflow: hidden;
@@ -385,74 +385,80 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
         white-space: nowrap;
       }
 
-      .project-type {
-        font-size: 0.8em;
-        color: #666;
-        font-weight: bold;
-        min-width: 2em;
-      }
-
       .project-tags {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
-        margin: 8px 0;
+        margin: 10px 0;
       }
 
       .tag {
-        background-color: #f0f0f0;
-        padding: 2px 8px;
-        border-radius: 12px;
-        font-size: 0.9em;
-        color: #666;
+        background-color: transparent;
+        border: 1px solid var(--border-strong);
+        color: var(--text-dim);
+        padding: 2px 6px;
+        border-radius: 0;
+        font-size: 10px;
+        font-family: monospace;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .tag::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 3px;
+        height: 3px;
+        background: var(--theme-color);
       }
 
       .project-summary {
-        color: var(--text-secondary);
-        font-size: 14px;
-        margin: 8px 0;
-        line-height: 1.5;
-      }
-
-      .project-item:has(+ .project-notes) {
-        margin-bottom: 0px;
-        padding-bottom: 12px;
-        border-bottom: none;
-        border-radius: 20px 20px 0 0;
+        color: var(--text-main);
+        font-size: 13px;
+        line-height: 1.6;
+        margin-top: 10px;
+        padding: 0;
+        border: none;
+        background: transparent;
       }
 
       .project-notes {
-        margin-top: 0px;
-        padding: 12px 16px 16px;
-        background-color: rgba(245, 245, 250, 0.7);
-        border-radius: 8px;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 12px 16px;
+        background-color: var(--bg-panel);
+        border: 1px solid var(--border-strong);
+        border-radius: 0;
         position: relative;
-        z-index: 1;
         margin-bottom: 20px;
-        padding-top: 16px;
+      }
+
+      .project-notes::after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 6px;
+        height: 6px;
+        background: var(--theme-color);
       }
 
       .notes-title {
-        color: var(--primary-color);
-        font-size: 16px;
-        font-weight: 600;
-        text-align: right;
+        color: var(--theme-color);
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
         position: absolute;
-        top: -36px;
-        right: 24px;
-        background: linear-gradient(
-          to bottom,
-          white 50%,
-          rgba(245, 245, 250, 0.7) 50%
-        );
-        padding: 2px 12px;
-        text-shadow:
-          2px 2px 4px rgba(179, 147, 211, 0.1),
-          3px 4px 4px rgba(179, 147, 211, 0.15),
-          4px 6px 4px rgba(179, 147, 211, 0.2),
-          5px 8px 4px rgba(179, 147, 211, 0.25);
-        z-index: 2;
+        top: -8px;
+        right: 12px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-strong);
+        padding: 0 6px;
+        letter-spacing: 1px;
       }
 
       .notes-list {
@@ -463,116 +469,75 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
 
       .note-item {
         margin-bottom: 6px;
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1.5;
-        padding-left: 16px;
+        padding-left: 14px;
         position: relative;
+        color: var(--text-main);
       }
 
       .note-item:before {
-        content: "•";
+        content: "-";
         position: absolute;
         left: 0;
-        color: var(--primary-color);
+        color: var(--text-dim);
+        font-family: monospace;
       }
 
-      .note-item :global(h1),
-      .note-item :global(h2),
-      .note-item :global(h3),
-      .note-item :global(h4) {
-        margin: 8px 0 4px;
-        font-size: 15px;
-        color: var(--primaryColor);
+      .note-item :global(strong) {
+        color: var(--theme-color);
+        font-weight: 600;
       }
 
       .note-item :global(code) {
-        background-color: #f5f5f5;
+        background: #fff;
+        border: 1px solid var(--border-line);
+        color: var(--theme-color);
         padding: 2px 4px;
-        border-radius: 3px;
+        border-radius: 2px;
         font-family: monospace;
         font-size: 0.9em;
       }
 
-      .note-item :global(a) {
-        color: var(--link-color);
-        text-decoration: none;
-      }
-
-      .note-item :global(a:hover) {
-        text-decoration: underline;
-      }
-
-      .note-item :global(strong) {
-        font-weight: 600;
-      }
-
-      .note-item :global(ul) {
-        padding-left: 16px;
-        margin: 4px 0;
-      }
-
-      .note-item :global(li) {
-        margin-bottom: 4px;
-      }
-
-      .note-item :global(p) {
-        margin: 0;
-      }
-
-      .en .notes-list[data-lang-en] .note-item {
-        font-size: 13px;
-      }
-
-      .note-item :global(strong) {
-        position: relative;
-        font-weight: bold;
-        color: #222;
-      }
-
-      .note-item :global(strong)::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 8px;
-        background-color: var(--primary-color);
-        transform: translateY(-50%) rotate(-5deg);
-        opacity: 0.3;
-        z-index: -1;
-      }
-
       .card-footer {
-        color: var(--text-secondary);
-        position: absolute;
-        bottom: 16px;
-        right: 32px;
-        font-size: 14px;
+        margin-top: auto;
+        padding: 12px 20px;
+        background: var(--bg-panel);
+        border-top: 1px solid var(--border-strong);
+        color: var(--text-dim);
+        font-size: 11px;
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 6px;
       }
 
       .card-footer a {
-        color: var(--link-color);
+        color: var(--theme-color);
+        font-weight: 600;
         text-decoration: none;
       }
 
       .page-indicator {
         position: absolute;
-        bottom: 1rem;
-        left: 1rem;
+        bottom: 14px;
+        left: 20px;
         display: flex;
-        gap: 4px;
-        align-items: flex-end;
+        gap: 6px;
       }
 
       .indicator-dot {
-        width: 4px;
-        height: 8px;
-        background-color: #ddd;
+        width: 6px;
+        height: 6px;
+        border: 1px solid var(--text-dim);
+        border-radius: 50%;
+        background: transparent;
       }
 
       .indicator-dot.active {
-        background-color: #666;
-        height: 10px;
+        background: var(--theme-color);
+        border-color: var(--theme-color);
       }
 
       .hidden {
@@ -580,44 +545,19 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
       }
 
       @media print {
-        @page {
-          size: 480px 640px;
-          margin: 0;
-        }
-
         body {
-          margin: 0;
-          padding: 0;
           background: none;
         }
-
-        .news-container {
-          margin: 0;
-          padding: 0;
-          max-width: none;
-        }
-
         .news-card {
-          width: 480px;
-          min-height: 640px;
-          margin: 0;
-          padding: 24px;
-          box-sizing: border-box;
-          page-break-after: always;
-          break-inside: avoid;
           box-shadow: none;
-          border-radius: 0;
-        }
-
-        .app-controls {
-          display: none;
+          border: 1px solid #ccc;
         }
       }
     </style>
   </head>
   <body>
     <div class="app-controls">
-      <button class="copy-button" id="copy-btn">Copy Text</button>
+      <button class="copy-button" id="copy-btn">COPY</button>
       <button class="lang-button" id="lang-btn">中文</button>
     </div>
 
@@ -628,39 +568,48 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
             <div class="card-header">
               <div class="github-title">
                 <div class="title-icon">
-                  <span class="title-text" data-lang-zh>
-                    零知识证明
+                  <span data-lang-en class="title-text">
+                    DeML OS
                   </span>
-                  <span class="highlight">zkDaily</span>
+                  <span data-lang-en class="highlight">
+                    Daily
+                  </span>
+                  <span data-lang-zh class="title-text">
+                    DeML OS
+                  </span>
+                  <span data-lang-zh class="highlight">
+                    最新前沿分析
+                  </span>
                 </div>
                 <div class="subtitle-text">
-                  <span data-lang-en>ZKP Frontier Tracker 🎯</span>
+                  <span data-lang-en>Explore Frontier</span>
                   <span data-lang-zh class="hidden">
-                    零知识证明 前沿热点追踪 🎯
+                    去中心化机器学习操作系统
                   </span>
                 </div>
               </div>
               <div class="date">
-                <span class="date-weekday">
-                  <span data-lang-en>{dayData.weekday.en.slice(0, 3)}</span>
-                  <span data-lang-zh class="hidden">
-                    {dayData.weekday.zh}
-                  </span>
-                </span>
                 <div class="date-details">
                   <div class="date-number">
                     {month}.{day}
                   </div>
                   <div class="date-year">{year}</div>
                 </div>
+                <span class="date-weekday">
+                  <span data-lang-en>{dayData.weekday.en.slice(0, 3)}</span>
+                  <span data-lang-zh class="hidden">
+                    {dayData.weekday.zh}
+                  </span>
+                </span>
               </div>
             </div>
+
             <div class="card-subtitle" />
+
             <div class="projects">
               {projects.map((project) => {
                 const avatar = getAvatarForType(project.type);
 
-                // Process notes
                 let notesEn: string[] = [];
                 let notesZh: string[] = [];
                 if (project.notes) {
@@ -681,10 +630,7 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
                   <>
                     <div class="project-item">
                       <div class="project-meta">
-                        <div class="project-icon">
-                          {/* <Image src={avatar} alt="Project avatar" /> */}
-                          {avatar}
-                        </div>
+                        <div class="project-icon">{avatar}</div>
                         <span class="project-type">
                           <span data-lang-en>
                             {typeLabels.en[project.type] || project.type}
@@ -769,6 +715,7 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
                 );
               })}
             </div>
+
             <div class="card-footer">
               <span data-lang-en>Collected by </span>
               <span data-lang-zh class="hidden">
@@ -782,6 +729,7 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
                 收集
               </span>
             </div>
+
             {projectGroups.length > 1 && (
               <div class="page-indicator">
                 {projectGroups.map((_, i) => (

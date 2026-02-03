@@ -33,25 +33,27 @@ const levelLabels = {
   <div class="card-header">
     <div class="github-title">
       <div class="title-icon">
-        <span class="title-text" data-lang-zh>零知识证明</span>
-        <span class="highlight">zkDaily</span>
+        <span class="highlight">DeML OS</span>
+        <span class="title-text" data-lang-en> Q &amp; A </span>
+        <span class="title-text" data-lang-zh> 问答 </span>
       </div>
       <div class="subtitle-text">
-        <span data-lang-en>Q&A Deep Dive 💬</span>
-        <span data-lang-zh class="hidden">今日要点 深入解析 💬</span>
+        <span data-lang-en>Deep Dive 💬</span>
+        <span data-lang-zh class="hidden">深度解析协议 💬</span>
       </div>
     </div>
     <div class="date">
-      <span class="date-weekday">
-        <span data-lang-en>{weekday.en.slice(0, 3)}</span>
-        <span data-lang-zh class="hidden">{weekday.zh}</span>
-      </span>
       <div class="date-details">
         <div class="date-number">{month}.{day}</div>
         <div class="date-year">{year}</div>
       </div>
+      <span class="date-weekday">
+        <span data-lang-en>{weekday.en.slice(0, 3)}</span>
+        <span data-lang-zh class="hidden">{weekday.zh}</span>
+      </span>
     </div>
   </div>
+
   <div class="card-subtitle"></div>
 
   <div class="chat-container">
@@ -60,38 +62,29 @@ const levelLabels = {
         <div class="chat-conversation">
           <div class="chat-message question">
             <div class="avatar-wrapper">
-              {/* <Image
-                src={levelAvatars[qa.level]}
-                alt={qa.level}
-                class="chat-avatar"
-              /> */}
-
-              {levelAvatars[qa.level as keyof typeof levelAvatars]}
-
-              {/* <span class="level-badge" data-lang-en>
-                {levelLabels[qa.level].en}
-              </span>
-              <span class="level-badge hidden" data-lang-zh>
-                {levelLabels[qa.level].zh}
-              </span> */}
+              <div class="chat-avatar-frame">
+                {levelAvatars[qa.level as keyof typeof levelAvatars]}
+              </div>
             </div>
             <div class="message-bubble question-bubble">
+              {/* <div class="bubble-label">INPUT // {qa.level}</div> */}
               <span data-lang-en>{qa.question.en}</span>
               <span data-lang-zh class="hidden">
                 {qa.question.zh}
               </span>
             </div>
           </div>
+
           <div class="chat-message answer">
             <div class="message-bubble answer-bubble">
+              {/* <div class="bubble-label system-label">:: SYSTEM OUTPUT</div> */}
               <span data-lang-en>{qa.answer.en}</span>
               <span data-lang-zh class="hidden">
                 {qa.answer.zh}
               </span>
             </div>
             <div class="avatar-wrapper">
-              {/* <Image src={answerAvatar} alt="answer" class="chat-avatar" /> */}
-              {answerAvatar}
+              <div class="chat-avatar-frame system-frame">{answerAvatar}</div>
             </div>
           </div>
         </div>
@@ -109,14 +102,22 @@ const levelLabels = {
 
 <style>
   .qa-card {
+    --theme-color: var(--primaryColor);
+    --bg-panel: color-mix(in srgb, var(--theme-color), white 92%);
+    --bg-card: #ffffff;
+    --text-main: #2c3e50;
+    --text-dim: #7f8c8d;
+    --border-strong: color-mix(in srgb, var(--theme-color), white 60%);
+    --border-line: color-mix(in srgb, var(--theme-color), white 80%);
+
     position: relative;
-    background: var(--card-bg, #ffffff);
-    border-radius: 20px;
-    padding: 24px;
-    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.08);
-    page-break-after: always;
-    width: 461px;
-    min-height: 626px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    border-top: 4px solid var(--theme-color);
+    padding: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 440px;
+    min-height: 600px;
     box-sizing: border-box;
     overflow: hidden;
     display: flex;
@@ -126,103 +127,107 @@ const levelLabels = {
 
   .card-header {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 12px;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border-strong);
+    margin-bottom: 0;
   }
 
   .github-title {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
   }
 
   .title-icon {
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 800;
     display: flex;
     align-items: center;
     gap: 8px;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
   }
 
   .title-text {
-    color: var(--text-primary, #2c3e50);
+    color: var(--text-main);
   }
 
   .highlight {
-    background-color: var(--primaryColor);
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: bold;
+    background: transparent;
+    color: var(--theme-color);
+    font-size: 0.6em;
+    font-weight: normal;
+    border: 1px solid var(--theme-color);
+    padding: 1px 4px;
+    border-radius: 2px;
+    vertical-align: middle;
+    text-transform: uppercase;
   }
 
   .subtitle-text {
-    font-size: 22px;
-    color: var(--text-primary, #2c3e50);
-    position: relative;
-    z-index: 1;
-    padding: 0 2px;
-  }
-
-  .subtitle-text::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 3px;
-    width: 100%;
-    height: 40%;
-    background-color: var(--primaryColor);
-    opacity: 0.4;
-    z-index: -1;
-    border-radius: 2px;
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: monospace;
+    text-transform: uppercase;
   }
 
   .date {
     display: flex;
-    flex-direction: column;
-    border-radius: 8px;
-    overflow: hidden;
-    width: 90px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-top: 4px;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    box-shadow: none;
+    width: auto;
+    border: none;
+    margin-top: 0;
   }
 
   .date-weekday {
-    background: var(--primaryColor);
-    color: var(--text-primary, #2c3e50);
-    text-align: center;
-    padding: 4px 0;
-    font-size: 16px;
-    font-weight: bold;
+    background: transparent;
+    color: var(--text-dim);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0;
+    text-align: right;
   }
 
   .date-details {
-    background: white;
-    color: var(--text-primary, #2c3e50);
-    text-align: center;
-    padding: 4px 0;
-    border: 1px solid #eee;
-    border-top: none;
+    background: transparent;
+    color: var(--text-main);
+    border: none;
+    padding: 0;
+    text-align: right;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    border-left: 2px solid var(--border-strong);
+    padding-left: 12px;
   }
 
   .date-number {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 300;
+    font-family: "Segoe UI", sans-serif;
+    color: var(--theme-color);
     line-height: 1;
   }
 
   .date-year {
-    font-size: 14px;
-    color: var(--text-secondary, #7f8c8d);
-    margin-bottom: 2px;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
   }
 
   .card-subtitle {
-    border-bottom: 2px solid #ebf5fb;
-    margin: 12px 0;
+    height: 1px;
+    background: transparent;
+    border-bottom: none;
+    margin: 0;
   }
 
   .chat-container {
@@ -230,20 +235,26 @@ const levelLabels = {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    padding-bottom: 40px;
+    gap: 24px;
+    padding: 20px;
   }
 
   .chat-conversation {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--border-strong);
+  }
+
+  .chat-conversation:last-child {
+    border-bottom: none;
   }
 
   .chat-message {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 12px;
   }
 
   .chat-message.question {
@@ -259,78 +270,101 @@ const levelLabels = {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2px;
     flex-shrink: 0;
+    padding-top: 4px;
   }
 
-  .chat-avatar {
+  .chat-avatar-frame {
     width: 36px;
     height: 36px;
-    border-radius: 6px;
-    object-fit: cover;
+    border: 1px solid var(--border-line);
+    border-radius: 4px;
+    padding: 2px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .level-badge {
-    font-size: 10px;
-    color: var(--text-secondary, #7f8c8d);
-    white-space: nowrap;
+  .chat-avatar-frame :global(img),
+  .chat-avatar-frame :global(svg) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .system-frame {
+    border-color: var(--theme-color);
   }
 
   .message-bubble {
-    max-width: 75%;
-    padding: 10px 12px;
-    border-radius: 12px;
+    max-width: 95%;
+    padding: 3px 8px;
     font-size: 13px;
-    line-height: 1.5;
+    line-height: 1.6;
     position: relative;
+    border-radius: 0;
+  }
+
+  .bubble-label {
+    font-size: 9px;
+    font-family: monospace;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+    display: block;
+    font-weight: 600;
   }
 
   .question-bubble {
-    background-color: #f5f5f5;
-    color: var(--text-primary, #2c3e50);
-    border-top-left-radius: 4px;
-  }
-
-  .question-bubble::before {
-    content: "";
-    position: absolute;
-    left: -6px;
-    top: 10px;
-    width: 0;
-    height: 0;
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-    border-right: 6px solid #f5f5f5;
+    background-color: var(--bg-panel);
+    color: var(--text-main);
+    border: 1px solid var(--border-strong);
+    border-left: 2px solid var(--text-dim);
   }
 
   .answer-bubble {
-    background-color: var(--primary-light);
-    color: var(--text-primary, #2c3e50);
-    border-top-right-radius: 4px;
+    background-color: #fff;
+    color: var(--text-main);
+    border: 1px solid var(--theme-color);
+    text-align: left;
   }
 
+  .system-label {
+    color: var(--theme-color);
+  }
+
+  /* 装饰性小方块 */
   .answer-bubble::after {
     content: "";
     position: absolute;
-    right: -6px;
-    top: 10px;
-    width: 0;
-    height: 0;
-    border-top: 6px solid transparent;
-    border-bottom: 6px solid transparent;
-    border-left: 6px solid var(--primary-light);
+    top: -1px;
+    right: -1px;
+    width: 6px;
+    height: 6px;
+    background: var(--theme-color);
   }
 
   .card-footer {
-    color: var(--text-secondary, #7f8c8d);
-    position: absolute;
-    bottom: 16px;
-    right: 32px;
-    font-size: 14px;
+    margin-top: auto;
+    padding: 12px 20px;
+    background: var(--bg-panel);
+    border-top: 1px solid var(--border-strong);
+    color: var(--text-dim);
+    font-size: 11px;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+    bottom: auto;
+    right: auto;
   }
 
   .card-footer a {
-    color: var(--link-color, #e65c1a);
+    color: var(--theme-color);
+    font-weight: 600;
     text-decoration: none;
   }
 
@@ -343,12 +377,10 @@ const levelLabels = {
       width: 480px;
       min-height: 640px;
       margin: 0;
-      padding: 24px;
-      box-sizing: border-box;
-      page-break-after: always;
-      break-inside: avoid;
+      padding: 0;
       box-shadow: none;
-      border-radius: 0;
+      border: 1px solid #ccc;
+      page-break-after: always;
     }
   }
 </style>
