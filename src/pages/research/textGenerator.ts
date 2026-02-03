@@ -59,12 +59,12 @@ export const generateTextContent = (
     { heading: string; viewWeb: string; collectedBy: string }
   > = {
     zh: {
-      heading: "🚀zkDaily 前沿热点追踪",
+      heading: "🚀DeML OS 最新前沿分析",
       viewWeb: "📄 网页查看：",
       collectedBy: "🪶 由 @icerdesign 收集",
     },
     en: {
-      heading: "🚀zkDaily Frontier Tracker",
+      heading: "🚀DeML OS Frontier Tracker",
       viewWeb: "📄 View on web:",
       collectedBy: "🪶 Collected by @icerdesign",
     },
@@ -184,12 +184,7 @@ export const generateTextContent = (
       });
     }
 
-    text += `---\n${
-      translations[language].viewWeb
-    } https://hints.plonk.pro/daily/${card.date.substring(
-      0,
-      card.date.indexOf("-", 5)
-    )}?lang=${language}\n`;
+    text += `---\n${translations[language].viewWeb} https://deml.space/research/${card.date}?lang=${language}\n`;
     text += `${translations[language].collectedBy}`;
   });
 
