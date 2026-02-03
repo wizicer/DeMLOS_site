@@ -1,26 +1,49 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { researchNotes, getNotesByMonth } from "../../data/research-notes";
+import { getNewsByMonth } from "../../data/daily";
 import { Icon } from "astro-icon/components";
 
-const notesByMonth = getNotesByMonth();
+const notesByMonth = getNewsByMonth();
 const months = Array.from(notesByMonth.keys()).sort().reverse();
 
-const sourceTypeIcons = {
-  paper: "lucide:file-text",
-  blog: "lucide:book-open",
-  release: "lucide:rocket",
-  discussion: "lucide:message-square",
+const typeIcons: Record<string, string> = {
+  论文: "lucide:file-text",
+  新闻: "lucide:newspaper",
+  开源: "lucide:github",
+  视频: "lucide:video",
+  博客: "lucide:book-open",
+  活动: "lucide:calendar",
+  工具: "lucide:wrench",
+  应用: "lucide:smartphone",
+  信息: "lucide:info",
+  漏洞: "lucide:bug",
+  教程: "lucide:graduation-cap",
 };
 
-const sourceTypeColors = {
-  paper: "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300",
-  blog: "bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300",
-  release:
-    "bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300",
-  discussion:
-    "bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300",
+const typeColors: Record<string, string> = {
+  论文: "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300",
+  新闻: "bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300",
+  开源: "bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300",
+  视频: "bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300",
+  博客: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300",
+  活动: "bg-pink-100 text-pink-800 dark:bg-pink-900/50 dark:text-pink-300",
+  工具: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300",
+  应用: "bg-teal-100 text-teal-800 dark:bg-teal-900/50 dark:text-teal-300",
+  信息: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/50 dark:text-cyan-300",
+  漏洞: "bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300",
+  教程: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300",
 };
+
+function getTypeIcon(type: string): string {
+  return typeIcons[type] || "lucide:file";
+}
+
+function getTypeColor(type: string): string {
+  return (
+    typeColors[type] ||
+    "bg-gray-100 text-gray-800 dark:bg-gray-900/50 dark:text-gray-300"
+  );
+}
 
 function formatMonth(monthStr: string): string {
   const [year, month] = monthStr.split("-");
@@ -48,87 +71,79 @@ function formatMonth(monthStr: string): string {
       </div>
 
       <div class="flex flex-wrap gap-4 mb-8">
-        <div class="flex items-center gap-2 text-sm">
-          <span class={`tag ${sourceTypeColors.paper}`}>
-            <Icon name="lucide:file-text" class="w-3 h-3 mr-1" />
-            Paper
-          </span>
-        </div>
-        <div class="flex items-center gap-2 text-sm">
-          <span class={`tag ${sourceTypeColors.blog}`}>
-            <Icon name="lucide:book-open" class="w-3 h-3 mr-1" />
-            Blog
-          </span>
-        </div>
-        <div class="flex items-center gap-2 text-sm">
-          <span class={`tag ${sourceTypeColors.release}`}>
-            <Icon name="lucide:rocket" class="w-3 h-3 mr-1" />
-            Release
-          </span>
-        </div>
-        <div class="flex items-center gap-2 text-sm">
-          <span class={`tag ${sourceTypeColors.discussion}`}>
-            <Icon name="lucide:message-square" class="w-3 h-3 mr-1" />
-            Discussion
-          </span>
-        </div>
+        {
+          Object.entries(typeIcons).map(([type, icon]) => (
+            <div class="flex items-center gap-2 text-sm">
+              <span class={`tag ${getTypeColor(type)}`}>
+                <Icon name={icon} class="w-3 h-3 mr-1" />
+                {type}
+              </span>
+            </div>
+          ))
+        }
       </div>
 
       <div class="space-y-12">
         {
           months.map((month) => {
-            const notes = notesByMonth.get(month) || [];
+            const dailyItems = notesByMonth.get(month) || [];
             return (
               <section>
                 <h2 class="text-2xl font-bold mb-6 sticky top-20 bg-slate-50 dark:bg-slate-950 py-2 z-10">
                   {formatMonth(month)}
                 </h2>
-                <div class="space-y-4">
-                  {notes.map((note) => {
-                    const iconName = sourceTypeIcons[note.sourceType];
-                    return (
-                      <a
-                        href={`/research/${note.slug}`}
-                        class="card p-6 block group"
-                      >
-                        <div class="flex flex-col sm:flex-row sm:items-start gap-4">
-                          <div class="flex items-center gap-4 shrink-0">
-                            <time class="text-sm text-slate-500 font-mono w-24">
-                              {note.date}
-                            </time>
-                            <span
-                              class={`tag ${sourceTypeColors[note.sourceType]}`}
-                            >
-                              <Icon name={iconName} class="w-3 h-3 mr-1" />
-                              {note.sourceType}
-                            </span>
-                          </div>
-                          <div class="flex-1 min-w-0">
-                            <h3 class="font-semibold text-lg group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
-                              {note.title}
-                            </h3>
-                            <p class="text-slate-600 dark:text-slate-400 text-sm mb-3 line-clamp-2">
-                              {note.summary}
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                              {note.tags.map((tag) => (
-                                <span class="tag-primary text-xs">{tag}</span>
-                              ))}
-                              {note.relatedProjects?.map((project) => (
-                                <span class="tag-accent text-xs">
-                                  {project}
-                                </span>
-                              ))}
+                <div class="space-y-8">
+                  {dailyItems.map((dailyItem) => (
+                    <div class="space-y-4">
+                      <div class="flex items-center gap-3 mb-4">
+                        <time class="text-lg font-semibold text-slate-700 dark:text-slate-300">
+                          {dailyItem.date}
+                        </time>
+                        <span class="text-sm text-slate-500">
+                          {dailyItem.weekday.en}
+                        </span>
+                      </div>
+                      {dailyItem.projects.map((project) => (
+                        <a
+                          href={`/research/${dailyItem.date}`}
+                          class="card p-6 block group"
+                        >
+                          <div class="flex flex-col sm:flex-row sm:items-start gap-4">
+                            <div class="flex items-center gap-4 shrink-0">
+                              <span class={`tag ${getTypeColor(project.type)}`}>
+                                <Icon
+                                  name={getTypeIcon(project.type)}
+                                  class="w-3 h-3 mr-1"
+                                />
+                                {project.type}
+                              </span>
                             </div>
+                            <div class="flex-1 min-w-0">
+                              <h3 class="font-semibold text-lg group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2">
+                                {project.name}
+                              </h3>
+                              <p class="text-slate-600 dark:text-slate-400 text-sm mb-3 line-clamp-2">
+                                {typeof project.summary === "string"
+                                  ? project.summary
+                                  : project.summary.en}
+                              </p>
+                              <div class="flex flex-wrap gap-2">
+                                {project.tags.map((tag) => (
+                                  <span class="tag-primary text-xs">
+                                    {typeof tag === "string" ? tag : tag.en}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                            <Icon
+                              name="lucide:arrow-right"
+                              class="w-5 h-5 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors shrink-0 hidden sm:block"
+                            />
                           </div>
-                          <Icon
-                            name="lucide:arrow-right"
-                            class="w-5 h-5 text-slate-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors shrink-0 hidden sm:block"
-                          />
-                        </div>
-                      </a>
-                    );
-                  })}
+                        </a>
+                      ))}
+                    </div>
+                  ))}
                 </div>
               </section>
             );

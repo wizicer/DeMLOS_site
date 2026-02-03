@@ -1,9 +1,48 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
-import { researchNotes } from "../data/research-notes";
+import { newsData } from "../data/daily";
 
-const recentNotes = researchNotes.slice(0, 5);
+const recentItems = newsData.slice(0, 5);
+
+const typeIcons: Record<string, string> = {
+  论文: "lucide:file-text",
+  新闻: "lucide:newspaper",
+  开源: "lucide:github",
+  视频: "lucide:video",
+  博客: "lucide:book-open",
+  活动: "lucide:calendar",
+  工具: "lucide:wrench",
+  应用: "lucide:smartphone",
+  信息: "lucide:info",
+  漏洞: "lucide:bug",
+  教程: "lucide:graduation-cap",
+};
+
+const typeColors: Record<string, string> = {
+  论文: "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300",
+  新闻: "bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300",
+  开源: "bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300",
+  视频: "bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300",
+  博客: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300",
+  活动: "bg-pink-100 text-pink-800 dark:bg-pink-900/50 dark:text-pink-300",
+  工具: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300",
+  应用: "bg-teal-100 text-teal-800 dark:bg-teal-900/50 dark:text-teal-300",
+  信息: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900/50 dark:text-cyan-300",
+  漏洞: "bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300",
+  教程: "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300",
+};
+
+function getTypeIcon(type: string): string {
+  return typeIcons[type] || "lucide:file";
+}
+
+function getTypeColor(type: string): string {
+  return (
+    typeColors[type] ||
+    "bg-gray-100 text-gray-800 dark:bg-gray-900/50 dark:text-gray-300"
+  );
+}
 ---
 
 <BaseLayout title="Home">
@@ -222,27 +261,37 @@ const recentNotes = researchNotes.slice(0, 5);
 
       <div class="grid gap-4">
         {
-          recentNotes.map((note) => (
-            <a
-              href={`/research/${note.slug}`}
-              class="card p-6 flex flex-col sm:flex-row sm:items-center gap-4 group"
-            >
-              <div class="flex items-center gap-4 shrink-0">
-                <time class="text-sm text-slate-500 dark:text-slate-500 font-mono w-24">
-                  {note.date}
-                </time>
-                <span class="tag-neutral">{note.sourceType}</span>
-              </div>
-              <h3 class="font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors flex-1">
-                {note.title}
-              </h3>
-              <div class="flex gap-2 flex-wrap">
-                {note.tags.slice(0, 2).map((tag) => (
-                  <span class="tag-primary">{tag}</span>
-                ))}
-              </div>
-            </a>
-          ))
+          recentItems.map((dailyItem) =>
+            dailyItem.projects.slice(0, 1).map((project) => (
+              <a
+                href={`/research/${dailyItem.date}`}
+                class="card p-6 flex flex-col sm:flex-row sm:items-center gap-4 group"
+              >
+                <div class="flex items-center gap-4 shrink-0">
+                  <time class="text-sm text-slate-500 dark:text-slate-500 font-mono w-24">
+                    {dailyItem.date}
+                  </time>
+                  <span class={`tag ${getTypeColor(project.type)}`}>
+                    <Icon
+                      name={getTypeIcon(project.type)}
+                      class="w-3 h-3 mr-1"
+                    />
+                    {project.type}
+                  </span>
+                </div>
+                <h3 class="font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors flex-1">
+                  {project.name}
+                </h3>
+                <div class="flex gap-2 flex-wrap">
+                  {project.tags.slice(0, 2).map((tag) => (
+                    <span class="tag-primary">
+                      {typeof tag === "string" ? tag : tag.en}
+                    </span>
+                  ))}
+                </div>
+              </a>
+            ))
+          )
         }
       </div>
 
