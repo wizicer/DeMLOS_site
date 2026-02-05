@@ -1,39 +1,41 @@
 [
   {
-    "date": "2026-02-02",
+    "date": "2026-02-05",
     "projects": [
       {
-        "name": "stark-v: A general purpose zkVM building on top of Stwo",
-        "url": "https://github.com/AntoineFONDEUR/stark-v",
-        "type": "开源",
+        "name": "Mosaic Learning: A Framework for Decentralized Learning with Model Fragmentation",
+        "url": "https://arxiv.org/abs/2602.04352",
+        "type": "论文",
         "tags": [
-          "AntoineFONDEUR",
-          "Stwo"
+          "Sayan Biswas",
+          "Fragmentation",
+          "Non-IID",
+          "Gossip"
         ],
         "summary": {
-          "zh": "@AntoineFONDEUR 开源了stark-v，这是一个基于Stwo构建的通用zkVM，为RISC-V程序执行生成STARK证明，支持快速约束开发。",
-          "en": "@AntoineFONDEUR open-sourced stark-v, a general-purpose zkVM built on Stwo that generates STARK proofs for RISC-V program execution, enabling rapid constraint development."
+          "zh": "Biswas等人在{{name}}论文中提出Mosaic Learning框架，通过将模型参数分片并在不同通信图中独立传播，提升去中心化学习在非IID数据下的节点级性能，并给出理论与实验验证。",
+          "en": "In the {{name}}paper, Biswas et al. introduced Mosaic Learning, a decentralized learning framework that uses model fragmentation across multiple gossip graphs to improve node-level performance, especially under non-IID data."
+        },
+        "slogan": {
+          "zh": "【ML论文】模型不再整包发：Mosaic Learning 重塑去中心化训练"
         },
         "notes": {
           "zh": [
-            "stark-v 是一个RV32IM zkVM，为RISC-V程序执行生成STARK证明。",
-            "使用声明式宏生成Stwo AIR组件，加速新约束的开发过程。",
-            "提供内存布局定义，支持固定地址范围的程序代码、输入输出和堆栈。",
-            "包含基准测试，测量证明吞吐量（kHz），并探索并行化策略。",
-            "项目仍在开发中，暂不建议用于生产环境。",
-            "架构灵感来源于OpenVM，支持多种分配器如jemalloc、mimalloc。"
+            "提出将model fragmentation作为去中心化学习的一等设计维度，而非系统层技巧",
+            "不同模型分片通过独立gossip图传播，增强信息多样性并减少冗余同步",
+            "理论证明最坏情况下收敛率不劣于Epidemic Learning（EL）",
+            "凸问题中分片数量增加可降低系统收缩因子，加快一致性",
+            "实验显示在强non-IID场景下，节点平均性能最高提升约12%",
+            "发现consensus distance在非凸任务中不再是可靠的性能指标"
           ],
           "en": [
-            "stark-v is an RV32IM zkVM that generates STARK proofs for RISC-V program execution.",
-            "Uses declarative macros to generate Stwo AIR components for rapid constraint development.",
-            "Defines fixed memory layout for program code, input/output, and stack in guest programs.",
-            "Includes benchmarks measuring proof throughput (kHz) and explores parallelization strategies.",
-            "Project is a work in progress and not yet ready for production use.",
-            "Architecture inspired by OpenVM, supports allocators like jemalloc and mimalloc."
+            "Treats model fragmentation as a first-class learning primitive in decentralized ML.",
+            "Uses independent gossip graphs per fragment to improve information diversity.",
+            "Matches state-of-the-art convergence guarantees of Epidemic Learning in theory.",
+            "Shows faster consensus in convex settings as fragment count increases.",
+            "Empirically boosts node-level accuracy under strong non-IID data.",
+            "Finds consensus distance unreliable for non-convex performance evaluation."
           ]
-        },
-        "slogan": {
-          "zh": "【ZK开源】RISC-V zkVM新星：stark-v 基于Stwo构建，支持快速STARK证明生成"
         }
       }
     ],
@@ -41,34 +43,34 @@
       {
         "level": "beginner",
         "question": {
-          "zh": "stark-v 支持哪种 RISC-V 架构，有什么限制？",
-          "en": "Which RISC-V architecture does stark-v support, and what are its limitations?"
+          "zh": "Mosaic Learning 和传统的去中心化学习有什么直观区别？",
+          "en": "How is Mosaic Learning intuitively different from standard decentralized learning?"
         },
         "answer": {
-          "zh": "stark-v 目前支持 RV32IM 指令集，覆盖基础整数运算与乘法扩展。项目仍处于开发阶段，不保证完整生态兼容性，也暂不适合直接用于生产级 zkVM 场景。",
-          "en": "stark-v currently supports the RV32IM instruction set, covering base integer operations and multiplication. The project is still under active development and is not yet suitable for production grade zkVM deployments."
+          "zh": "传统方法每轮交换完整模型，而 Mosaic Learning 将模型拆成多个子空间，每个子空间走不同的通信路径。这类似把一次“整体验证”拆成多次“分片验证”，让信息传播更分散、更高效。",
+          "en": "Standard DL exchanges full models each round, while Mosaic Learning sends different parameter fragments over different paths. This spreads information more evenly, similar to splitting a monolithic check into multiple independent checks."
         }
       },
       {
         "level": "intermediate",
         "question": {
-          "zh": "stark-v 如何加速 AIR 与约束的开发？",
-          "en": "How does stark-v accelerate AIR and constraint development?"
+          "zh": "为什么模型分片不会破坏去中心化学习的收敛性？",
+          "en": "Why does model fragmentation not hurt convergence guarantees?"
         },
         "answer": {
-          "zh": "stark-v 使用声明式宏自动生成 Stwo AIR 组件，将指令语义直接映射为约束结构。这种方式减少了手写 AIR 的复杂度，使新增指令或内存约束更接近常规系统实现逻辑。",
-          "en": "stark-v uses declarative macros to generate Stwo AIR components automatically, mapping instruction semantics directly into constraints. This reduces manual AIR boilerplate and makes adding new instructions or memory constraints closer to normal systems programming."
+          "zh": "论文证明最坏情况下，每个分片的 gossip 在期望上等价于原始 EL 的通信算子。分片后分别分析再合并，可得到与 EL 相同的收敛率，且与分片数 K 无关，类似 batch evaluation 在总体上保持复杂度不变。",
+          "en": "Each fragment's gossip operator matches Epidemic Learning in expectation. Analyzing fragments separately and aggregating results yields the same worst-case convergence rate as EL, independent of K, akin to batch evaluation preserving asymptotic cost."
         }
       },
       {
         "level": "expert",
         "question": {
-          "zh": "stark-v 在 zkVM 设计空间中扮演什么角色？",
-          "en": "What role does stark-v play in the zkVM design space?"
+          "zh": "从线性系统角度看，为什么增加分片数 K 会加快一致性？",
+          "en": "From a linear system view, why does increasing K speed up consensus?"
         },
         "answer": {
-          "zh": "stark-v 更偏向研究型 zkVM，强调 STARK 友好的架构、可组合 AIR 设计以及快速迭代。它为探索 zkVM 中指令级约束、内存建模和并行证明策略提供了实验平台。",
-          "en": "stark-v serves as a research oriented zkVM, emphasizing STARK friendly architecture, composable AIR design, and rapid iteration. It provides an experimental platform for studying instruction level constraints, memory modeling, and parallel proof strategies."
+          "zh": "分片使 gossip 矩阵呈 block-diagonal 结构，不同参数子空间独立混合。在线性二次模型中，这会降低系统收缩矩阵的最大特征值，减少共识误差，效果类似 sum-check 中分解高维多项式以加快验证。",
+          "en": "Fragmentation yields a block-diagonal gossip structure where parameter subspaces mix independently. In quadratic models, this lowers the largest eigenvalue of the contraction matrix, reducing consensus error, similar to decomposing sums in sum-check protocols."
         }
       }
     ]
