@@ -74,5 +74,82 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-02-07",
+    "projects": [
+      {
+        "name": "Privacy-Preserving LLM Inference in Practice: A Comparative Survey of Techniques, Trade-Offs, and Deployability",
+        "url": "https://eprint.iacr.org/2026/105",
+        "type": "论文",
+        "tags": [
+          "Davide Andreoletti",
+          "Confidential Inference"
+        ],
+        "summary": {
+          "zh": "Andreoletti等人在{{name}}论文中系统梳理了隐私保护LLM推理技术，从TEE、密码增强方案到FHE，对比其信任假设、可扩展性与部署成熟度，强调端到端仅客户端可见的强隐私模型。",
+          "en": "In the {{name}}paper, Andreoletti et al. survey privacy-preserving LLM inference techniques, comparing TEE, crypto-augmented designs, and FHE in terms of trust, scalability, and deployment readiness under a strong end-to-end privacy model."
+        },
+        "slogan": {
+          "zh": "【ZK/隐私计算】隐私版LLM如何落地？从TEE走向FHE的现实路线图"
+        },
+        "notes": {
+          "zh": [
+            "提出强隐私定义：Prompt与生成结果端到端仅客户端可见",
+            "系统分析PETs在LLM推理中的应用，覆盖非线性层与自回归解码瓶颈",
+            "TEE方案当前最具可部署性，但依赖硬件信任假设",
+            "密码增强方案可降低对TEE的信任依赖，但计算成本显著上升",
+            "FHE被视为长期理想方案，支持非交互式机密推理但尚不实用",
+            "论文强调现实部署需在安全性、性能与信任最小化之间权衡"
+          ],
+          "en": [
+            "Defines a strong privacy model where only clients can access prompts and outputs.",
+            "Reviews PET-based approaches for LLM inference, including handling non-linear layers and autoregression.",
+            "TEE-based systems are the most deployable today but rely on hardware trust.",
+            "Crypto-augmented designs reduce hardware trust at higher computational cost.",
+            "FHE is positioned as a principled long-term solution for confidential inference.",
+            "Highlights trade-offs between security, performance, and deployability."
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "variant": 2,
+        "question": {
+          "zh": "为什么 Transformer 的非线性层对隐私推理特别困难？",
+          "en": "Why are non-linear layers in Transformers especially challenging for private inference?"
+        },
+        "answer": {
+          "zh": "非线性函数如 GELU、Softmax 难以在加密或受限执行环境中高效实现。它们往往需要近似、多轮交互或额外信任假设，成为隐私推理系统的主要性能瓶颈。",
+          "en": "Non-linear functions such as GELU and Softmax are hard to implement efficiently under encryption or restricted execution. They often require approximations, interaction, or extra trust assumptions, making them major performance bottlenecks."
+        }
+      },
+      {
+        "level": "intermediate",
+        "variant": 1,
+        "question": {
+          "zh": "TEE 方案为何被认为是当前最可部署的隐私推理路径？",
+          "en": "Why are TEE-based solutions considered the most deployable today?"
+        },
+        "answer": {
+          "zh": "TEE 能在几乎原生性能下运行完整模型，并支持自回归解码，工程复杂度较低。其主要代价是对硬件厂商和侧信道防护的信任，而非计算成本。",
+          "en": "TEEs can run full models at near-native performance and support autoregressive decoding with low engineering complexity. The main cost is reliance on hardware trust and side-channel defenses rather than computation."
+        }
+      },
+      {
+        "level": "expert",
+        "variant": 1,
+        "question": {
+          "zh": "自回归解码为何成为区分隐私推理方案可行性的关键因素？",
+          "en": "Why is autoregressive decoding a key differentiator for private inference systems?"
+        },
+        "answer": {
+          "zh": "自回归解码需要逐 token 依赖前序输出，这在交互式或高延迟加密方案中极其昂贵。能否高效支持解码，直接决定系统是否适用于真实 LLM 服务。",
+          "en": "Autoregressive decoding requires token-by-token dependency, which is extremely costly under interactive or high-latency cryptographic schemes. Efficient decoding support largely determines real-world applicability."
+        }
+      }
+    ]
   }
 ]
