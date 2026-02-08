@@ -151,5 +151,80 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-02-08",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2601.10823",
+        "name": "Mugi: Value Level Parallelism For Efficient LLMs",
+        "type": "论文",
+        "tags": [
+          "Daniel Price",
+          "VLP",
+          "GEMM"
+        ],
+        "summary": {
+          "zh": "Price等人在{{name}}论文中系统研究了VLP在LLM中的应用，提出面向非线性与小批量场景的VLP优化，并设计新架构Mugi，在吞吐、能效与可持续性上显著优于现有方案。",
+          "en": "In the {{name}}paper, Price et al. study VLP for LLMs, extending it to nonlinear ops and small-batch GEMMs, and propose the Mugi architecture to improve throughput, energy efficiency, and sustainability."
+        },
+        "slogan": {
+          "zh": "【LLM系统】不只是GEMM：Mugi用VLP重塑高效与低碳的LLM推理"
+        },
+        "notes": {
+          "zh": [
+            "将VLP从对称GEMM推广到LLM中的非线性近似计算",
+            "采用以值为中心的近似策略，为重要数值分配更高精度",
+            "在端到端LLM精度与性能上优于现有非线性近似方法",
+            "针对小batch、非对称输入的GEMM优化VLP实现",
+            "结合权重量化、KV Cache量化与GQA等主流LLM优化",
+            "Mugi架构在吞吐、能耗及运行与制造碳排放上均显著下降"
+          ],
+          "en": [
+            "Extends VLP beyond symmetric GEMM to nonlinear LLM operations.",
+            "Uses value-centric approximations to preserve important values.",
+            "Achieves better end-to-end LLM accuracy and performance.",
+            "Optimizes VLP for small-batch and asymmetric GEMMs.",
+            "Integrates weight-only and KV cache quantization with GQA.",
+            "Mugi improves throughput, energy efficiency, and reduces carbon footprint."
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "什么是 Value Level Parallelism（VLP），它最初解决什么问题？",
+          "en": "What is Value Level Parallelism (VLP), and what problem was it originally designed to solve?"
+        },
+        "answer": {
+          "zh": "VLP 是一种利用数值分布特性的并行计算方式，最初用于加速低精度、大批量的 GEMM 运算。它通过对不同“数值重要性”采用不同精度或计算路径，提高吞吐量与能效。",
+          "en": "VLP is a parallelization technique that exploits value distributions. It was originally proposed to accelerate low-precision, large-batch GEMMs by assigning different accuracy or compute paths to values of different importance."
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "为什么小 batch、非对称 GEMM 对 VLP 是一项挑战？",
+          "en": "Why are small-batch, asymmetric GEMMs challenging for VLP?"
+        },
+        "answer": {
+          "zh": "传统 VLP 假设对称输入和大批量以摊销开销。LLM 推理中常见的小 batch、权重量化与 KV cache 量化破坏了这些假设，需要重新设计调度与数据路径。",
+          "en": "Classic VLP assumes symmetric inputs and large batches to amortize overhead. LLM inference often uses small batches with weight-only and KV-cache quantization, breaking these assumptions and requiring new designs."
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "Mugi 架构如何同时支持多种 LLM 优化而不牺牲通用性？",
+          "en": "How does the Mugi architecture support multiple LLM optimizations without sacrificing generality?"
+        },
+        "answer": {
+          "zh": "Mugi 将 VLP 抽象为统一的值级执行框架，使权重量化、KV cache 量化和 GQA 成为可组合策略，而非硬编码路径，从而覆盖完整 Transformer 工作负载。",
+          "en": "Mugi abstracts VLP into a unified value-level execution framework, making weight quantization, KV-cache quantization, and GQA composable strategies rather than fixed paths, enabling full Transformer support."
+        }
+      }
+    ]
   }
 ]
