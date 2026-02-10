@@ -226,5 +226,76 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-02-10",
+    "projects": [
+      {
+        "name": "InfiCoEvalChain: A Blockchain-Based Decentralized Framework for Collaborative LLM Evaluation",
+        "url": "https://arxiv.org/abs/2602.08229",
+        "type": "论文",
+        "tags": [
+          "Yifan Yang",
+          "LLM Evaluation"
+        ],
+        "summary": {
+          "zh": "作者在{{name}}论文中提出了一种基于区块链的去中心化LLM评估框架，通过激励全球贡献者作为独立验证者，利用异构计算节点进行大规模基准测试，以解决集中式评估的不透明、过拟合和硬件差异问题。",
+          "en": "The authors propose a blockchain-based decentralized LLM evaluation framework in their {{name}} paper. It incentivizes global contributors as independent validators for large-scale benchmarking across heterogeneous compute nodes, addressing issues like opacity and hardware variance in centralized evaluations."
+        },
+        "notes": {
+          "zh": [
+            "集中式LLM评估不一致：HumanEval标准差(1.67)超过前10模型差距(0.91)。",
+            "核心问题：评估不透明、模型过拟合、硬件差异导致波动。",
+            "去中心化框架利用区块链激励全球参与者成为独立验证者。",
+            "通过异构计算节点进行大规模基准测试，引入多样性。",
+            "稳健奖励系统确保评估完整性并阻止不诚实参与。",
+            "实验将标准差降至0.28，显著提升模型排名置信度。"
+          ],
+          "en": [
+            "Centralized LLM evaluation shows high inconsistency: HumanEval std dev (1.67) exceeds top-10 model gap (0.91).",
+            "Issues: opacity, overfitting, hardware-induced variance.",
+            "Decentralized blockchain framework incentivizes global validators.",
+            "Enables diversity via heterogeneous compute nodes.",
+            "Robust reward system ensures integrity.",
+            "Reduces std dev to 0.28, improving ranking confidence."
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "InfiCoEvalChain框架是如何利用区块链技术的？",
+          "en": "How does the InfiCoEvalChain framework utilize blockchain technology?"
+        },
+        "answer": {
+          "zh": "InfiCoEvalChain利用区块链激励全球参与者贡献计算资源成为独立验证节点，运行LLM评估任务。区块链确保评估记录不可篡改、透明，并通过共识机制保证结果完整性。",
+          "en": "InfiCoEvalChain uses blockchain to incentivize global participants to contribute computing resources as independent validators for LLM evaluations. Blockchain ensures tamper-proof, transparent records and uses consensus to guarantee result integrity."
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "InfiCoEvalChain的\"去中心化背书\"机制相比传统评估有哪些优势？",
+          "en": "What advantages does InfiCoEvalChain's decentralized endorsement offer over traditional evaluation?"
+        },
+        "answer": {
+          "zh": "核心优势包括：1. **硬件多样性**：在全球异构节点上评估，减少单一环境偏差；2. **多方共识**：结果需多个独立验证者确认，提高可信度；3. **激励透明**：通过公开奖励系统激励诚实评估。",
+          "en": "Key advantages: 1. **Hardware Diversity**: Evaluations on global heterogeneous nodes reduce single-environment bias; 2. **Multi-party Consensus**: Results require multiple independent validators, enhancing credibility; 3. **Transparent Incentives**: Public reward system incentivizes honest evaluation."
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "InfiCoEvalChain如何抵御女巫攻击或验证者合谋？",
+          "en": "How does InfiCoEvalChain resist Sybil Attacks or validator collusion?"
+        },
+        "answer": {
+          "zh": "对策包括：1. **女巫攻击**：结合质押机制或可信硬件验证身份；2. **验证者合谋**：随机分配任务、盲评估、Slashing惩罚使合谋收益为负；3. **奖励设计**：引入信誉系统区分诚实与恶意行为。",
+          "en": "Countermeasures: 1. **Sybil Attacks**: Staking mechanisms or trusted hardware for identity; 2. **Collusion**: Random task assignment, blind evaluation, slashing penalties; 3. **Incentive Design**: Reputation systems to distinguish honest from malicious behavior."
+        }
+      }
+    ]
   }
 ]
