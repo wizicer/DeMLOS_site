@@ -1,6 +1,7 @@
 ---
 // import { Image } from "astro:assets";
 import type { QAItem, BilingualText } from "../data/daily/types";
+import { marked } from "marked";
 
 interface Props {
   qas: QAItem[];
@@ -13,6 +14,22 @@ interface Props {
 }
 
 const { qas, weekdayColor, dayKey, weekday, year, month, day } = Astro.props;
+
+// Configure marked for inline parsing (no <p> wrapper)
+marked.use({
+  renderer: {
+    paragraph(token) {
+      // Return the raw tokens text to avoid wrapping in <p>
+      return this.parser.parseInline(token.tokens || []);
+    },
+  },
+});
+
+const parseMarkdown = (text: string): string => {
+  if (!text) return "";
+  const result = marked.parse(text, { async: false }) as string;
+  return result;
+};
 
 const levelAvatars = {
   beginner: "😇",
@@ -68,20 +85,24 @@ const levelLabels = {
             </div>
             <div class="message-bubble question-bubble">
               {/* <div class="bubble-label">INPUT // {qa.level}</div> */}
-              <span data-lang-en>{qa.question.en}</span>
-              <span data-lang-zh class="hidden">
-                {qa.question.zh}
-              </span>
+              <span data-lang-en set:html={parseMarkdown(qa.question.en)} />
+              <span
+                data-lang-zh
+                class="hidden"
+                set:html={parseMarkdown(qa.question.zh)}
+              />
             </div>
           </div>
 
           <div class="chat-message answer">
             <div class="message-bubble answer-bubble">
               {/* <div class="bubble-label system-label">:: SYSTEM OUTPUT</div> */}
-              <span data-lang-en>{qa.answer.en}</span>
-              <span data-lang-zh class="hidden">
-                {qa.answer.zh}
-              </span>
+              <span data-lang-en set:html={parseMarkdown(qa.answer.en)} />
+              <span
+                data-lang-zh
+                class="hidden"
+                set:html={parseMarkdown(qa.answer.zh)}
+              />
             </div>
             <div class="avatar-wrapper">
               <div class="chat-avatar-frame system-frame">{answerAvatar}</div>
