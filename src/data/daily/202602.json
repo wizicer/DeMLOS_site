@@ -371,5 +371,80 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-02-12",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2602.08019",
+        "name": "The Rise of Sparse Mixture-of-Experts: A Survey from Algorithmic Foundations to Decentralized Architectures and Vertical Domain Applications",
+        "type": "论文",
+        "tags": [
+          "Dong Pan",
+          "MoE",
+          "Survey"
+        ],
+        "summary": {
+          "zh": "该论文对稀疏混合专家（MoE）架构进行了全面综述，涵盖了从算法基础、去中心化架构到垂直领域应用的最新进展，旨在为研究者和从业者提供导航。",
+          "en": "This paper provides a comprehensive survey of the Sparse Mixture-of-Experts (MoE) architecture, covering recent advancements from algorithmic foundations to decentralized architectures and vertical domain applications, serving as a resource for researchers and practitioners."
+        },
+        "slogan": {
+          "zh": "【AI论文】MoE全景图：从算法核心到去中心化架构与应用"
+        },
+        "notes": {
+          "zh": [
+            "稀疏MoE架构通过路由网络激活专家子集，以可比的算力成本扩展模型参数量。",
+            "论文系统探讨了MoE的核心组件：路由网络和专家网络。",
+            "研究范围从中心化范式扩展到去中心化范式，挖掘去中心化基础设施的潜力。",
+            "去中心化MoE有望实现开发的民主化，带来更大的可扩展性和成本效益。",
+            "论文还识别了关键挑战和未来有前景的研究方向。",
+            "据作者所知，这是目前MoE领域最全面的综述。"
+          ],
+          "en": [
+            "Sparse MoE scales parameters by activating expert subsets via routing, maintaining compute efficiency.",
+            "The survey explores core MoE components: the routing network and expert network.",
+            "It extends from centralized to decentralized paradigms, unlocking the potential of decentralized infrastructure.",
+            "Decentralized MoE enables democratization of development, offering greater scalability and cost-efficiency.",
+            "Key challenges and promising future research directions are identified.",
+            "This is claimed to be the most comprehensive review in the MoE field to date."
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "什么是稀疏混合专家（MoE）架构？它的主要优势？",
+          "en": "What is the Sparse Mixture-of-Experts (MoE) architecture? What is its main advantage?"
+        },
+        "answer": {
+          "zh": "稀疏MoE是一种包含多个专家子网络和路由网络的架构，每次推理只激活部分专家。主要优势是能以较低计算成本实现海量参数规模，提升效率和成本效益。",
+          "en": "Sparse MoE is an architecture with multiple expert sub-networks and a router that activates only a subset per input. Its main advantage is enabling massive parameter counts with low computational cost per inference."
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "论文中提到的\"去中心化MoE范式\"具体指什么？它可能带来哪些好处？",
+          "en": "What does the 'decentralized MoE paradigm' mentioned in the paper refer to? What benefits might it bring?"
+        },
+        "answer": {
+          "zh": "去中心化MoE指将模型部署在分布式网络而非集中式集群上。好处包括：民主化开发、更大可扩展性、以及通过利用分布式资源降低成本。",
+          "en": "Decentralized MoE deploys models on distributed infrastructure instead of centralized clusters. Benefits include democratized development, greater scalability, and cost reduction through distributed resources."
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "在去中心化MoE的背景下，可能会面临哪些独特的技术挑战（例如，与中心化MoE相比）？论文对此有何见解？",
+          "en": "In the context of decentralized MoE, what unique technical challenges might arise (compared to centralized MoE)? What insights does the paper offer on this?"
+        },
+        "answer": {
+          "zh": "主要挑战包括：1）网络延迟影响路由效率；2）分布式参数同步与一致性；3）安全验证与激励机制设计；4）异构节点间的负载均衡。论文指出需要ML、分布式系统和密码学的交叉创新。",
+          "en": "Key challenges: 1) Network latency affecting routing; 2) Distributed parameter synchronization; 3) Security verification and incentive design; 4) Load balancing across heterogeneous nodes. The paper suggests cross-disciplinary innovation in ML, distributed systems, and cryptography."
+        }
+      }
+    ]
   }
 ]
