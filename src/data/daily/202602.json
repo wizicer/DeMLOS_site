@@ -446,5 +446,81 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-02-19",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2509.23248",
+        "name": "Agentic AI Reasoning for Mobile Edge General Intelligence: Fundamentals, Approaches, and Directions",
+        "type": "论文",
+        "tags": [
+          "Mingyi Luo",
+          "Edge Computing",
+          "MEGI",
+          "MoE"
+        ],
+        "summary": {
+          "zh": "Luo 等人在论文中提出了一种用于移动边缘通用智能（MEGI）的联合优化框架，旨在解决边缘设备上部署基于LLM的智能体AI推理时面临的高计算需求和资源限制挑战。",
+          "en": "Luo et al. propose a joint optimization framework for Mobile Edge General Intelligence (MEGI) in their paper to address the challenges of deploying LLM-based agentic AI reasoning on resource-constrained edge devices."
+        },
+        "slogan": {
+          "zh": "【AI论文】让大模型在手机边缘跑起来：新框架平衡推理质量与资源效率"
+        },
+        "notes": {
+          "zh": [
+            "LLM与边缘计算结合催生了MEGI，提供实时、注重隐私的边缘推理。",
+            "MEGI面临LLM高算力需求与边缘设备资源有限的挑战。",
+            "提出联合优化框架，结合自适应CoT推理与分布式MoE部署。",
+            "核心创新：将推理深度视为动态资源，与专家激活及传输功率联合优化。",
+            "系统按任务与设备能力，动态调节专家网络与推理复杂度。",
+            "实验证明该框架平衡了推理质量与资源，验证了其在MEGI中的可行性。"
+          ],
+          "en": [
+            "Integrating LLM agents with edge computing creates MEGI for real-time, private reasoning.",
+            "Deploying LLMs in MEGI faces high compute demands and limited edge resources.",
+            "A joint framework combines adaptive CoT reasoning with distributed MoE deployment.",
+            "Innovation: Jointly optimizing reasoning depth, expert activation, and transmission power.",
+            "The system dynamically adjusts expert networks and complexity per task and device.",
+            "Experiments confirm the framework balances quality and efficiency, proving MEGI viability."
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "什么是移动边缘通用智能（MEGI）？它的主要目标是什么？",
+          "en": "What is Mobile Edge General Intelligence (MEGI) and what is its main goal?"
+        },
+        "answer": {
+          "zh": "MEGI是将基于LLM的智能体与边缘计算结合的系统。主要目标是将AI推理和自主决策能力部署在网络边缘，从而提供实时且保护隐私的智能服务，并减少对云端计算的依赖。",
+          "en": "MEGI integrates LLM-based agentic AI with edge computing. Its main goal is to bring AI reasoning and autonomous decision-making to the network edge, enabling real-time, privacy-preserving services and reducing cloud reliance."
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "“将推理深度建模为动态网络资源变量”具体是什么意思？这样做有什么好处？",
+          "en": "What does 'modeling reasoning depth as a dynamic network resource variable' mean, and what are the benefits?"
+        },
+        "answer": {
+          "zh": "意为不再将LLM的推理步骤视为固定值，而是作为像带宽或算力一样可管理优化的系统资源。其好处是系统能根据任务复杂度、设备资源和网络状况，动态调整推理的精细程度（如不同复杂度的CoT），在保障推理质量的前提下最大化资源利用效率。",
+          "en": "It means treating LLM reasoning steps not as fixed parameters, but as manageable system resources like bandwidth. The benefit is dynamically adjusting reasoning granularity (e.g., varying CoT complexity) based on task complexity, device resources, and network conditions, maximizing efficiency while maintaining quality."
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "该框架联合优化了哪些变量？相比于单独优化有何优势？",
+          "en": "What variables are jointly optimized in this framework, and what is the advantage over separate optimization?"
+        },
+        "answer": {
+          "zh": "该框架联合优化了三个关键耦合变量：推理深度(D)、专家网络的激活策略以及无线传输功率(P)。由于更深的推理会增加计算能耗与延迟，而传输功率影响通信可靠性，联合优化能找到全局最优的权衡点，避免单独优化时为追求低延迟而过度牺牲准确性这种次优解。",
+          "en": "The framework jointly optimizes three coupled variables: reasoning depth (D), expert network activation, and wireless transmission power (P). Since deeper reasoning increases compute energy and latency, and power affects communication, joint optimization finds a globally optimal trade-off, avoiding suboptimal separate solutions like sacrificing accuracy for low latency."
+        }
+      }
+    ]
   }
 ]
