@@ -522,5 +522,79 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-02-20",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2602.16814",
+        "name": "Node Learning: A Framework for Adaptive, Decentralised and Collaborative Network Edge AI",
+        "type": "论文",
+        "tags": [
+          "Eiman Kanjo",
+          "Edge AI"
+        ],
+        "summary": {
+          "zh": "该论文提出了“节点学习”这一去中心化学习范式，将智能置于单个边缘节点，通过选择性对等交互扩展知识，以解决集中式AI在异构、移动和资源受限环境中的扩展瓶颈。",
+          "en": "The paper proposes 'Node Learning', a decentralized paradigm where intelligence resides at individual edge nodes and expands via selective peer interaction, addressing scaling bottlenecks of centralized AI in heterogeneous, mobile, and resource-constrained environments."
+        },
+        "slogan": {
+          "zh": "【AI论文】告别中心化瓶颈！Node Learning 开启去中心化、自适应边缘智能新范式"
+        },
+        "notes": {
+          "zh": [
+            "集中式AI在边缘场景面临数据传输、延迟、能耗和数据中心依赖等扩展瓶颈。",
+            "Node Learning 将智能置于单个边缘节点，通过选择性对等交互扩散知识。",
+            "节点持续从本地数据学习，维护自身模型状态，并在有益时进行机会性知识交换。",
+            "学习通过重叠和扩散传播，而非全局同步或中心化聚合。",
+            "该范式在单一抽象中统一了自主和协作行为，适应数据、硬件、目标和连接性的异构性。",
+            "论文探讨了该范式对通信、硬件、信任和治理的影响，为现有去中心化方法提供了更广阔的视角。"
+          ],
+          "en": [
+            "Centralized AI faces scaling bottlenecks (data transmission, latency, energy, data center reliance) at the edge.",
+            "Node Learning places intelligence at individual edge nodes, expanding knowledge via selective peer interaction.",
+            "Nodes learn continuously from local data, maintain own model state, and exchange knowledge opportunistically.",
+            "Learning propagates via overlap and diffusion, not global synchronization or central aggregation.",
+            "The paradigm unifies autonomous/cooperative behavior and accommodates heterogeneity in data, hardware, objectives, and connectivity.",
+            "The paper examines implications for communication, hardware, trust, and governance, offering a broader decentralized perspective."
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "为什么我们需要在边缘进行AI学习？Node Learning 解决了哪些问题？",
+          "en": "Why do we need AI learning at the edge? What problems does Node Learning solve?"
+        },
+        "answer": {
+          "zh": "云端处理海量物联网数据易导致高延迟和网络拥堵。Node Learning 直接在边缘设备学习，解决了传输瓶颈，实现低延迟、本地数据隐私保护以及弱网环境下的鲁棒性。",
+          "en": "Processing massive IoT data in the cloud causes high latency and network congestion. Node Learning runs on edge devices, solving transmission bottlenecks while ensuring low latency, local data privacy, and robustness in weak networks."
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "Node Learning 与联邦学习（Federated Learning）有何异同？",
+          "en": "How does Node Learning compare with Federated Learning (FL)?"
+        },
+        "answer": {
+          "zh": "两者都保护隐私并减少数据传输。区别在于：联邦学习依赖中央服务器聚合模型，有单点瓶颈风险。Node Learning 完全去中心化，节点通过 P2P 方式交互知识，更具自适应性和可扩展性。",
+          "en": "Both preserve privacy and reduce transmission. The difference: FL relies on a central server for model aggregation, creating a single point bottleneck. Node Learning is fully decentralized, using P2P interactions to share knowledge, making it more adaptive and scalable."
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "论文提到的“通过重叠和扩散传播”机制，对应哪些已有的分布式或共识理论？",
+          "en": "What existing distributed or consensus theories correspond to the 'overlap and diffusion' mechanism?"
+        },
+        "answer": {
+          "zh": "它关联了分布式共识、gossip 算法和分散式优化。知识的“扩散”类似 gossip 协议，“重叠”指节点间数据或任务的交集。该机制需融合这些理论，解决异构、异步和隐私条件下的模型收敛问题。",
+          "en": "It relates to distributed consensus, gossip algorithms, and decentralized optimization. Knowledge 'diffusion' resembles gossip protocols, while 'overlap' means intersections in data or tasks among nodes. It integrates these theories to address convergence under heterogeneous, asynchronous, and private conditions."
+        }
+      }
+    ]
   }
 ]
