@@ -596,5 +596,79 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-02-21",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2602.17223",
+        "name": "Privacy-Preserving Mechanisms Enable Cheap Verifiable Inference of LLMs",
+        "type": "论文",
+        "tags": [
+          "Arka Pal",
+          "Verifiable Inference"
+        ],
+        "summary": {
+          "zh": "Pal 等人在论文中提出了一种新见解，即利用隐私保护LLM推理方法，可以以极低的额外成本实现可验证推理。研究设计了两种新协议，通过添加少量额外计算令牌来提供推理过程保证，显著降低了验证开销。",
+          "en": "Pal et al. proposes a novel insight that privacy-preserving LLM inference methods can enable verifiable inference at marginal extra cost. It designs two new protocols that add minimal computational tokens to provide guarantees, significantly reducing verification overhead."
+        },
+        "slogan": {
+          "zh": "【AI安全】隐私保护新思路：用低成本实现大语言模型的可验证推理"
+        },
+        "notes": {
+          "zh": [
+            "核心洞察：隐私保护机制可低成本转化为可验证推理保证。",
+            "问题背景：第三方托管LLM时，用户无法验证提供商是否运行了指定的大模型。",
+            "现有方案（如ZKP）计算开销大，不适用于大型模型。",
+            "提出两种新协议，仅需添加少量计算令牌即可验证推理。",
+            "相比ZKP方法，新协议运行时间更短，对下游任务影响极小。",
+            "建立了隐私性与可验证性在LLM推理中的新联系。"
+          ],
+          "en": [
+            "Core insight: Privacy-preserving mechanisms can be repurposed for cheap verifiable inference.",
+            "Problem: Users cannot verify if third-party providers run the specified large model.",
+            "Existing solutions (e.g., ZKPs) are computationally expensive for large models.",
+            "Two new protocols add minimal computational tokens for verification.",
+            "Faster than ZKP methods with little downstream impact.",
+            "Establishes a novel connection between privacy and verifiability in LLM inference."
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "论文主要解决LLM使用中的什么问题？",
+          "en": "What main problem does this paper solve in LLM usage?"
+        },
+        "answer": {
+          "zh": "解决第三方LLM托管服务的“偷梁换柱”问题：用户无法确认服务商是否真实运行了指定的大模型，还是用廉价小模型冒充。",
+          "en": "Addresses the issue of dishonest third-party LLM providers secretly replacing specified expensive models with cheaper ones."
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "新协议如何操作？对推理影响多大？",
+          "en": "How do the new protocols operate, and what is their impact on inference?"
+        },
+        "answer": {
+          "zh": "核心是在隐私保护推理流程中，嵌入少量绑定模型身份的计算令牌。由于生成和验证成本极低，几乎不影响推理延迟和下游性能。",
+          "en": "The core idea is embedding minimal, model-identity tokens into the privacy-preserving inference flow. It has almost no impact on latency or performance due to extremely low costs."
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "从密码学角度，如何评价将“隐私性”与“可验证性”结合的做法及其局限性？",
+          "en": "Cryptographically, how to evaluate linking \"privacy\" and \"verifiability\", and what are the limitations?"
+        },
+        "answer": {
+          "zh": "该做法基于MPC等隐私协议步骤可审计的特性来证明特定模型被执行。主要局限包括：1. 极度依赖底层隐私协议的安全性；2. 假设攻击者无法同时破坏隐私与验证机制；3. 需对特定模型结构进行编码以嵌入令牌，从而限制了通用性。",
+          "en": "It uses the auditable nature of privacy protocols (like MPC) to prove model execution. Limitations: 1. Relies on underlying privacy security; 2. Assumes attackers cannot break both privacy and verification; 3. May require specific model encoding, limiting generality."
+        }
+      }
+    ]
   }
 ]
