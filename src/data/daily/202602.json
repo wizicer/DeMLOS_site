@@ -670,5 +670,80 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-02-23",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2602.18181",
+        "name": "SeedFlood: A Step Toward Scalable Decentralized Training of LLMs",
+        "type": "论文",
+        "tags": [
+          "Jihun Kim",
+          "Gossip",
+          "Zero-th Order Optimization"
+        ],
+        "summary": {
+          "zh": "Kim 等人在论文中提出了一种名为SeedFlood的新型去中心化训练方法，旨在解决大型模型在复杂网络拓扑中训练的扩展性问题。该方法利用零阶更新的种子可重构特性，将通信开销降至近乎为零，使其独立于模型大小，从而显著提升了训练效率。",
+          "en": "Kim et al. proposes SeedFlood, a novel decentralized training method designed to scale large models across complex networks. By leveraging the seed-reconstructible nature of zeroth-order updates, it reduces communication overhead to near-zero and independent of model size, significantly improving training efficiency."
+        },
+        "slogan": {
+          "zh": "【去中心化AI】告别通信瓶颈！SeedFlood让百亿参数大模型在数百节点上高效训练成为可能"
+        },
+        "notes": {
+          "zh": [
+            "传统基于Gossip的方法通信成本随模型大小增长，成为扩展瓶颈。",
+            "SeedFlood利用零阶更新的种子可重构结构，使消息大小近乎为零。",
+            "该方法使通信开销可忽略且独立于模型大小。",
+            "SeedFlood支持在数百个客户端上训练十亿参数模型等先前不切实际的场景。",
+            "实验表明，在去中心化LLM微调中，SeedFlood在泛化性能和通信效率上均优于Gossip基线。",
+            "在大规模设置中，甚至取得了与一阶方法相当的结果。"
+          ],
+          "en": [
+            "Traditional gossip-based methods suffer from communication costs that grow with model size.",
+            "SeedFlood exploits the seed-reconstructible structure of zeroth-order updates, making messages near-zero in size.",
+            "This makes communication overhead negligible and independent of model size.",
+            "Enables training previously impractical regimes, like billion-parameter models across hundreds of clients.",
+            "Experiments show SeedFlood outperforms gossip baselines in generalization and communication efficiency for decentralized LLM fine-tuning.",
+            "Achieves results comparable to first-order methods in large-scale settings."
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "SeedFlood方法主要想解决去中心化训练中的什么问题？",
+          "en": "What main problem does SeedFlood aim to solve in decentralized training?"
+        },
+        "answer": {
+          "zh": "旨在解决去中心化训练的通信瓶颈。传统方法的通信成本随模型大小线性增长，难以训练LLM等大型模型。SeedFlood大幅缩小了消息体积，使通信开销极低且独立于模型大小。",
+          "en": "It solves the communication bottleneck. Traditional costs scale linearly with model size, hindering large model (like LLM) training. SeedFlood significantly reduces message size, making communication overhead negligible and independent of model size."
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "SeedFlood是如何利用“零阶更新”和“种子可重构”减少通信量的？",
+          "en": "How does SeedFlood use \"zeroth-order updates\" and \"seed-reconstructible\" properties to reduce communication?"
+        },
+        "answer": {
+          "zh": "零阶优化的更新向量可通过小随机种子和确定性生成器精确重构。训练时客户端只广播这个常数级别的种子，接收方用相同生成器重建完整的高维向量，从而避免传输庞大的模型更新。",
+          "en": "Zeroth-order update vectors can be precisely reconstructed using a small random seed and a deterministic generator. Clients only broadcast this constant-sized seed. Receivers reconstruct the full high-dimensional vector, avoiding massive model update transmissions."
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "SeedFlood妥协了哪些方面？其适用场景和局限性是什么？",
+          "en": "What does SeedFlood compromise? What are its scenarios and limitations?"
+        },
+        "answer": {
+          "zh": "**妥协方面**：1) 收敛较慢，需要更多迭代；2) 随机估计引入方差，影响稳定性。**适用场景**：带宽受限、超大模型(如LLM)、复杂网络或高隐私要求的去中心化训练。**局限性**：高度依赖零阶优化器，不适合所有损失函数或极高精度的任务。",
+          "en": "Compromises: 1) Slower convergence needing more iterations; 2) Variance from stochastic estimation affecting stability. Scenarios: Bandwidth-limited decentralized training for massive models (LLMs), complex networks, or high privacy needs. Limitations: Relies on zeroth-order optimizers, unsuited for all loss functions or ultra-high precision tasks."
+        }
+      }
+    ]
   }
 ]
