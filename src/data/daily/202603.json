@@ -1,0 +1,93 @@
+[
+  {
+    "date": "2026-03-31",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2511.06494",
+        "name": "Route Experts by Sequence, not by Token",
+        "type": "论文",
+        "author": "Tiansheng Wen, Yifei Wang, Aosong Feng, Long Ma, Xinyang Liu, Yifan Wang, Lixuan Guo, Bo Chen, Stefanie Jegelka, Chenyu You",
+        "tags": [
+          "Tiansheng Wen",
+          "Routing",
+          "Sparsity"
+        ],
+        "summary": {
+          "zh": "Wen等人在{{name}}论文中提出了SeqTopK方法，将专家路由预算从Token级别转移到序列级别，实现了端到端的动态专家分配，在保持总预算不变的情况下提升了模型性能。",
+          "en": "Wen et al. proposed SeqTopK in their {{name}} paper, shifting the expert routing budget from token to sequence level for end-to-end dynamic allocation, improving model performance while maintaining the same overall budget.",
+          "ja": "Wenらは{{name}}論文で、トークンレベルからシーケンスレベルへ専門家ルーティング予算を移行するSeqTopKを提案し、全体予算を維持しながらモデル性能を向上させるエンドツーエンドの動的割り当てを実現した。"
+        },
+        "slogan": {
+          "zh": "【MoE新突破】告别固定分配！SeqTopK让LLM专家按需出动，性能飙升"
+        },
+        "notes": {
+          "zh": [
+            "传统TopK路由为所有Token分配固定数量专家，忽略了计算复杂度差异。",
+            "SeqTopK将专家预算从Token级提升到序列级，实现端到端动态分配。",
+            "该方法代码改动极小，增加开销小于1%，且与预训练MoE模型完全兼容。",
+            "在数学、代码、法律和写作任务上，性能均优于TopK及先前的无参数自适应方法。",
+            "在高稀疏度（如16.9%）下，性能提升尤为显著。",
+            "该方法简单、高效、可扩展，特别适合下一代LLM的极端稀疏场景。"
+          ],
+          "en": [
+            "Standard TopK routing assigns a fixed number of experts to all tokens, ignoring complexity variation.",
+            "SeqTopK shifts the expert budget from token to sequence level for end-to-end dynamic allocation.",
+            "It requires minimal code changes, adds <1% overhead, and is fully compatible with pretrained MoE models.",
+            "Outperforms TopK and prior parameter-free adaptive methods on math, coding, law, and writing tasks.",
+            "Gains are substantially larger under higher sparsity (up to 16.9%).",
+            "A simple, efficient, scalable routing strategy well-suited for next-gen LLMs' extreme sparsity."
+          ],
+          "ja": [
+            "従来のTopKルーティングは全てのトークンに固定数の専門家を割り当て、複雑さの差異を無視していた。",
+            "SeqTopKは専門家予算をトークンレベルからシーケンスレベルに移行し、エンドツーエンドの動的割り当てを実現。",
+            "コード変更は最小限、オーバーヘッドは1%未満で、事前学習済みMoEモデルと完全互換。",
+            "数学、コーディング、法律、執筆タスクでTopK及び従来のパラメータ不要適応法を上回る性能。",
+            "高スパース性（最大16.9%）下で性能向上が特に顕著。",
+            "シンプルで効率的、スケーラブルなルーティング戦略であり、次世代LLMの極端なスパース性に適している。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "SeqTopK的主要改进是什么？",
+          "en": "What is the main improvement of SeqTopK?",
+          "ja": "SeqTopKの主な改善点は何ですか？"
+        },
+        "answer": {
+          "zh": "SeqTopK将选择专家的预算从单个Token级别提升到整个输入序列级别，允许模型动态地为复杂Token分配更多专家，为简单Token分配更少专家，总预算保持不变。",
+          "en": "SeqTopK shifts the expert selection budget from per-token to per-sequence level, allowing dynamic allocation of more experts to complex tokens and fewer to easy ones, while keeping the total budget constant.",
+          "ja": "SeqTopKは専門家選択の予算をトークン単位からシーケンス単位に移行し、複雑なトークンにより多くの専門家を、簡単なトークンにはより少ない専門家を動的に割り当てることを可能にし、総予算は一定に保ちます。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "SeqTopK相比传统TopK路由有何优势？",
+          "en": "What advantages does SeqTopK have over traditional TopK routing?",
+          "ja": "SeqTopKは従来のTopKルーティングと比べてどのような利点がありますか？"
+        },
+        "answer": {
+          "zh": "SeqTopK能根据Token难度动态分配专家资源，提升了计算效率与模型性能。它实现简单，几乎不增加开销，且与预训练模型兼容，无需从头训练，在高稀疏度下性能提升尤其显著。",
+          "en": "SeqTopK dynamically allocates expert resources based on token difficulty, improving computational efficiency and model performance. It's simple to implement, adds negligible overhead, is compatible with pretrained models without retraining, and shows especially large gains under high sparsity.",
+          "ja": "SeqTopKはトークンの難易度に基づいて専門家リソースを動的に割り当て、計算効率とモデル性能を向上させます。実装が簡単でオーバーヘッドは無視でき、再学習なしで事前学習済みモデルと互換性があり、高スパース性下で特に大きな性能向上を示します。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "SeqTopK方法在高稀疏度下性能提升更大的原因是什么？",
+          "en": "Why does SeqTopK show larger performance gains under higher sparsity?",
+          "ja": "SeqTopKはなぜ高スパース性下でより大きな性能向上を示すのですか？"
+        },
+        "answer": {
+          "zh": "在高稀疏度下，每个Token可激活的专家数（K）更少，资源约束更紧。SeqTopK提供的序列级灵活性变得至关重要，它能将稀缺的专家资源精准地分配给最需要（最难）的Token，避免了固定分配造成的资源错配，从而最大化有限计算预算的效用。",
+          "en": "Under higher sparsity, the number of activatable experts per token (K) is smaller, creating tighter resource constraints. The sequence-level flexibility of SeqTopK becomes critical, allowing it to precisely allocate scarce expert resources to the most needed (hardest) tokens, avoiding resource misallocation caused by fixed assignment, thus maximizing the utility of the limited compute budget.",
+          "ja": "高スパース性下では、トークンごとに活性化可能な専門家数（K）が少なくなり、リソース制約が厳しくなります。SeqTopKが提供するシーケンスレベルの柔軟性が決定的に重要となり、希少な専門家リソースを最も必要とする（最も難しい）トークンに正確に割り当て、固定割り当てによるリソースの誤配分を回避し、限られた計算予算の効用を最大化します。"
+        }
+      }
+    ]
+  }
+]
