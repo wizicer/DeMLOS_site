@@ -1,5 +1,6 @@
 import news2602 from './202602.json' with { type: 'json' }
 import news2603 from './202603.json' with { type: 'json' }
+import news2604 from './202604.json' with { type: 'json' }
 
 export type { BilingualText, BilingualNotes, Project, DailyNewsItem, ProcessedDailyNewsItem, QAItem } from './types';
 import { getWeekday, type DailyNewsItem, type ProcessedDailyNewsItem } from './types';
@@ -25,6 +26,7 @@ export const defaultAvatar = '📄';
 export const newsData: ProcessedDailyNewsItem[] = [
   ...news2602,
   ...news2603,
+  ...news2604,
 ].map((item: DailyNewsItem): ProcessedDailyNewsItem => {
   const [year, month, day] = item.date.split('-');
   return {

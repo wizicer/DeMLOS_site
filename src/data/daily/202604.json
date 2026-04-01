@@ -1,0 +1,93 @@
+[
+  {
+    "date": "2026-04-01",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2603.24044",
+        "name": "MoE-Sieve: Routing-Guided LoRA for Efficient MoE Fine-Tuning",
+        "type": "论文",
+        "author": "Andrea Manzoni",
+        "tags": [
+          "Andrea Manzoni",
+          "MoE",
+          "LoRA"
+        ],
+        "summary": {
+          "zh": "研究人员在{{name}}论文中提出了MoE-Sieve框架，通过分析专家路由的偏斜性，仅对高频激活的专家应用LoRA适配器，大幅降低了微调的计算和存储开销。",
+          "en": "Researchers propose MoE-Sieve in the {{name}}paper, which applies LoRA adapters only to frequently activated experts based on routing analysis, significantly reducing fine-tuning compute and storage costs.",
+          "ja": "研究者らは{{name}}論文でMoE-Sieveフレームワークを提案し、ルーティング解析に基づいて高頻度で活性化するエキスパートのみにLoRAアダプターを適用し、ファインチューニングの計算・ストレージコストを大幅に削減した。"
+        },
+        "slogan": {
+          "zh": "【AI效率】告别冗余！MoE-Sieve让MoE模型微调参数减少70%+"
+        },
+        "notes": {
+          "zh": [
+            "MoE模型每层的专家路由高度偏斜，少数“热”专家处理大部分token，多数“冷”专家极少被激活。",
+            "MoE-Sieve框架通过在小规模校准集上分析路由计数，仅对每层路由频率最高的前k个专家应用LoRA适配器。",
+            "实验表明，仅微调每层前25%的专家，性能与全量LoRA微调相当（平均差异在±1个百分点内）。",
+            "该方法将可训练参数减少70-73%，适配器检查点大小减少71-73%，训练时间减少高达50%。",
+            "随机选择专家（在相同预算下）会导致性能下降约2.5个百分点，证明路由信号至关重要。",
+            "调整“冷”专家可能引入梯度噪声而不提升精度，解释了该方法在保持性能的同时提升效率的原因。"
+          ],
+          "en": [
+            "Expert routing in MoE layers is highly skewed, with a few 'hot' experts handling most tokens while many 'cold' experts are rarely activated.",
+            "MoE-Sieve profiles routing counts on a small calibration set and applies LoRA adapters only to the top-k most-routed experts per layer.",
+            "Tuning only the top 25% experts per layer matches full LoRA performance (mean difference within +/-1 percentage point).",
+            "This reduces trainable parameters by 70-73%, adapter checkpoint size by 71-73%, and training time by up to 50%.",
+            "Random expert selection at matched budget performs ~2.5 percentage points worse, showing the routing signal is crucial.",
+            "Adapting cold experts may introduce gradient noise without improving accuracy, explaining the efficiency gains."
+          ],
+          "ja": [
+            "MoE層のエキスパートルーティングは高度に偏っており、少数の「ホット」エキスパートが大部分のトークンを処理し、多くの「コールド」エキスパートはほとんど活性化されない。",
+            "MoE-Sieveは小規模なキャリブレーションセットでルーティングカウントをプロファイリングし、層ごとに上位k個のエキスパートのみにLoRAアダプターを適用する。",
+            "層ごとに上位25%のエキスパートのみをチューニングしても、フルLoRAと同等の性能を維持（平均差は±1パーセントポイント以内）。",
+            "これにより、学習可能パラメータが70-73%、アダプターチェックポイントサイズが71-73%、学習時間が最大50%削減される。",
+            "同じ予算でエキスパートをランダムに選択すると性能が約2.5パーセントポイント低下し、ルーティング信号が重要であることが示された。",
+            "コールドエキスパートを調整すると精度向上なしに勾配ノイズが導入される可能性があり、効率化の理由を説明している。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "MoE-Sieve如何决定对哪些专家应用LoRA？",
+          "en": "How does MoE-Sieve decide which experts to apply LoRA to?",
+          "ja": "MoE-SieveはどのエキスパートにLoRAを適用するかをどのように決定しますか？"
+        },
+        "answer": {
+          "zh": "它首先在一个小型校准集上分析每个专家的路由频率（处理了多少token），然后选择每层中路由频率最高的前k个专家进行LoRA微调。",
+          "en": "It profiles the routing frequency (how many tokens each expert handles) on a small calibration set, then selects the top-k most frequently routed experts per layer for LoRA fine-tuning.",
+          "ja": "小規模なキャリブレーションセットで各エキスパートのルーティング頻度（処理したトークン数）をプロファイリングし、層ごとにルーティング頻度が最も高い上位k個のエキスパートをLoRAファインチューニングの対象として選択します。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "为什么随机选择专家进行微调效果不如MoE-Sieve？",
+          "en": "Why does random expert selection perform worse than MoE-Sieve?",
+          "ja": "なぜエキスパートをランダムに選択する方法はMoE-Sieveよりも性能が劣るのですか？"
+        },
+        "answer": {
+          "zh": "因为随机选择忽略了路由信号，可能选到很少被激活的“冷”专家。调整这些专家会引入梯度噪声，却无法有效提升模型在目标任务上的精度。",
+          "en": "Random selection ignores the routing signal, potentially picking rarely activated 'cold' experts. Adapting these experts introduces gradient noise without effectively improving task accuracy.",
+          "ja": "ランダム選択はルーティング信号を無視するため、ほとんど活性化されない「コールド」エキスパートを選ぶ可能性があります。これらのエキスパートを調整すると、タスク精度を効果的に向上させずに勾配ノイズが導入されます。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "论文中提到的“专家路由偏斜性”与“种子间方差”的非单调关系有何含义？",
+          "en": "What is the implication of the non-monotonic relationship between expert routing skew and seed-to-seed variance mentioned in the paper?",
+          "ja": "論文で言及されている「エキスパートルーティングの偏り」と「シード間分散」の非単調な関係は何を意味しますか？"
+        },
+        "answer": {
+          "zh": "这表明调整“冷”专家（路由偏斜性高时）会增加训练的不稳定性（方差），支持了“调整冷专家会引入有害梯度噪声”的假设，从而解释了MoE-Sieve在减少参数的同时保持稳定性的机制。",
+          "en": "It suggests that adapting 'cold' experts (when routing skew is high) increases training instability (variance), supporting the hypothesis that tuning cold experts introduces harmful gradient noise. This explains how MoE-Sieve maintains stability while reducing parameters.",
+          "ja": "これは、「コールド」エキスパート（ルーティングの偏りが大きい場合）を調整すると学習の不安定性（分散）が増加することを示唆し、「コールドエキスパートの調整は有害な勾配ノイズを導入する」という仮説を支持します。これが、MoE-Sieveがパラメータを削減しながら安定性を維持するメカニズムを説明しています。"
+        }
+      }
+    ]
+  }
+]
