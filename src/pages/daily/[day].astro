@@ -803,7 +803,7 @@ for (let i = 0; i < dayData.projects.length; i += 2) {
   // Language toggle functionality
   const initLanguageToggle = () => {
     const urlParams = new URLSearchParams(window.location.search);
-    let currentLang = urlParams.get("lang") || "zh";
+    let currentLang = urlParams.get("lang") || "en";
     const langBtn = document.getElementById("lang-btn");
     const container = document.getElementById("news-container");
 
