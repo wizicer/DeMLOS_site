@@ -57,6 +57,7 @@ const levelLabels = {
       <div class="subtitle-text">
         <span data-lang-en>Deep Dive 💬</span>
         <span data-lang-zh class="hidden">深度解析协议 💬</span>
+        <span data-lang-ja class="hidden">深掘り解析 💬</span>
       </div>
     </div>
     <div class="date">
@@ -67,6 +68,7 @@ const levelLabels = {
       <span class="date-weekday">
         <span data-lang-en>{weekday.en.slice(0, 3)}</span>
         <span data-lang-zh class="hidden">{weekday.zh}</span>
+        <span data-lang-ja class="hidden">{weekday.en.slice(0, 3)}</span>
       </span>
     </div>
   </div>
@@ -91,6 +93,13 @@ const levelLabels = {
                 class="hidden"
                 set:html={parseMarkdown(qa.question.zh)}
               />
+              <span
+                data-lang-ja
+                class="hidden"
+                set:html={parseMarkdown(
+                  (qa.question as any).ja || qa.question.en
+                )}
+              />
             </div>
           </div>
 
@@ -102,6 +111,11 @@ const levelLabels = {
                 data-lang-zh
                 class="hidden"
                 set:html={parseMarkdown(qa.answer.zh)}
+              />
+              <span
+                data-lang-ja
+                class="hidden"
+                set:html={parseMarkdown((qa.answer as any).ja || qa.answer.en)}
               />
             </div>
             <div class="avatar-wrapper">
@@ -116,6 +130,7 @@ const levelLabels = {
   <div class="card-footer">
     <span data-lang-en>Prompted by </span>
     <span data-lang-zh class="hidden">由 </span>
+    <span data-lang-ja class="hidden">プロンプト作成 </span>
     <a href="https://x.com/icerdesign" target="_blank">@icerdesign</a>
     <span data-lang-zh class="hidden"> 提示生成</span>
   </div>
