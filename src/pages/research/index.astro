@@ -51,6 +51,17 @@ function formatMonth(monthStr: string): string {
   const date = new Date(parseInt(year), parseInt(month) - 1);
   return date.toLocaleDateString("en-US", { year: "numeric", month: "long" });
 }
+
+function getEnSummary(summary: any): string {
+  if (!summary) return "";
+  let text = "";
+  if (typeof summary === "object") {
+    text = summary.en || summary.zh || "";
+  } else {
+    text = summary;
+  }
+  return text.replace(/\{\{name\}\}/g, "");
+}
 ---
 
 <BaseLayout
@@ -112,9 +123,7 @@ function formatMonth(monthStr: string): string {
                                 {project.name}
                               </h3>
                               <p class="text-slate-600 dark:text-slate-400 text-sm mb-3 line-clamp-2">
-                                {typeof project.summary === "string"
-                                  ? project.summary
-                                  : project.summary.en}
+                                {getEnSummary(project.summary)}
                               </p>
                               <div class="flex flex-wrap gap-2">
                                 {project.tags.map((tag) => (
