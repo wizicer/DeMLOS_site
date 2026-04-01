@@ -3,6 +3,7 @@
 export interface BilingualText {
   zh: string;
   en: string;
+  ja?: string;
 }
 
 export interface BilingualNotes {
@@ -54,10 +55,12 @@ export const getWeekday = (dateStr: string): BilingualText => {
       "Friday",
       "Saturday",
     ],
+    ja: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
   };
   const date = new Date(dateStr);
   return {
     zh: weekdays.zh[date.getDay()],
     en: weekdays.en[date.getDay()],
+    ja: weekdays.ja[date.getDay()],
   };
 };
