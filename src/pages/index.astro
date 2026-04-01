@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
 import { newsData } from "../data/daily";
+import { categoryNameMapEn } from "./daily/textGenerator";
 
 const recentItems = newsData.slice(0, 5);
 
@@ -276,7 +277,7 @@ function getTypeColor(type: string): string {
                       name={getTypeIcon(project.type)}
                       class="w-3 h-3 mr-1"
                     />
-                    {project.type}
+                    {categoryNameMapEn[project.type] || project.type}
                   </span>
                 </div>
                 <h3 class="font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors flex-1">

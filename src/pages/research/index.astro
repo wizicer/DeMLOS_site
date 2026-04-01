@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getNewsByMonth } from "../../data/daily";
 import { Icon } from "astro-icon/components";
+import { categoryNameMapEn } from "../daily/textGenerator";
 
 const notesByMonth = getNewsByMonth();
 const months = Array.from(notesByMonth.keys()).sort().reverse();
@@ -76,7 +77,7 @@ function formatMonth(monthStr: string): string {
             <div class="flex items-center gap-2 text-sm">
               <span class={`tag ${getTypeColor(type)}`}>
                 <Icon name={icon} class="w-3 h-3 mr-1" />
-                {type}
+                {categoryNameMapEn[type] || type}
               </span>
             </div>
           ))
@@ -115,7 +116,7 @@ function formatMonth(monthStr: string): string {
                                   name={getTypeIcon(project.type)}
                                   class="w-3 h-3 mr-1"
                                 />
-                                {project.type}
+                                {categoryNameMapEn[project.type] || project.type}
                               </span>
                             </div>
                             <div class="flex-1 min-w-0">

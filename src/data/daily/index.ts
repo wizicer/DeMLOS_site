@@ -35,7 +35,7 @@ export const newsData: ProcessedDailyNewsItem[] = [
     weekday: getWeekday(item.date),
     weekdayNumber: new Date(item.date).getDay(),
   };
-});
+}).sort((a, b) => b.date.localeCompare(a.date));
 
 export function getNewsByMonth(): Map<string, ProcessedDailyNewsItem[]> {
   const byMonth = new Map<string, ProcessedDailyNewsItem[]>();
