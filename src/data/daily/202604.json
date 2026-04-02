@@ -89,5 +89,96 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-02",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2603.06350",
+        "name": "MoEless: Efficient MoE LLM Serving via Serverless Computing",
+        "type": "论文",
+        "author": "Hanfei Yu, Bei Ouyang, Shwai He, Ang Li, Hao Wang",
+        "tags": [
+          "Hanfei Yu",
+          "Serverless",
+          "Inference"
+        ],
+        "summary": {
+          "zh": "MoEless团队在{{name}}论文中提出了首个基于无服务器计算的MoE模型服务框架，通过预测专家负载和优化资源调度，显著降低了推理延迟和成本。",
+          "en": "The MoEless team proposed the first serverless computing-based MoE model serving framework in their {{name}} paper, significantly reducing inference latency and cost through expert load prediction and optimized resource scheduling.",
+          "ja": "MoElessチームは{{name}}論文で、サーバーレスコンピューティングに基づく初のMoEモデルサービングフレームワークを提案し、エキスパート負荷予測と最適化されたリソーススケジューリングにより、推論遅延とコストを大幅に削減した。"
+        },
+        "slogan": {
+          "zh": "【AI论文】告别专家负载不均：MoEless用无服务器计算将LLM推理成本降低84%"
+        },
+        "notes": {
+          "zh": [
+            "MoE模型在推理时存在严重的专家负载不均衡问题，导致延迟和成本增加。",
+            "现有解决方案基于静态资源配置，限制了扩展性和弹性。",
+            "MoEless是首个利用无服务器计算来服务MoE LLM的框架。",
+            "核心创新包括轻量级、分层感知的负载预测器，用于主动识别瓶颈专家。",
+            "设计了优化的专家扩展和放置策略，以最大化GPU利用率和函数局部性。",
+            "实验表明，相比现有方案，MoEless将推理延迟降低43%，成本降低84%。"
+          ],
+          "en": [
+            "MoE models suffer from severe expert load imbalance during inference, increasing latency and cost.",
+            "Existing solutions rely on static resource configurations, limiting scalability and elasticity.",
+            "MoEless is the first framework to serve MoE LLMs using serverless computing.",
+            "Key innovations include lightweight, layer-aware predictors to proactively identify straggler experts.",
+            "Optimized expert scaling and placement strategies maximize GPU utilization and function locality.",
+            "Experiments show MoEless reduces inference latency by 43% and cost by 84% compared to SOTA."
+          ],
+          "ja": [
+            "MoEモデルは推論時に深刻なエキスパート負荷不均衡に悩まされ、遅延とコストが増加する。",
+            "既存のソリューションは静的リソース構成に依存し、拡張性と弾力性を制限している。",
+            "MoElessはサーバーレスコンピューティングを用いてMoE LLMをサービスする初のフレームワークである。",
+            "軽量でレイヤーを意識した予測器を導入し、ボトルネックとなるエキスパートを事前に特定する。",
+            "最適化されたエキスパートスケーリングと配置戦略により、GPU利用率と関数局所性を最大化する。",
+            "実験では、最新のソリューションと比較し、MoElessは推論遅延を43%、コストを84%削減した。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "MoEless主要解决MoE服务中的什么核心问题？",
+          "en": "What core problem does MoEless solve in MoE serving?",
+          "ja": "MoElessはMoEサービングにおけるどのような核心的課題を解決しますか？"
+        },
+        "answer": {
+          "zh": "MoEless主要解决推理时的“专家负载不均衡”。通过缓解因输入分布不均导致的“拖尾专家”瓶颈，减少推理延迟并提升资源利用率，降低服务成本。",
+          "en": "MoEless addresses 'expert load imbalance' during inference. It mitigates 'straggler' bottlenecks caused by uneven data distribution to reduce latency and improve resource efficiency.",
+          "ja": "MoElessは推論時の「エキスパート負荷不均衡」を解決します。入力分布の偏りによる「ストラグラー」問題を解消し、遅延削減とリソース効率向上を図ります。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "“层感知预测器”的工作原理及其在架构中的作用是什么？",
+          "en": "How does the 'layer-aware predictor' work and what is its role?",
+          "ja": "「レイヤーを意識した予測器」の仕組みと役割は何ですか？"
+        },
+        "answer": {
+          "zh": "该轻量级模型实时预测输入序列各层的专家激活及负载。核心作用是“前瞻性调度”：提前识别潜在瓶颈，指导资源管理器在负载到达前进行弹性扩缩容和优化放置，避免运行时阻塞。",
+          "en": "A lightweight model predicting layer-wise expert activation and load. Its role is 'proactive scheduling': identifying bottlenecks to guide elastic scaling and placement before loads arrive, avoiding runtime blocking.",
+          "ja": "各層のエキスパート活性化と負荷を予測する軽量モデルです。役割は「プロアクティブなスケジューリング」で、負荷到着前にスケーリングや配置を最適化し、実行時のブロッキングを防ぎます。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "相比静态EP部署，MoEless面临哪些挑战？论文如何缓解？",
+          "en": "What challenges does MoEless face compared to static EP, and how are they mitigated?",
+          "ja": "静的なEPデプロイと比較したMoElessの課題と緩和策は何ですか？"
+        },
+        "answer": {
+          "zh": "挑战包括冷启动延迟、细粒度通信开销及管理复杂度。缓解措施：1.利用预测器“主动预热”减少冷启动。2.通过优化放置策略提升“函数局部性”，将密集通信保留在GPU高速总线内。设计核心在于平衡系统开销与负载均衡收益。",
+          "en": "Challenges include cold start latency and communication overhead. Mitigations: 1. Proactive warming via predictors to reduce cold starts. 2. Optimizing placement for 'function locality' to keep heavy communication within the GPU's high-speed bus.",
+          "ja": "課題はコールドスタートと通信負荷です。緩和策：1.予測器による「プロアクティブなウォーミング」で遅延を短縮。2.配置最適化で「関数局所性」を高め、同一GPU内の高速バス通信を優先。システム負荷と均衡利益のトレードオフを最適化しています。"
+        }
+      }
+    ]
   }
 ]
