@@ -180,5 +180,96 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-03",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2603.05614",
+        "name": "Real-Time AI Service Economy: A Framework for Agentic Computing Across the Continuum",
+        "type": "论文",
+        "author": "Lauri Lovén, Alaa Saleh, Reza Farahani, Ilir Murturi, Miguel Bordallo López, Praveen Kumar Donta, Schahram Dustdar",
+        "tags": [
+          "Lauri Lovén",
+          "Edge Computing",
+          "Mechanism Design"
+        ],
+        "summary": {
+          "zh": "该论文分析了实时AI服务在设备-边缘-云连续体中的资源分配问题。研究发现，服务依赖图的结构是决定去中心化、基于价格的资源分配能否可靠扩展的关键因素。",
+          "en": "This paper analyzes resource allocation for real-time AI services across the device-edge-cloud continuum. It finds that the structure of service-dependency graphs is key to whether decentralized, price-based allocation can scale reliably.",
+          "ja": "本論文は、デバイス-エッジ-クラウド連続体におけるリアルタイムAIサービスのリソース割り当てを分析。サービス依存グラフの構造が、分散型・価格ベースの割り当てが信頼性高くスケールするか否かの鍵であることを示した。"
+        },
+        "slogan": {
+          "zh": "【AI论文】AI服务经济新框架：依赖图结构决定去中心化资源分配的成败"
+        },
+        "notes": {
+          "zh": [
+            "实时AI服务在设备-边缘-云连续体上运行，产生延迟敏感的工作负载。",
+            "服务依赖图（DAG）的结构是去中心化、基于价格的资源分配能否可靠扩展的关键。",
+            "当依赖图是层次结构（树或串并联）时，价格收敛稳定，可高效计算最优分配。",
+            "当依赖关系更复杂时，价格会振荡，分配质量下降，系统难以管理。",
+            "提出混合管理架构，通过跨域集成器封装复杂子图，向市场呈现更简单的接口。",
+            "实验证实，混合架构可将价格波动降低70-75%，且不牺牲吞吐量。"
+          ],
+          "en": [
+            "Real-time AI services operate across the device-edge-cloud continuum, generating latency-sensitive workloads.",
+            "The structure of service-dependency graphs (DAGs) is key to reliable, scalable decentralized, price-based resource allocation.",
+            "With hierarchical (tree or series-parallel) dependency graphs, prices converge stably and optimal allocations are efficiently computable.",
+            "With complex dependencies, prices oscillate, allocation quality degrades, and the system becomes hard to manage.",
+            "A hybrid management architecture is proposed, using cross-domain integrators to encapsulate complex sub-graphs.",
+            "Experiments show the hybrid architecture reduces price volatility by 70-75% without sacrificing throughput."
+          ],
+          "ja": [
+            "リアルタイムAIサービスはデバイス-エッジ-クラウド連続体で動作し、レイテンシに敏感なワークロードを生成する。",
+            "サービス依存グラフ（DAG）の構造が、分散型・価格ベースのリソース割り当ての信頼性と拡張性の鍵となる。",
+            "依存グラフが階層的（ツリーまたは直並列）の場合、価格は安定して収束し、最適割り当てを効率的に計算可能。",
+            "依存関係が複雑な場合、価格は振動し、割り当て品質が低下、システム管理が困難になる。",
+            "複雑なサブグラフをカプセル化するクロスドメイン統合器を用いたハイブリッド管理アーキテクチャを提案。",
+            "実験により、ハイブリッドアーキテクチャがスループットを犠牲にせず価格変動を70-75%低減することが確認された。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "什么是“服务依赖图”？",
+          "en": "What is a \"service-dependency graph\"?",
+          "ja": "「サービス依存グラフ」とは何ですか？"
+        },
+        "answer": {
+          "zh": "服务依赖图是一种有向无环图（DAG），节点代表AI服务流水线中的计算阶段，边代表执行顺序依赖。其结构决定了去中心化资源分配能否可靠扩展。",
+          "en": "A DAG where nodes represent compute stages and edges encode dependencies. Its structure determines whether decentralized resource allocation scales reliably.",
+          "ja": "ノードが計算ステージ、エッジが依存関係を表すDAGです。その構造が分散型リソース割り当ての拡張性を決定します。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "依赖图结构如何影响资源分配市场的稳定性？",
+          "en": "How does dependency graph structure affect market stability?",
+          "ja": "依存グラフの構造は市場の安定性にどう影響しますか？"
+        },
+        "answer": {
+          "zh": "层次化依赖图（树状或串并联）使价格收敛稳定；复杂依赖关系导致价格振荡、分配质量下降。拓扑结构是稳定性的一阶决定因素。",
+          "en": "Hierarchical graphs (tree/series-parallel) lead to stable price convergence; complex dependencies cause oscillation and degraded allocation. Topology is a first-order stability determinant.",
+          "ja": "階層的グラフは価格を安定収束させ、複雑な依存関係は振動と品質低下を招きます。トポロジーは安定性の一次決定要因です。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "论文在何种条件下保证代理无虚报估值动机？",
+          "en": "Under what conditions does the paper guarantee no incentive to misreport valuations?",
+          "ja": "論文はどのような条件下で虚偽申告の動機がないことを保証していますか？"
+        },
+        "answer": {
+          "zh": "在拟线性效用函数、离散资源切片且依赖图为层次结构时，代理无动机虚报估值，确保激励相容性，维持市场诚实高效运行。",
+          "en": "With quasilinear utilities, discrete slices, and hierarchical graphs, agents have no misreporting incentive, ensuring incentive compatibility for honest, efficient markets.",
+          "ja": "準線形効用、離散スライス、階層的グラフの条件下で虚偽申告の動機がなく、インセンティブ両立性が保証されます。"
+        }
+      }
+    ]
   }
 ]
