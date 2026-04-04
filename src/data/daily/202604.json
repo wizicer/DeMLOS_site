@@ -271,5 +271,96 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-04",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2603.28622",
+        "name": "Trust-Aware Routing for Distributed Generative AI Inference at the Edge",
+        "type": "论文",
+        "author": "Chanh Nguyen, Erik Elmroth",
+        "tags": [
+          "Chanh Nguyen",
+          "Edge",
+          "Generative AI"
+        ],
+        "summary": {
+          "zh": "G-TRAC作者在{{name}}论文中提出了一个信任感知协调框架G-TRAC，用于在去中心化边缘设备上进行可靠的生成式AI推理，通过风险有界最短路径算法和混合信任架构来提升鲁棒性。",
+          "en": "The authors of G-TRAC propose a trust-aware coordination framework, G-TRAC, in their {{name}}paper for reliable generative AI inference on decentralized edge devices, enhancing robustness via a risk-bounded shortest path algorithm and a hybrid trust architecture.",
+          "ja": "G-TRACの著者らは{{name}}論文で、分散型エッジデバイス上での信頼性の高い生成AI推論のための信頼認識型調整フレームワークG-TRACを提案し、リスク境界付き最短経路アルゴリズムとハイブリッド信頼アーキテクチャにより堅牢性を向上させた。"
+        },
+        "slogan": {
+          "zh": "【边缘AI】告别单点故障！G-TRAC为分布式生成式AI推理打造信任路由"
+        },
+        "notes": {
+          "zh": [
+            "分布式生成式AI推理在异构边缘设备上执行，单点故障或恶意行为会破坏整个流程。",
+            "传统尽力而为的对等路由已不足够，需要显式考虑可靠性、性能可变性和对等节点间的信任。",
+            "G-TRAC框架将路由问题形式化为“风险有界最短路径”计算，并提供了多项式时间解决方案。",
+            "该方案结合信任下限剪枝与Dijkstra搜索，在实用规模下实现亚毫秒级中位路由延迟。",
+            "框架采用“混合信任架构”，在稳定锚点维护全局声誉状态，并通过后台同步向边缘节点传播轻量级更新。",
+            "在异构设备测试床上的实验表明，G-TRAC显著提高了推理完成率，有效隔离了不可靠节点。"
+          ],
+          "en": [
+            "Distributed generative AI inference runs on heterogeneous edge devices, where single-point failures or misbehavior can disrupt the entire process.",
+            "Traditional best-effort P2P routing is insufficient, requiring explicit consideration of reliability, performance variability, and trust among peers.",
+            "The G-TRAC framework formulates routing as a \"Risk-Bounded Shortest Path\" problem and provides a polynomial-time solution.",
+            "The solution combines trust-floor pruning with Dijkstra's search, achieving sub-millisecond median routing latency at practical scales.",
+            "A \"Hybrid Trust Architecture\" maintains global reputation at stable anchors and disseminates lightweight updates to edge peers via background sync.",
+            "Experiments on a heterogeneous testbed show G-TRAC significantly improves inference completion rates and effectively isolates unreliable peers."
+          ],
+          "ja": [
+            "分散型生成AI推論は異種混合のエッジデバイス上で実行され、単一障害点や不正動作が全体のプロセスを破壊する可能性がある。",
+            "従来のベストエフォート型P2Pルーティングでは不十分で、信頼性、性能変動、ピア間の信頼を明示的に考慮する必要がある。",
+            "G-TRACフレームワークはルーティングを「リスク境界付き最短経路」問題として定式化し、多項式時間の解法を提供する。",
+            "この解法は信頼下限枝刈りとダイクストラ探索を組み合わせ、実用的規模でミリ秒未満の中央値ルーティング遅延を実現する。",
+            "「ハイブリッド信頼アーキテクチャ」は安定したアンカーでグローバルな評判状態を維持し、バックグラウンド同期によりエッジピアに軽量な更新を配布する。",
+            "異種混合テストベッドでの実験では、G-TRACが推論完了率を大幅に向上させ、信頼できないピアを効果的に隔離することが示された。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "为什么边缘AI推理需要信任感知？",
+          "en": "Why does edge AI inference need trust-awareness?",
+          "ja": "エッジAI推論に信頼認識が必要なのはなぜですか？"
+        },
+        "answer": {
+          "zh": "因为在由异构、不可靠的边缘设备组成的去中心化网络中，单个设备的故障或恶意行为可能导致整个推理过程失败，因此需要路由机制能识别并避开不可信的节点。",
+          "en": "In decentralized networks composed of heterogeneous, unreliable edge devices, a single device failure or malicious behavior can cause the entire inference process to fail, so routing mechanisms need to identify and avoid untrustworthy nodes.",
+          "ja": "異種混合で信頼性の低いエッジデバイスで構成される分散ネットワークでは、単一デバイスの故障や悪意のある動作が推論プロセス全体の失敗を引き起こす可能性があるため、ルーティング機構が信頼できないノードを識別し回避する必要があるからです。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "G-TRAC如何解决分布式推理的路由问题？",
+          "en": "How does G-TRAC solve the routing problem for distributed inference?",
+          "ja": "G-TRACは分散推論のルーティング問題をどのように解決しますか？"
+        },
+        "answer": {
+          "zh": "G-TRAC将路由问题形式化为“风险有界最短路径”计算，结合信任下限剪枝与Dijkstra搜索算法，在多项式时间内找到一条在可接受风险范围内延迟最短的路径。",
+          "en": "G-TRAC formulates routing as a \"Risk-Bounded Shortest Path\" computation, combining trust-floor pruning with Dijkstra's search algorithm to find a path with the shortest delay within an acceptable risk bound in polynomial time.",
+          "ja": "G-TRACはルーティングを「リスク境界付き最短経路」計算として定式化し、信頼下限枝刈りとダイクストラ探索アルゴリズムを組み合わせ、多項式時間で許容可能なリスク範囲内で遅延が最短の経路を見つけます。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "G-TRAC的“风险有界最短路径”与经典最短路径问题有何本质区别？",
+          "en": "What is the essential difference between G-TRAC's \"Risk-Bounded Shortest Path\" and the classic shortest path problem?",
+          "ja": "G-TRACの「リスク境界付き最短経路」と古典的な最短経路問題の本質的な違いは何ですか？"
+        },
+        "answer": {
+          "zh": "经典最短路径问题仅优化单一指标（如延迟或跳数）。而G-TRAC的问题是一个双目标优化：在确保路径上所有节点的综合信任度（或失败风险）低于给定阈值的前提下，最小化路径的总延迟，这引入了约束条件并增加了计算复杂性。",
+          "en": "The classic shortest path problem optimizes a single metric (e.g., delay or hop count). G-TRAC's problem is a bi-objective optimization: minimizing total path delay while ensuring the aggregate trust (or failure risk) of all nodes on the path is below a given threshold, which introduces constraints and increases computational complexity.",
+          "ja": "古典的な最短経路問題は単一の指標（遅延やホップ数など）を最適化する。G-TRACの問題は二目的最適化であり、経路上の全ノードの総合的信頼度（または失敗リスク）が所定の閾値を下回ることを保証しつつ、経路の総遅延を最小化する。これは制約条件を導入し、計算複雑性を増加させる。"
+        }
+      }
+    ]
   }
 ]
