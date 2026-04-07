@@ -362,5 +362,96 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-07",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2510.05497",
+        "name": "Patterns behind Chaos: Forecasting Data Movement for Efficient Large-Scale MoE LLM Inference",
+        "type": "论文",
+        "author": "Zhongkai Yu, Yue Guan, Zihao Yu, Chenyang Zhou, Zhengding Hu, Shuyi Pei, Yangwook Kang, Yufei Ding, Po-An Tsai",
+        "tags": [
+          "Zhongkai Yu",
+          "MoE",
+          "Profiling"
+        ],
+        "summary": {
+          "zh": "Yu等人在{{name}}论文中分析了大规模MoE LLM推理中的数据移动瓶颈，提出了基于分析的优化策略，在晶圆级GPU上实现了6.6倍加速。",
+          "en": "Yu et al. analyze data movement bottlenecks in large-scale MoE LLM inference in their {{name}} paper, proposing optimization strategies that achieve a 6.6x speedup on wafer-scale GPUs.",
+          "ja": "Yuらは{{name}}論文で、大規模MoE LLM推論におけるデータ移動のボトルネックを分析し、分析に基づく最適化戦略を提案し、ウェハースケールGPUで6.6倍の高速化を実現した。"
+        },
+        "slogan": {
+          "zh": "【AI论文】揭秘MoE推理瓶颈：数据移动模式分析带来6.6倍加速"
+        },
+        "notes": {
+          "zh": [
+            "大规模MoE LLM的随机专家选择机制导致显著的数据移动开销，成为多单元服务系统的主要瓶颈。",
+            "研究对2025年发布的四个SOTA大规模MoE模型（200B-1000B）进行了全面的数据移动分析。",
+            "从时间和空间角度进行系统分析，提炼出六项关键见解以指导服务系统设计。",
+            "在晶圆级GPU架构上，基于见解的轻量级架构修改实现了平均6.6倍的加速。",
+            "在现有GPU系统上，基于见解设计的预填充感知专家放置算法实现了高达1.25倍的加速。",
+            "研究提供了首个大规模MoE模型的全面数据中心分析，并公开了分析数据集。"
+          ],
+          "en": [
+            "Random expert selection in large-scale MoE LLMs leads to major data movement bottlenecks.",
+            "Profiling on four SOTA MoE models (200B-1000B, 2025) is conducted.",
+            "Temporal and spatial analysis yields six key serving system insights.",
+            "Wafer-scale GPU tweaks based on insights achieve 6.6x speedup.",
+            "Prefill-aware expert placement on existing GPUs brings up to 1.25x MoE speedup.",
+            "This is the first comprehensive data-centric study of large-scale MoE models with public traces."
+          ],
+          "ja": [
+            "大規模MoE LLMのランダムな専門家選択がデータ移動の主なボトルネックとなる。",
+            "2025年の4つのSOTA大規模MoEモデルでプロファイリングを実施。",
+            "時空間分析から6つの重要な洞察を抽出。",
+            "洞察に基づくウェハースケールGPUの改良で6.6倍高速化。",
+            "既存GPUでのプレフィル対応専門家配置で最大1.25倍高速化。",
+            "大規模MoEモデルの初の包括的データ中心分析と公開プロファイル。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "什么是MoE LLM推理中的主要瓶颈？",
+          "en": "What is the main bottleneck in MoE LLM inference?",
+          "ja": "MoE LLM推論における主なボトルネックは何ですか？"
+        },
+        "answer": {
+          "zh": "论文指出，大规模MoE LLM中随机选择专家的机制会导致大量的数据移动，这已成为多单元服务系统中的主要性能瓶颈。",
+          "en": "The paper identifies that the random expert selection mechanism in large-scale MoE LLMs introduces significant data movement, which becomes the dominant performance bottleneck in multi-unit serving systems.",
+          "ja": "論文では、大規模MoE LLMにおけるランダムなエキスパート選択メカニズムが、多ユニットサービスシステムにおける主要な性能ボトルネックとなる、大幅なデータ移動を引き起こすと指摘している。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "预填充感知专家放置算法带来了什么收益？",
+          "en": "What benefit does the prefill-aware expert placement algorithm bring?",
+          "ja": "プレフィルを考慮したエキスパート配置アルゴリズムはどのような利点をもたらしますか？"
+        },
+        "answer": {
+          "zh": "该算法是针对现有GPU系统设计的优化方案，通过更智能地放置专家来减少数据移动，从而在MoE计算部分实现了高达1.25倍的加速。",
+          "en": "Designed for existing GPU systems, this algorithm optimizes expert placement to reduce data movement, achieving up to a 1.25x speedup specifically in MoE computation.",
+          "ja": "既存GPUシステム向けに設計されたこのアルゴリズムは、データ移動を削減するためにエキスパート配置を最適化し、MoE計算部分で最大1.25倍の高速化を達成する。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "研究提炼的六项关键见解如何指导未来服务系统设计？",
+          "en": "How do the six key insights distilled guide future serving system design?",
+          "ja": "抽出された6つの重要な洞察は、将来のサービスシステム設計をどのように導きますか？"
+        },
+        "answer": {
+          "zh": "这些从时空分析中提炼的见解，为设计高效的数据移动模式和资源调度策略提供了理论基础，可直接应用于晶圆级GPU的架构修改和现有系统的算法优化，以缓解数据移动瓶颈。",
+          "en": "These insights, distilled from spatiotemporal analysis, provide a theoretical foundation for designing efficient data movement patterns and resource scheduling strategies. They can be directly applied to architectural modifications for wafer-scale GPUs and algorithmic optimizations for existing systems to alleviate data movement bottlenecks.",
+          "ja": "時空間分析から抽出されたこれらの洞察は、効率的なデータ移動パターンとリソーススケジューリング戦略の設計のための理論的基盤を提供する。これらは、データ移動ボトルネックを緩和するために、ウェハースケールGPUのアーキテクチャ変更や既存システムのアルゴリズム最適化に直接適用できる。"
+        }
+      }
+    ]
   }
 ]
