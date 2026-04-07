@@ -15,8 +15,6 @@ dist/
 npm-debug.log*
 
 # editor
-.vscode/*
-!.vscode/extensions.json
 .idea/
 *.swp
 *.swo
