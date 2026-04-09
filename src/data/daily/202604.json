@@ -453,5 +453,97 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-09",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2604.07030",
+        "name": "MoE Routing Testbed: Studying Expert Specialization and Routing Behavior at Small Scale",
+        "type": "论文",
+        "author": "Tobias Falke, Nicolas Anastassacos, Samson Tan, Chankrisna Richy Meas, Chandana Satya Prakash, Nitesh Sekhar, M Saiful Bari, Krishna Kompella, Gamaleldin F. Elsayed",
+        "tags": [
+          "Tobias Falke",
+          "MoE",
+          "Routing",
+          "Training"
+        ],
+        "summary": {
+          "zh": "研究人员在{{name}}论文中提出了MoE路由测试平台，用于在小规模下清晰评估专家专业化和路由动态，并识别平衡范围是促进专业化的关键因素。",
+          "en": "Researchers proposed the MoE Routing Testbed in their {{name}}paper to clearly evaluate expert specialization and routing dynamics at small scale, identifying balancing scope as a key factor for specialization.",
+          "ja": "研究者らは{{name}}論文で、小規模で専門家の専門化とルーティング動態を明確に評価するMoEルーティングテストベッドを提案し、専門化を促進する鍵となる要因としてバランス範囲を特定した。"
+        },
+        "slogan": {
+          "zh": "【ML论文】揭秘MoE训练：新测试平台揭示专家专业化的关键"
+        },
+        "notes": {
+          "zh": [
+            "稀疏MoE架构在大型语言模型中日益流行，但路由复杂性带来了训练挑战。",
+            "充分利用MoE参数需要所有专家得到良好训练并以非冗余方式专业化。",
+            "由于缺乏既定指标，评估专家专业化具有挑战性。",
+            "许多路由技术在小规模下表现相似，但这通常不能反映其在大规模下的行为。",
+            "MoE路由测试平台通过将具有清晰可区分领域的数据混合与基于这些领域规定理想路由的参考路由器配对，提供了明确的比较上限。",
+            "研究表明，平衡范围是允许专业化同时保持高专家利用率的关键因素，且这一观察可推广到35倍大的模型。"
+          ],
+          "en": [
+            "Sparse MoE architectures are popular for LLMs but introduce training challenges due to routing complexity.",
+            "Fully leveraging MoE parameters requires well-trained experts specializing in non-redundant ways.",
+            "Assessing expert specialization is complicated due to lack of established metrics.",
+            "Many routing techniques show similar performance at small scale, not reflective of large-scale behavior.",
+            "The MoE Routing Testbed pairs a data mix with a reference router for a clear comparison upper bound.",
+            "Balancing scope is identified as the crucial factor for enabling specialization and high expert utilization, generalizing to much larger models."
+          ],
+          "ja": [
+            "スパースMoEアーキテクチャは大規模言語モデルで人気があるが、ルーティングの複雑さにより訓練上の課題をもたらす。",
+            "MoEパラメータを十分に活用するには、すべての専門家が十分に訓練され、冗長でない方法で専門化する必要がある。",
+            "確立された指標がないため、専門家の専門化を評価することは複雑である。",
+            "多くのルーティング技術は小規模では類似の性能を示し、大規模での動作を反映しないことが多い。",
+            "MoEルーティングテストベッドは、明確に区別可能なドメインを持つデータミックスと、これらのドメインに基づいて理想的なルーティングを規定する参照ルーターを組み合わせ、明確な比較上限を提供する。",
+            "バランス範囲は、専門化を可能にしつつ高い専門家利用率を維持する重要な要因と特定され、35倍大きいモデルにも一般化することが確認された。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "MoE训练的主要挑战是什么？",
+          "en": "What is a main challenge in training MoE models?",
+          "ja": "MoEモデルの訓練における主な課題は何ですか？"
+        },
+        "answer": {
+          "zh": "主要挑战在于路由的复杂性。需要确保所有专家都能得到良好训练，并各自专业化于不同的任务领域，避免冗余。同时，需要高效地将输入路由到最合适的专家，并平衡各专家的负载，以实现高参数利用率。",
+          "en": "The main challenge lies in routing complexity. It requires ensuring all experts are well-trained and specialize in distinct, non-redundant task domains. Efficiently routing inputs to the most suitable experts while balancing their workloads for high parameter utilization is also crucial.",
+          "ja": "主な課題はルーティングの複雑さにあります。すべての専門家が十分に訓練され、重複のない異なるタスク領域に専門化することを保証する必要があります。また、高いパラメータ利用率を実現するために、入力が最も適した専門家に効率的にルーティングされ、専門家間の負荷がバランスされることも重要です。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "MoE路由测试平台如何解决评估难题？",
+          "en": "How does the MoE Routing Testbed address the evaluation challenge?",
+          "ja": "MoEルーティングテストベッドは、評価の課題をどのように解決しますか？"
+        },
+        "answer": {
+          "zh": "该测试平台通过设计一个包含清晰可区分领域（如不同主题文本）的数据混合，并搭配一个基于这些领域知识规定“理想”路由的参考路由器。这为比较实际路由算法提供了一个明确的上限，从而能够量化测量专家专业化的程度。",
+          "en": "The testbed designs a data mix with clearly distinguishable domains (e.g., different topic texts) and pairs it with a reference router that prescribes 'ideal' routing based on this domain knowledge. This provides a clear upper bound for comparing actual routing algorithms, enabling quantifiable measurement of expert specialization.",
+          "ja": "このテストベッドは、明確に区別可能なドメイン（例：異なるトピックのテキスト）を含むデータミックスを設計し、このドメイン知識に基づいて「理想的な」ルーティングを規定する参照ルーターと組み合わせます。これにより、実際のルーティングアルゴリズムを比較するための明確な上限が提供され、専門家の専門化度合いを定量的に測定することが可能になります。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "为什么小规模路由性能可能无法预测大规模行为？",
+          "en": "Why might small-scale routing performance fail to predict large-scale behavior?",
+          "ja": "なぜ小規模でのルーティング性能は、大規模での動作を予測できない可能性があるのですか？"
+        },
+        "answer": {
+          "zh": "在小规模下，模型容量和专家数量有限，不同路由策略可能因计算资源未饱和而表现出相似的性能。然而，在大规模下，专家数量剧增，路由决策的复杂性呈指数增长，负载不均衡、专家利用不足或专业化失败等问题会被放大，导致性能差异显著。",
+          "en": "At small scale, with limited model capacity and expert count, different routing strategies may show similar performance due to unsaturated computational resources. At large scale, with many more experts, routing complexity grows exponentially, amplifying issues like load imbalance, underutilization, or specialization failure, leading to significant performance divergence.",
+          "ja": "小規模では、モデル容量と専門家数が限られているため、計算リソースが飽和していないために異なるルーティング戦略が類似の性能を示す可能性があります。しかし、大規模では専門家数が劇的に増加し、ルーティング決定の複雑さが指数関数的に増大し、負荷不均衡、専門家の利用不足、専門化の失敗などの問題が増幅され、性能の差が顕著になります。"
+        }
+      }
+    ]
   }
 ]
