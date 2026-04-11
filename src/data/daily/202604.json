@@ -545,5 +545,96 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-11",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2604.06798",
+        "name": "MoBiE: Efficient Inference of Mixture of Binary Experts under Post-Training Quantization",
+        "type": "论文",
+        "author": "Zhixiong Zhao, Zukang Xu, Zhixuan Chen, Dawei Yang",
+        "tags": [
+          "Zhixiong Zhao",
+          "MoE",
+          "Binarization"
+        ],
+        "summary": {
+          "zh": "Zhao等人在{{name}}论文中提出了首个专为MoE架构LLM设计的二值化框架MoBiE，通过联合SVD分解、全局梯度集成和误差约束，显著提升量化后模型的性能与推理速度。",
+          "en": "Zhao et al. proposed MoBiE, the first binarization framework tailored for MoE-based LLMs, in their {{name}}paper. It employs joint SVD, global gradient integration, and error constraints to significantly boost post-quantization performance and inference speed.",
+          "ja": "Zhao らは{{name}}論文で、MoEベースのLLMに特化した初の二値化フレームワークMoBiEを提案した。共同SVD分解、グローバル勾配統合、誤差制約により、量子化後のモデル性能と推論速度を大幅に向上させる。"
+        },
+        "slogan": {
+          "zh": "【AI论文】MoE模型大瘦身！MoBiE框架实现高效二值化，推理速度翻倍"
+        },
+        "notes": {
+          "zh": [
+            "MoE架构LLM性能强但成本高，现有二值化方法处理MoE存在冗余、重要性评估不准和路由偏移问题。",
+            "MoBiE是首个针对MoE LLM的二值化框架，核心创新包括联合SVD分解以减少专家间冗余。",
+            "框架整合全局损失梯度到局部Hessian度量中，以增强权重重要性估计的准确性。",
+            "引入基于输入零空间的误差约束，有效缓解量化引起的路由失真问题。",
+            "MoBiE在实现优化的同时不增加额外存储开销，平衡了效率与模型性能。",
+            "实验表明，MoBiE在多个MoE LLM和基准测试上均优于现有二值化方法，显著降低困惑度并提升推理速度。"
+          ],
+          "en": [
+            "MoE-based LLMs are performant but costly; existing binarization methods struggle with MoE-specific issues like redundancy and routing shifts.",
+            "MoBiE is the first binarization framework tailored for MoE LLMs, featuring joint SVD decomposition to reduce cross-expert redundancy.",
+            "It integrates global loss gradients into local Hessian metrics for better weight importance estimation.",
+            "An error constraint guided by input null space is introduced to mitigate routing distortion caused by quantization.",
+            "MoBiE achieves these optimizations without extra storage overhead, balancing efficiency and performance.",
+            "Experiments show MoBiE outperforms SOTA binary methods across multiple MoE LLMs, reducing perplexity and speeding up inference significantly."
+          ],
+          "ja": [
+            "MoEベースのLLMは高性能だがコストが高く、既存の二値化手法は冗長性やルーティングシフトなどのMoE特有の問題に対処できない。",
+            "MoBiEはMoE LLMに特化した初の二値化フレームワークで、専門家間の冗長性を低減する共同SVD分解を特徴とする。",
+            "グローバル損失勾配を局所ヘッセ行列メトリクスに統合し、重みの重要度推定を向上させる。",
+            "入力零空間に基づく誤差制約を導入し、量子化によるルーティング歪みを軽減する。",
+            "MoBiEは追加のストレージオーバーヘッドなしで最適化を実現し、効率と性能のバランスを取る。",
+            "実験では、MoBiEが複数のMoE LLMで最先端の二値化手法を上回り、パープレキシティを低減し推論を高速化した。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "MoBiE框架的核心优势是什么？",
+          "en": "What is the core advantage of the MoBiE framework?",
+          "ja": "MoBiEフレームワークの核心的な利点は何ですか？"
+        },
+        "answer": {
+          "zh": "MoBiE的核心优势在于它是首个专为MoE模型设计的二值化框架，能在不增加额外存储开销的前提下，显著提升量化后模型的性能并加速推理过程。",
+          "en": "MoBiE's core advantage is being the first binarization framework tailored for MoE models. It significantly improves post-quantization performance and speeds up inference without adding extra storage overhead.",
+          "ja": "MoBiEの核心的な利点は、MoEモデルに特化した初の二値化フレームワークであることです。追加のストレージオーバーヘッドなしで、量子化後のモデル性能を大幅に向上させ、推論を高速化します。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "MoBiE如何解决MoE模型中的专家间冗余问题？",
+          "en": "How does MoBiE address cross-expert redundancy in MoE models?",
+          "ja": "MoBiEはMoEモデルにおける専門家間の冗長性をどのように解決しますか？"
+        },
+        "answer": {
+          "zh": "MoBiE通过联合奇异值分解（SVD）技术来处理专家间冗余。该方法能有效识别并压缩不同专家权重矩阵之间的共享信息，从而减少参数冗余，提升模型效率。",
+          "en": "MoBiE addresses cross-expert redundancy using joint Singular Value Decomposition (SVD). This technique identifies and compresses shared information across different expert weight matrices, reducing parameter redundancy and improving model efficiency.",
+          "ja": "MoBiEは、共同特異値分解（SVD）技術を使用して専門家間の冗長性に対処します。この手法は、異なる専門家の重み行列間で共有される情報を特定・圧縮し、パラメータの冗長性を低減してモデル効率を向上させます。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "MoBiE针对MoE架构做了哪些根本性调整？",
+          "en": "What fundamental adjustments does MoBiE make for MoE architectures?",
+          "ja": "MoBiEはMoEアーキテクチャに対してどのような根本的な調整を行いますか？"
+        },
+        "answer": {
+          "zh": "MoBiE围绕MoE稀疏激活和路由机制设计，联合SVD减少专家冗余，混合重要性度量适应子任务分工，误差约束保护关键路由逻辑。",
+          "en": "MoBiE centers on MoE's sparse activation and routing, using joint SVD to reduce expert redundancy, hybrid importance metrics for task-specific experts, and error constraints to protect routing logic.",
+          "ja": "MoBiEはMoEのスパース活性化とルーティングに注目し、共同SVDで冗長性を削減し、ハイブリッド重要度で専門家分担に対応、誤差制約でルーティングを保護します。"
+        }
+      }
+    ]
   }
 ]
