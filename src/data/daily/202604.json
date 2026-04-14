@@ -636,5 +636,96 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-14",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2512.22142",
+        "name": "On Harnessing Idle Compute at the Edge for Foundation Model Training",
+        "type": "论文",
+        "author": "Leyang Xue, Meghana Madhyastha, Myungjin Lee, Amos Storkey, Randal Burns, Mahesh K. Marina",
+        "tags": [
+          "Leyang Xue",
+          "Edge Computing",
+          "GEMM"
+        ],
+        "summary": {
+          "zh": "Xue等人在{{name}}论文中提出了Cleave系统，利用边缘设备空闲算力进行大模型训练。其核心创新在于利用GEMM运算的I/O不对称性匹配网络带宽，实现了随设备增加而降低的单设备通信开销。",
+          "en": "Xue et al. proposed Cleave in their {{name}}paper, a system for foundation model training using idle edge compute. Its key innovation exploits the asymmetric I/O of GEMM operations to match network bandwidth, reducing per-device communication as more devices join.",
+          "ja": "Xue らは{{name}}論文で、エッジデバイスのアイドル計算リソースを活用する大規模モデル訓練システム Cleave を提案した。GEMM演算の非対称I/Oをネットワーク帯域に合わせることで、デバイス増加に伴う単体通信量を削減する。"
+        },
+        "slogan": {
+          "zh": "【边缘AI】算力民主化新突破：Cleave让边缘设备也能高效训练大模型"
+        },
+        "notes": {
+          "zh": [
+            "Cleave通过边缘空闲算力推动大模型训练民主化。",
+            "现有方案受限于性能、扩展性和通信。",
+            "GEMM的I/O不对称正好匹配边缘带宽非对称。",
+            "参数服务器架构让单设备通信随设备数增加而下降。",
+            "子GEMM任务分解统一了资源与容错。",
+            "Cleave性能比肩云GPU，批次速度远超现有方案，可扩展至数千设备。"
+          ],
+          "en": [
+            "Cleave democratizes foundation model training using idle edge compute.",
+            "Current edge training faces limits in performance, scale, and communication.",
+            "GEMM's I/O asymmetry fits edge bandwidth patterns.",
+            "Parameter-server setup cuts per-device communication as devices grow.",
+            "Sub-GEMM tasks unify resource use and fault tolerance.",
+            "Cleave matches cloud GPU, outpaces SOTA by 4-10x per batch, and scales to thousands."
+          ],
+          "ja": [
+            "Cleaveはエッジ計算で大規模訓練の民主化を目指す。",
+            "現行手法は性能・拡張性・通信が課題。",
+            "GEMMのI/O非対称はエッジ帯域パターンに適合。",
+            "パラメータサーバーでデバイス増加時の通信量を削減。",
+            "サブGEMM分解がリソースと耐障害性を統合。",
+            "CleaveはクラウドGPUに並び、既存より4-10倍高速で数千台に拡張可能。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "Cleave利用了边缘网络的什么特性？",
+          "en": "What characteristic of edge networks does Cleave exploit?",
+          "ja": "Cleaveはエッジネットワークのどの特性を利用していますか？"
+        },
+        "answer": {
+          "zh": "Cleave利用了边缘网络下行带宽远高于上行带宽（通常2-10倍）的特性，这与GEMM运算中下行输入矩阵远大于上行输出块的I/O不对称模式相匹配。",
+          "en": "Cleave exploits the asymmetry in edge network bandwidth, where downlink capacity significantly exceeds uplink (2-10x), aligning with the I/O pattern of GEMM operations.",
+          "ja": "Cleaveは、エッジネットワークのダウンリンク帯域がアップリンクを大幅に上回る（通常2-10倍）非対称性を利用し、GEMM演算のI/Oパターンと一致させています。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "Cleave如何实现单设备通信量随设备增加而减少？",
+          "en": "How does Cleave achieve decreasing per-device communication as more devices join?",
+          "ja": "Cleaveはどのようにして、デバイスが増えるにつれて単体の通信量を減少させますか？"
+        },
+        "answer": {
+          "zh": "Cleave采用参数服务器架构，输入矩阵下行广播，设备仅返回小块输出，上行数据被分摊，设备增多则单设备通信量下降。",
+          "en": "Cleave uses a parameter-server setup: input matrices are broadcast (downlink), each device returns a small partial output (uplink). Uplink data is distributed, so per-device communication drops as devices increase.",
+          "ja": "Cleaveはパラメータサーバー方式で入力を一斉配信し、各デバイスは部分出力のみ返却。アップリンクが分散され、台数増で通信量が減少します。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "与传统张量并行(TP)相比，Cleave在通信模式上有何根本不同？",
+          "en": "How does Cleave's communication pattern fundamentally differ from traditional Tensor Parallelism (TP)?",
+          "ja": "Cleaveの通信パターンは、従来のテンソル並列処理(TP)と根本的にどのように異なりますか？"
+        },
+        "answer": {
+          "zh": "TP设备间频繁交换激活和梯度，单设备通信量恒定；Cleave参数服务器下行广播，设备仅上行小块，单设备通信量随设备数增加而下降，形成对比。",
+          "en": "TP keeps per-device traffic constant via frequent activation/gradient exchange. Cleave broadcasts (downlink) and gathers only partial results (uplink), so per-device traffic decreases as more devices join, unlike TP.",
+          "ja": "TPは活性化・勾配を頻繁に交換し、通信量は一定。Cleaveは大きな入力を配信し部分結果だけ返すため、台数増で通信量が減少しTPと対照的です。"
+        }
+      }
+    ]
   }
 ]
