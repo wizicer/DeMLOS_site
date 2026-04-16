@@ -727,5 +727,95 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-16",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2604.10180",
+        "name": "Tessera: Unlocking Heterogeneous GPUs through Kernel-Granularity Disaggregation",
+        "type": "论文",
+        "author": "Tiancheng Hu, Jin Qin, Zheng Wang, Junhao Hu, Yuzheng Wang, Lei Chen, Yizhou Shan, Mingxing Zhang, Ting Cao, Chunwei Xia, Huimin Cui, Tao Xie, Chenxi Wang",
+        "tags": [
+          "Tiancheng Hu",
+          "GPU Disaggregation"
+        ],
+        "summary": {
+          "zh": "Hu等人等在{{name}}论文中提出了首个内核级GPU解耦系统Tessera，通过离线分析与在线自适应调度，显著提升异构GPU集群上大模型推理的吞吐量与成本效益。",
+          "en": "Hu et al. proposed Tessera, the first kernel-level GPU disaggregation system in their {{name}} paper. It enhances throughput and cost efficiency for large model inference on heterogeneous GPU clusters via offline analysis and online adaptive scheduling.",
+          "ja": "Huらは{{name}}論文で、カーネルレベルのGPU分離システムTesseraを初めて提案した。オフライン分析とオンライン適応スケジューリングにより、異種GPUクラスター上での大規模モデル推論のスループットとコスト効率を大幅に向上させる。"
+        },
+        "slogan": {
+          "zh": "【AI系统论文】告别粗放调度！Tessera实现内核级GPU解耦，推理性能提升2.3倍"
+        },
+        "notes": {
+          "zh": [
+            "现有GPU解耦方案粒度粗、与模型架构紧耦合，性能提升空间有限。",
+            "Tessera提出内核级解耦，将计算任务与硬件能力在更细粒度上对齐。",
+            "核心方法：从PTX提取精确内核间依赖保证正确性，流水线执行重叠通信与计算。",
+            "采用负载感知调度与轻量级运行时自适应，实现离线分析与在线执行的结合。",
+            "在5种异构GPU、4种模型架构上评估，吞吐量最高提升2.3倍，成本效益提升1.6倍。",
+            "Tessera甚至能使一对异构GPU的吞吐量超过两块同构高端GPU，且成本更低。"
+          ],
+          "en": [
+            "Prior GPU disaggregation is coarse-grained and model-coupled, limiting performance.",
+            "Tessera uses kernel-level disaggregation, better matching computation to hardware.",
+            "Key: PTX-based inter-kernel dependency extraction, pipelined execution.",
+            "Combines offline analysis and online workload-aware scheduling.",
+            "On 5 GPUs and 4 models: up to 2.3x throughput, 1.6x cost gains.",
+            "Heterogeneous GPU pairs can outperform homogeneous high-end pairs."
+          ],
+          "ja": [
+            "従来のGPU分離は粒度が粗くモデル依存で性能に限界。",
+            "Tesseraはカーネル単位で計算とハードを細かく対応。",
+            "PTX依存抽出・パイプライン実行が中核技術。",
+            "オフライン分析とワークロード対応スケジューリングを統合。",
+            "5種GPU・4モデルで最大2.3倍高速化・1.6倍コスト効率。",
+            "異種GPUペアが同種高級GPUペアを上回る場合も。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "Tessera相比之前方案的关键创新是什么？",
+          "en": "What is the key innovation of Tessera compared to prior approaches?",
+          "ja": "Tesseraの従来手法に対する主な革新点は何ですか？"
+        },
+        "answer": {
+          "zh": "Tessera的关键创新在于首次提出了内核粒度的GPU解耦，将计算任务与硬件能力在更细的粒度上进行匹配，而非传统的粗粒度模型级解耦。",
+          "en": "Tessera's key innovation is introducing kernel-granularity GPU disaggregation, matching computation tasks with hardware capabilities at a finer granularity than the traditional coarse-grained model-level approach.",
+          "ja": "Tesseraの主な革新点は、従来の粗粒度なモデルレベル分離ではなく、カーネル粒度でのGPU分離を初めて導入し、計算タスクとハードウェア能力をより細かい粒度でマッチングさせることです。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "Tessera如何保证内核解耦后的执行正确性？",
+          "en": "How does Tessera ensure execution correctness after kernel disaggregation?",
+          "ja": "Tesseraはカーネル分離後の実行の正確性をどのように保証しますか？"
+        },
+        "answer": {
+          "zh": "Tessera通过从程序的PTX中间表示中提取精确的内核间数据依赖关系，构建依赖图，并以此为基础进行调度，从而确保跨不同GPU执行时的计算顺序和数据一致性。",
+          "en": "Tessera extracts precise inter-kernel data dependencies from the program's PTX intermediate representation, builds a dependency graph, and uses it for scheduling to ensure correct computation order and data consistency across different GPUs.",
+          "ja": "Tesseraは、プログラムのPTX中間表現から正確なカーネル間のデータ依存関係を抽出し、依存関係グラフを構築してスケジューリングの基礎とすることで、異なるGPU間での実行における計算順序とデータ一貫性を保証します。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "Tessera的流水线执行模型有什么作用？",
+          "en": "What is the role of Tessera's pipelined execution model?",
+          "ja": "Tesseraのパイプライン実行モデルの役割は何ですか？"
+        },
+        "answer": {
+          "zh": "Tessera的流水线执行模型旨在将不同GPU间的数据传输（通信）与GPU上的内核计算重叠起来，从而隐藏通信延迟，最大化硬件利用率，提升整体系统吞吐量。",
+          "en": "Tessera's pipelined execution model aims to overlap data transfer (communication) between different GPUs with kernel computation on the GPUs, thereby hiding communication latency, maximizing hardware utilization, and improving overall system throughput.",
+          "ja": "Tesseraのパイプライン実行モデルは、異なるGPU間のデータ転送（通信）とGPU上のカーネル計算をオーバーラップさせることを目的としており、通信遅延を隠蔽し、ハードウェア利用率を最大化してシステム全体のスループットを向上させます。"
+        }
+      }
+    ]
   }
 ]
