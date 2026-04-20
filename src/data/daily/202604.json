@@ -817,5 +817,95 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-20",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2604.10152",
+        "name": "SpecMoE: A Fast and Efficient Mixture-of-Experts Inference via Self-Assisted Speculative Decoding",
+        "type": "论文",
+        "author": "Jehyeon Bang, Eunyeong Cho, Ranggi Hwang, Jinha Chung, Minsoo Rhu",
+        "tags": [
+          "Jehyeon Bang",
+          "LLM Inference"
+        ],
+        "summary": {
+          "zh": "Bang等人在{{name}}论文中提出了一种基于自辅助推测解码的内存高效MoE推理系统SpecMoE，无需额外训练即可显著提升吞吐量并降低带宽需求。",
+          "en": "Bang et al. proposed SpecMoE, a memory-efficient MoE inference system based on self-assisted speculative decoding in their {{name}}paper, which boosts throughput and reduces bandwidth without extra training.",
+          "ja": "Bang らは{{name}}論文で、追加トレーニングなしでスループットを向上し帯域幅を削減する、自己補助型推測デコードに基づくメモリ効率の良いMoE推論システムSpecMoEを提案した。"
+        },
+        "slogan": {
+          "zh": "【ML论文】推理加速新思路：SpecMoE让MoE模型推理快4倍"
+        },
+        "notes": {
+          "zh": [
+            "MoE架构虽能降低LLM计算成本，但面临高内存需求和参数效率低下的部署挑战。",
+            "现有CPU卸载的MoE推理系统效率有限，尤其在大批次处理时表现不佳。",
+            "SpecMoE创新性地将推测解码应用于MoE推理，无需额外模型训练或微调。",
+            "该系统在内存受限系统上，将推理吞吐量最高提升4.3倍。",
+            "同时显著降低了内存和互连带宽的需求。",
+            "为高效部署大型MoE模型提供了新的系统级解决方案。"
+          ],
+          "en": [
+            "MoE architecture reduces LLM compute costs but faces deployment challenges like high memory and suboptimal parameter efficiency.",
+            "Existing CPU-offloaded MoE inference systems offer limited efficiency, especially for large batch sizes.",
+            "SpecMoE innovatively applies speculative decoding to MoE inference without requiring additional model training or fine-tuning.",
+            "The system improves inference throughput by up to 4.3x on memory-constrained systems.",
+            "It also significantly reduces bandwidth requirements for both memory and interconnect.",
+            "Provides a new system-level solution for efficiently deploying large MoE models."
+          ],
+          "ja": [
+            "MoEアーキテクチャはLLMの計算コストを削減するが、高メモリ要件やパラメータ効率の低さといった展開上の課題がある。",
+            "既存のCPUオフロード型MoE推論システムは効率が限られており、特に大きなバッチサイズで性能が低下する。",
+            "SpecMoEは、追加のモデルトレーニングやファインチューニングを必要とせず、推測デコードをMoE推論に革新的に適用する。",
+            "本システムは、メモリ制約のあるシステムで推論スループットを最大4.3倍向上させる。",
+            "同時に、メモリと相互接続の両方の帯域幅要件を大幅に削減する。",
+            "大規模MoEモデルの効率的な展開に向けた新しいシステムレベルのソリューションを提供する。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "SpecMoE的主要目标是什么？",
+          "en": "What is the main goal of SpecMoE?",
+          "ja": "SpecMoEの主な目標は何ですか？"
+        },
+        "answer": {
+          "zh": "SpecMoE的主要目标是解决MoE模型推理时的高内存需求和低效率问题，通过一种新的推测解码方法，在不增加训练成本的前提下，大幅提升推理速度和降低系统带宽压力。",
+          "en": "The main goal of SpecMoE is to address the high memory requirements and inefficiency of MoE model inference. It uses a novel speculative decoding method to significantly increase inference speed and reduce system bandwidth pressure without additional training costs.",
+          "ja": "SpecMoEの主な目標は、MoEモデル推論時の高メモリ要件と非効率性に対処することです。新しい推測デコード手法を用いて、追加のトレーニングコストなしに推論速度を大幅に向上させ、システムの帯域幅圧力を低減します。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "推测解码如何应用于MoE推理？",
+          "en": "How is speculative decoding applied to MoE inference?",
+          "ja": "推測デコードはMoE推論にどのように適用されますか？"
+        },
+        "answer": {
+          "zh": "SpecMoE采用“自辅助”推测解码。它利用MoE模型自身（或一个轻量级草案模型）快速生成一个推测性的令牌序列，然后由原始MoE模型进行高效验证和修正，从而减少串行计算步骤，加速整体生成过程。",
+          "en": "SpecMoE employs 'self-assisted' speculative decoding. It uses the MoE model itself (or a lightweight draft model) to quickly generate a speculative token sequence, which is then efficiently verified and corrected by the original MoE model. This reduces serial computation steps and accelerates the overall generation process.",
+          "ja": "SpecMoEは「自己補助型」推測デコードを採用しています。MoEモデル自体（または軽量なドラフトモデル）を使用して推測的なトークンシーケンスを迅速に生成し、それを元のMoEモデルが効率的に検証・修正します。これにより、直列計算ステップが削減され、生成プロセス全体が加速されます。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "SpecMoE相比传统CPU卸载方案有何优势？",
+          "en": "What advantages does SpecMoE have over traditional CPU-offloading solutions?",
+          "ja": "SpecMoEは従来のCPUオフロードソリューションと比べてどのような利点がありますか？"
+        },
+        "answer": {
+          "zh": "传统CPU卸载方案在大批次推理时效率受限，且带宽需求高。SpecMoE通过推测解码算法，在内存受限系统上实现了高达4.3倍的吞吐量提升，并显著降低了内存和互连带宽需求，提供了更优的端到端效率。",
+          "en": "Traditional CPU-offloading solutions have limited efficiency for large batch inference and high bandwidth demands. SpecMoE, via its speculative decoding algorithm, achieves up to 4.3x higher throughput on memory-constrained systems and significantly reduces memory and interconnect bandwidth requirements, offering better end-to-end efficiency.",
+          "ja": "従来のCPUオフロードソリューションは、大規模バッチ推論では効率が限られ、帯域幅要求も高くなります。SpecMoEは、その推測デコードアルゴリズムにより、メモリ制約のあるシステムで最大4.3倍のスループット向上を実現し、メモリと相互接続の帯域幅要件を大幅に削減することで、より優れたエンドツーエンド効率を提供します。"
+        }
+      }
+    ]
   }
 ]
