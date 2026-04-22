@@ -907,5 +907,96 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-22",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2504.09792",
+        "name": "A Tale of Two Learning Algorithms: Multiple Stream Random Walk and Asynchronous Gossip",
+        "type": "论文",
+        "author": "Peyman Gholami, Hulya Seferoglu",
+        "tags": [
+          "Peyman Gholami",
+          "Gossip",
+          "Data Heterogeneity"
+        ],
+        "summary": {
+          "zh": "Gholami和Seferoglu在{{name}}论文中提出并分析了多流随机行走算法MW与异步Gossip算法，比较了它们在不同图拓扑和数据异质性下的收敛性、计算与通信开销。",
+          "en": "Gholami and Seferoglu propose and analyze the Multi-Walk (MW) algorithm and Asynchronous Gossip in their {{name}}paper, comparing their convergence, computation, and communication overhead under various graph topologies and data heterogeneity.",
+          "ja": "GholamiとSeferogluは{{name}}論文で、マルチストリームランダムウォークアルゴリズムMWと非同期Gossipアルゴリズムを提案・分析し、様々なグラフトポロジーとデータ不均一性下での収束性、計算・通信オーバーヘッドを比較した。"
+        },
+        "slogan": {
+          "zh": "【ML论文】去中心化学习新视角：多流随机行走与异步Gossip算法性能大比拼"
+        },
+        "notes": {
+          "zh": [
+            "提出并分析了多流随机行走算法MW，填补了异步Gossip算法缺乏全面收敛分析的空白。",
+            "在直径较大的图（如环）中，MW在迭代次数上的收敛性优于异步Gossip。",
+            "在直径较小的图（如完全图）中，MW与异步Gossip的相对性能取决于行走数量和数据的异质性。",
+            "在挂钟时间分析中，MW的性能随行走数量线性提升，异步Gossip则随节点数量线性提升。",
+            "在通信开销方面，除了数据异质性极高的小直径拓扑外，MW通常优于异步Gossip。",
+            "研究结果强调了不同算法在不同图拓扑和数据异质性场景下的有效性，代码已开源。"
+          ],
+          "en": [
+            "Proposes and analyzes the Multi-Walk (MW) algorithm, addressing the lack of comprehensive convergence analysis for Asynchronous Gossip.",
+            "MW shows better convergence in terms of iterations compared to Asynchronous Gossip in graphs with large diameters (e.g., cycles).",
+            "In small-diameter graphs (e.g., complete graphs), relative performance depends on the number of walks and data heterogeneity.",
+            "Wall-clock time analysis shows linear speed-up with the number of walks for MW and with nodes for Asynchronous Gossip.",
+            "MW generally outperforms Asynchronous Gossip in communication overhead, except in small-diameter topologies with extreme data heterogeneity.",
+            "Highlights the effectiveness of each algorithm under different conditions; code is available for reproducibility."
+          ],
+          "ja": [
+            "マルチウォーク（MW）アルゴリズムを提案・分析し、非同期Gossipの包括的な収束分析の不足を補った。",
+            "直径の大きいグラフ（例：サイクル）では、MWは反復回数において非同期Gossipより優れた収束性を示す。",
+            "直径の小さいグラフ（例：完全グラフ）では、相対的性能はウォーク数とデータ不均一性に依存する。",
+            "実時間分析では、MWはウォーク数に、非同期Gossipはノード数に比例した線形高速化を示す。",
+            "通信オーバーヘッドでは、極端なデータ不均一性を持つ小直径トポロジーを除き、MWが非同期Gossipを上回る。",
+            "異なる条件下での各アルゴリズムの有効性を強調し、再現性のためにコードを公開している。"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "这篇论文主要比较了哪两种算法？",
+          "en": "Which two algorithms are primarily compared in this paper?",
+          "ja": "この論文は主にどの2つのアルゴリズムを比較していますか？"
+        },
+        "answer": {
+          "zh": "论文主要比较了多流随机行走算法（MW）和异步Gossip算法。MW使用多个随机行走流进行学习，而Gossip是节点间直接交换信息的经典去中心化方法。",
+          "en": "The paper primarily compares the Multi-Walk (MW) algorithm and the Asynchronous Gossip algorithm. MW uses multiple random walk streams for learning, while Gossip is a classic decentralized method where nodes directly exchange information.",
+          "ja": "この論文は主に、マルチウォーク（MW）アルゴリズムと非同期Gossipアルゴリズムを比較しています。MWは複数のランダムウォークストリームを使用し、Gossipはノードが直接情報を交換する古典的な分散型手法です。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "数据异质性如何影响MW与Gossip的性能对比？",
+          "en": "How does data heterogeneity affect the performance comparison between MW and Gossip?",
+          "ja": "データ不均一性は、MWとGossipの性能比較にどのように影響しますか？"
+        },
+        "answer": {
+          "zh": "数据异质性是一个关键因素。在直径较小的图（如完全图）中，MW与Gossip的相对性能高度依赖于数据的异质性程度。极端的数据异质性可能使Gossip在通信开销上获得优势。",
+          "en": "Data heterogeneity is a key factor. In small-diameter graphs (e.g., complete graphs), the relative performance of MW vs. Gossip heavily depends on the degree of data heterogeneity. Extreme heterogeneity can give Gossip an advantage in communication overhead.",
+          "ja": "データ不均一性は重要な要素です。完全グラフなどの直径が小さいグラフでは、MWとGossipの相対的性能はデータ不均一性の程度に大きく依存します。極端な不均一性は、通信オーバーヘッドにおいてGossipに利点を与える可能性があります。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "在通信开销分析中，MW在何种拓扑下可能不敌Gossip？原因是什么？",
+          "en": "In communication overhead analysis, under which topology might MW be outperformed by Gossip, and why?",
+          "ja": "通信オーバーヘッド分析において、MWがGossipに劣る可能性があるトポロジーはどれですか？その理由は？"
+        },
+        "answer": {
+          "zh": "在数据异质性极端的小直径拓扑（如完全图）中，MW的通信开销可能高于Gossip。原因是，在高度连接的图中，Gossip的直接信息交换可能更高效，而MW的多个行走可能导致冗余通信，尤其是在数据分布极不均匀时，行走路径需要覆盖更多样化的节点以获取均衡信息。",
+          "en": "In small-diameter topologies (e.g., complete graphs) with extreme data heterogeneity, MW's communication overhead might be higher than Gossip's. This is because in highly connected graphs, Gossip's direct information exchange can be more efficient. MW's multiple walks might lead to redundant communication, especially when data is highly uneven, requiring walks to cover more diverse nodes for balanced information.",
+          "ja": "極端なデータ不均一性を持つ小直径トポロジー（例：完全グラフ）では、MWの通信オーバーヘッドがGossipより高くなる可能性があります。これは、高度に接続されたグラフでは、Gossipの直接的な情報交換がより効率的であるためです。MWの複数のウォークは、特にデータが非常に不均一な場合、バランスの取れた情報を得るために多様なノードをカバーする必要があり、冗長な通信を引き起こす可能性があります。"
+        }
+      }
+    ]
   }
 ]
