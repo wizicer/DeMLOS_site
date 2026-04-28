@@ -998,5 +998,95 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-04-28",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2303.05330",
+        "name": "Cloudless-Training: A Framework to Improve Efficiency of Geo-Distributed ML Training",
+        "type": "论文",
+        "author": "Wenting Tan",
+        "tags": [
+          "Wenting Tan",
+          "Geo-Distributed ML"
+        ],
+        "summary": {
+          "zh": "Tan等人在{{name}}论文中提出了Cloudless-Training框架，通过两层架构、弹性调度和两种新同步策略（ASGD-GA和MA），提升地理分布式ML训练效率，在腾讯云上实现最高1.7倍加速和24%成本降低。",
+          "en": "Tan et al. proposed Cloudless-Training in their {{name}}paper, using a two-layer architecture, elastic scheduling, and two new sync strategies (ASGD-GA and MA) to improve geo-distributed ML training efficiency, achieving up to 1.7x speedup and 24% cost reduction on Tencent Cloud.",
+          "ja": "Tanらは{{name}}論文で、二層アーキテクチャ、弾力的スケジューリング、2つの新しい同期戦略（ASGD-GAとMA）を用いたCloudless-Trainingフレームワークを提案し、地理分散MLトレーニングの効率を向上、Tencent Cloud上で最大1.7倍の高速化と24%のコスト削減を達成した。"
+        },
+        "slogan": {
+          "zh": "【ML论文】云无界：Cloudless-Training 让地理分布式训练又快又省"
+        },
+        "notes": {
+          "zh": [
+            "地理分布式ML训练面临弹性调度缺失和WAN通信瓶颈两大挑战",
+            "Cloudless-Training采用控制平面与物理训练平面分离的两层架构",
+            "弹性调度策略可根据云资源异构性和数据集分布自适应部署工作流",
+            "提出ASGD-GA（异步SGD+梯度累积）和MA（模型平均）两种同步策略",
+            "基于OpenFaaS实现，在腾讯云上验证了有效性和正确性",
+            "相比基线，训练成本降低9.2%-24.0%，训练速度最高提升1.7倍"
+          ],
+          "en": [
+            "Geo-distributed ML training faces challenges of missing elastic scheduling and WAN communication bottlenecks.",
+            "Cloudless-Training uses a two-layer architecture separating control and physical training planes.",
+            "Elastic scheduling adaptively deploys workflows based on cloud resource heterogeneity and dataset distribution.",
+            "Proposes ASGD-GA (async SGD with gradient accumulation) and MA (model averaging) sync strategies.",
+            "Implemented with OpenFaaS and validated on Tencent Cloud.",
+            "Reduces training cost by 9.2%-24.0% and achieves up to 1.7x speedup over baseline."
+          ],
+          "ja": [
+            "地理分散MLトレーニングは弾力的スケジューリングの欠如とWAN通信のボトルネックという2つの課題に直面",
+            "Cloudless-Trainingは制御プレーンと物理トレーニングプレーンを分離した二層アーキテクチャを採用",
+            "弾力的スケジューリング戦略はクラウドリソースの不均一性とデータセット分布に応じてワークフローを適応的に展開",
+            "ASGD-GA（勾配蓄積付き非同期SGD）とMA（モデル平均化）の2つの同期戦略を提案",
+            "OpenFaaSで実装され、Tencent Cloud上で有効性と正確性が検証された",
+            "ベースラインと比較してトレーニングコストを9.2%-24.0%削減、トレーニング速度を最大1.7倍向上"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "Cloudless-Training解决了什么问题？",
+          "en": "What problem does Cloudless-Training solve?",
+          "ja": "Cloudless-Trainingはどのような問題を解決しますか？"
+        },
+        "answer": {
+          "zh": "它解决了地理分布式ML训练中弹性调度缺失和WAN通信效率低的问题。",
+          "en": "It addresses the lack of elastic scheduling and low WAN communication efficiency in geo-distributed ML training.",
+          "ja": "地理分散MLトレーニングにおける弾力的スケジューリングの欠如とWAN通信の非効率性を解決します。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "Cloudless-Training如何实现弹性调度？",
+          "en": "How does Cloudless-Training achieve elastic scheduling?",
+          "ja": "Cloudless-Trainingはどのように弾力的スケジューリングを実現しますか？"
+        },
+        "answer": {
+          "zh": "通过控制平面和物理训练平面分离的两层架构，根据云资源异构性和数据集分布自适应部署工作流。",
+          "en": "Via a two-layer architecture separating control and physical planes, adaptively deploying workflows based on cloud resource heterogeneity and dataset distribution.",
+          "ja": "制御プレーンと物理トレーニングプレーンを分離した二層アーキテクチャにより、クラウドリソースの不均一性とデータセット分布に応じてワークフローを適応的に展開します。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "Cloudless-Training如何保证模型正确性？",
+          "en": "How does Cloudless-Training guarantee model correctness?",
+          "ja": "Cloudless-Trainingはモデルの正確性をどのように保証しますか？"
+        },
+        "answer": {
+          "zh": "通过ASGD-GA和MA同步策略，在异步训练中引入梯度累积和模型平均，确保收敛性和模型质量。",
+          "en": "Through ASGD-GA and MA sync strategies, introducing gradient accumulation and model averaging in async training to ensure convergence and model quality.",
+          "ja": "ASGD-GAとMAの同期戦略により、非同期トレーニングに勾配蓄積とモデル平均化を導入し、収束性とモデル品質を保証します。"
+        }
+      }
+    ]
   }
 ]
