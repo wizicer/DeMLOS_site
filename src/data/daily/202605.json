@@ -1,0 +1,92 @@
+[
+  {
+    "date": "2026-05-02",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2604.27132",
+        "name": "TRUST: A Framework for Decentralized AI Service v.0.1",
+        "type": "论文",
+        "author": "Yu-Chao Huang, Zhen Tan, Mohan Zhang, Pingzhi Li, Zhuo Zhang, Tianlong Chen",
+        "tags": [
+          "Yu-Chao Huang",
+          "Decentralized AI"
+        ],
+        "summary": {
+          "zh": "Huang等人在{{name}}论文中提出了去中心化AI审计框架TRUST，通过HDAG分解推理、DAAN因果归因和多层共识机制，在30%恶意节点下仍保证正确性，准确率达72.4%。",
+          "en": "Huang et al. proposed TRUST, a decentralized AI auditing framework in their {{name}}paper, using HDAG for reasoning decomposition, DAAN for causal attribution, and multi-tier consensus, achieving 72.4% accuracy under 30% adversarial nodes.",
+          "ja": "Huangらは{{name}}論文で、HDAGによる推論分解、DAANによる因果帰属、多層コンセンサス機構を用いた分散型AI監査フレームワークTRUSTを提案し、30%の悪意ノード下でも72.4%の精度を達成した。"
+        },
+        "slogan": {
+          "zh": "【AI论文】去中心化AI审计来了！TRUST框架让大模型推理透明可信"
+        },
+        "notes": {
+          "zh": [
+            "TRUST通过HDAG将CoT推理分解为五层，支持并行分布式审计",
+            "DAAN协议将多智能体交互映射为因果图，实现确定性根因归因",
+            "多层共识机制结合计算检查器、LLM评估器和人类专家，抗30%恶意节点",
+            "安全-盈利定理确保诚实审计者获利，恶意行为者亏损",
+            "隐私设计分割防止专有逻辑重建，所有决策上链",
+            "在多个LLM和基准测试中，准确率72.4%，比基线高4-18%"
+          ],
+          "en": [
+            "TRUST decomposes CoT reasoning into five layers via HDAG for parallel distributed auditing.",
+            "DAAN maps multi-agent interactions to causal graphs for deterministic root-cause attribution.",
+            "Multi-tier consensus with computational checkers, LLM evaluators, and human experts resists 30% adversarial nodes.",
+            "Safety-Profitability Theorem ensures honest auditors profit while malicious actors incur losses.",
+            "Privacy-by-design segmentation prevents reconstruction of proprietary logic; all decisions on-chain.",
+            "Achieves 72.4% accuracy across multiple LLMs, 4-18% above baselines."
+          ],
+          "ja": [
+            "TRUSTはHDAGによりCoT推論を5層に分解し、並列分散監査を実現",
+            "DAANはマルチエージェント相互作用を因果グラフにマッピングし、決定論的根因帰属を実現",
+            "計算チェッカー、LLM評価者、人間専門家による多層コンセンサス機構は30%の悪意ノードに耐性",
+            "安全-収益性定理により、誠実な監査者は利益を得、悪意ある行為者は損失を被る",
+            "プライバシー設計の分割により専有ロジックの再構築を防止し、全決定をオンチェーン化",
+            "複数のLLMとベンチマークで72.4%の精度を達成、ベースライン比4-18%向上"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "TRUST如何保证审计的正确性？",
+          "en": "How does TRUST ensure auditing correctness?",
+          "ja": "TRUSTはどのように監査の正確性を保証するのか？"
+        },
+        "answer": {
+          "zh": "通过多层共识机制，结合计算检查器、LLM评估器和人类专家，抗30%恶意节点。",
+          "en": "Via a multi-tier consensus with computational checkers, LLM evaluators, and human experts, resisting 30% adversarial nodes.",
+          "ja": "計算チェッカー、LLM評価者、人間専門家による多層コンセンサス機構で、30%の悪意ノードに耐性を持つ。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "HDAG在TRUST中起什么作用？",
+          "en": "What role does HDAG play in TRUST?",
+          "ja": "TRUSTにおけるHDAGの役割は？"
+        },
+        "answer": {
+          "zh": "将Chain-of-Thought推理分解为五层抽象级别，支持并行分布式审计。",
+          "en": "It decomposes Chain-of-Thought reasoning into five abstraction levels for parallel distributed auditing.",
+          "ja": "Chain-of-Thought推論を5つの抽象レベルに分解し、並列分散監査を可能にする。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "TRUST如何实现隐私保护？",
+          "en": "How does TRUST achieve privacy protection?",
+          "ja": "TRUSTはどのようにプライバシー保護を実現するのか？"
+        },
+        "answer": {
+          "zh": "通过隐私设计分割，防止专有逻辑重建，所有决策上链但推理轨迹分段存储。",
+          "en": "Via privacy-by-design segmentation preventing proprietary logic reconstruction; all decisions on-chain but reasoning traces stored in segments.",
+          "ja": "プライバシー設計の分割により専有ロジックの再構築を防止し、全決定をオンチェーン化するが推論トレースは分割保存する。"
+        }
+      }
+    ]
+  }
+]
