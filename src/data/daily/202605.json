@@ -88,5 +88,95 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-05-10",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2605.00073",
+        "name": "AgentReputation: A Decentralized Agentic AI Reputation Framework",
+        "type": "论文",
+        "author": "Mohd Sameen Chishti, Damilare Peter Oyinloye, Jingyue Li",
+        "tags": [
+          "Mohd Sameen Chishti",
+          "Reputation"
+        ],
+        "summary": {
+          "zh": "Chishti等人在论文中提出了AgentReputation，一个面向去中心化AI代理市场的三层声誉框架。该框架分离任务执行、声誉服务和防篡改持久化，引入上下文条件化的声誉卡和决策策略引擎，以解决代理策略优化、任务上下文迁移和验证成本差异等核心挑战。",
+          "en": "Chishti et al. propose AgentReputation, a three-layer decentralized reputation framework for agentic AI marketplaces. It separates task execution, reputation services, and tamper-proof persistence, introducing context-conditioned reputation cards and a decision-facing policy engine to address strategic optimization, task transfer, and verification cost challenges.",
+          "ja": "Chishti らは、分散型AIエージェント市場向けの3層の評判フレームワークAgentReputationを提案した。タスク実行、評判サービス、改ざん防止永続化を分離し、文脈条件付き評判カードと意思決定ポリシーエンジンを導入することで、戦略的最適化、タスクコンテキストの移行、検証コストの課題に対処する。"
+        },
+        "slogan": {
+          "zh": "【AI论文】AI代理也有信用分？AgentReputation 用三层框架解决去中心化市场的信任难题"
+        },
+        "notes": {
+          "zh": [
+            "现有声誉机制无法应对代理策略优化、任务上下文迁移和验证成本差异三大挑战",
+            "联邦学习、区块链AI平台和LLM安全研究等方法无法综合解决这些问题",
+            "AgentReputation采用三层分离架构：任务执行、声誉服务和防篡改持久化",
+            "引入上下文条件化的声誉卡，防止跨领域和跨任务类型的声誉混淆",
+            "决策策略引擎支持基于风险和不确定性的资源分配、访问控制和自适应验证升级",
+            "未来研究方向包括验证本体、验证强度量化、隐私保护证据机制和冷启动声誉引导"
+          ],
+          "en": [
+            "Existing reputation mechanisms fail against agent strategic optimization, task context transfer, and verification cost differences.",
+            "Federated learning, blockchain AI platforms, and LLM safety research cannot address these challenges in combination.",
+            "AgentReputation uses a three-layer architecture: task execution, reputation services, and tamper-proof persistence.",
+            "Context-conditioned reputation cards prevent reputation conflation across domains and task types.",
+            "A decision-facing policy engine supports resource allocation, access control, and adaptive verification escalation.",
+            "Future work includes verification ontologies, quantifying verification strength, privacy-preserving evidence, and cold-start bootstrapping."
+          ],
+          "ja": [
+            "既存の評判メカニズムは、エージェントの戦略的最適化、タスクコンテキストの移行、検証コストの差異に対応できない",
+            "連合学習、ブロックチェーンAIプラットフォーム、LLM安全性研究はこれらの課題を総合的に解決できない",
+            "AgentReputationは3層アーキテクチャを採用：タスク実行、評判サービス、改ざん防止永続化",
+            "文脈条件付き評判カードにより、ドメインやタスクタイプを超えた評判の混同を防止",
+            "意思決定ポリシーエンジンは、リスクと不確実性に基づくリソース割り当て、アクセス制御、適応的検証エスカレーションをサポート",
+            "今後の研究には、検証オントロジー、検証強度の定量化、プライバシー保護証拠メカニズム、コールドスタート評判ブートストラップが含まれる"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "为什么需要新的声誉机制？",
+          "en": "Why is a new reputation mechanism needed?",
+          "ja": "なぜ新しい評判メカニズムが必要なのですか？"
+        },
+        "answer": {
+          "zh": "现有机制无法应对代理策略优化、任务上下文迁移和验证成本差异三大挑战。",
+          "en": "Existing mechanisms fail against agent strategic optimization, task context transfer, and verification cost differences.",
+          "ja": "既存のメカニズムは、エージェントの戦略的最適化、タスクコンテキストの移行、検証コストの差異に対応できない。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "AgentReputation的三层架构是什么？",
+          "en": "What is the three-layer architecture of AgentReputation?",
+          "ja": "AgentReputationの3層アーキテクチャとは何ですか？"
+        },
+        "answer": {
+          "zh": "任务执行层、声誉服务层和防篡改持久化层，分别负责执行、评估和存储。",
+          "en": "Task execution, reputation services, and tamper-proof persistence layers, handling execution, evaluation, and storage respectively.",
+          "ja": "タスク実行層、評判サービス層、改ざん防止永続化層で、それぞれ実行、評価、保存を担当する。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "决策策略引擎如何工作？",
+          "en": "How does the decision-facing policy engine work?",
+          "ja": "意思決定ポリシーエンジンはどのように機能しますか？"
+        },
+        "answer": {
+          "zh": "基于风险和不确定性，动态调整资源分配、访问控制和验证升级策略。",
+          "en": "Dynamically adjusts resource allocation, access control, and verification escalation based on risk and uncertainty.",
+          "ja": "リスクと不確実性に基づいて、リソース割り当て、アクセス制御、検証エスカレーション戦略を動的に調整する。"
+        }
+      }
+    ]
   }
 ]
