@@ -178,5 +178,96 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-05-11",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2307.07066",
+        "name": "Can Blockchains Reliably Train Machine Learning Models?",
+        "type": "论文",
+        "author": "Peihao Li, Nadia Dahmani",
+        "tags": [
+          "Peihao Li",
+          "PoW",
+          "PoT"
+        ],
+        "summary": {
+          "zh": "Li等人在{{name}}论文中提出了“训练证明”（PoT）协议，将PoW挖矿算力重用于可验证的机器学习模型训练，同时保留PoW的激励与安全性。实验表明，该方案在任务吞吐量、鲁棒性和网络安全方面具有显著潜力。",
+          "en": "Li et al. proposed Proof of Training (PoT) in their {{name}} paper, repurposing PoW mining power for verifiable ML training while preserving PoW incentives and security. Experiments show high throughput, strong robustness, and improved network security.",
+          "ja": "Li らは{{name}}論文で、PoWマイニングの計算能力を検証可能な機械学習トレーニングに転用する「Proof of Training（PoT）」プロトコルを提案した。実験では、高いタスクスループット、堅牢性、ネットワークセキュリティの向上が示された。"
+        },
+        "slogan": {
+          "zh": "【区块链+ML】挖矿算力不再浪费：PoT协议让区块链也能可靠训练AI模型"
+        },
+        "notes": {
+          "zh": [
+            "PoT将PoW算力重用于ML训练，同时保留挖矿的经济激励",
+            "理论分析了最适合训练可靠性的区块链结构",
+            "实现了去中心化训练网络原型，验证了高任务吞吐量",
+            "系统对恶意节点攻击具有强鲁棒性",
+            "PoT可改善PoW网络的能源效率问题",
+            "仍需解决训练任务验证的隐私与效率权衡"
+          ],
+          "en": [
+            "PoT repurposes PoW power for verifiable ML training while preserving mining incentives.",
+            "Theoretically identifies optimal blockchain structure for training reliability.",
+            "Implements a decentralized training network prototype with high throughput.",
+            "System shows strong robustness against malicious node attacks.",
+            "PoT improves energy efficiency of PoW networks.",
+            "Privacy-efficiency trade-offs in training verification remain to be addressed."
+          ],
+          "ja": [
+            "PoTはPoWの計算能力を検証可能なMLトレーニングに転用しつつ、マイニングのインセンティブを維持する",
+            "トレーニングの信頼性に最適なブロックチェーン構造を理論的に特定",
+            "分散型トレーニングネットワークのプロトタイプを実装し、高スループットを確認",
+            "悪意あるノード攻撃に対する高い堅牢性を示す",
+            "PoTはPoWネットワークのエネルギー効率を改善する",
+            "トレーニング検証におけるプライバシーと効率のトレードオフは未解決"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "PoT协议的主要目标是什么？",
+          "en": "What is the main goal of PoT?",
+          "ja": "PoTプロトコルの主な目的は何ですか？"
+        },
+        "answer": {
+          "zh": "将PoW挖矿算力重用于可验证的机器学习训练。",
+          "en": "Repurpose PoW mining power for verifiable ML training.",
+          "ja": "PoWマイニングの計算能力を検証可能なMLトレーニングに転用すること。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "PoT如何保证训练结果的可验证性？",
+          "en": "How does PoT ensure verifiability of training results?",
+          "ja": "PoTはトレーニング結果の検証可能性をどのように保証しますか？"
+        },
+        "answer": {
+          "zh": "通过引入验证节点和共识机制来检查训练证明。",
+          "en": "By introducing verification nodes and consensus to check training proofs.",
+          "ja": "検証ノードとコンセンサスメカニズムを導入してトレーニング証明をチェックする。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "PoT在理论分析中如何确定最优区块链结构？",
+          "en": "How does PoT theoretically determine the optimal blockchain structure?",
+          "ja": "PoTは理論分析でどのように最適なブロックチェーン構造を決定しますか？"
+        },
+        "answer": {
+          "zh": "通过分析训练可靠性、安全性和可扩展性之间的权衡。",
+          "en": "By analyzing trade-offs among training reliability, security, and scalability.",
+          "ja": "トレーニングの信頼性、セキュリティ、スケーラビリティのトレードオフを分析することで。"
+        }
+      }
+    ]
   }
 ]
