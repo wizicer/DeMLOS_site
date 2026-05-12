@@ -269,5 +269,96 @@
         }
       }
     ]
+  },
+  {
+    "date": "2026-05-12",
+    "projects": [
+      {
+        "url": "https://arxiv.org/abs/2605.07841",
+        "name": "VISTA: Decentralized Machine Learning in Adversary Dominated Environments",
+        "type": "论文",
+        "author": "Hanzaleh Akbari Nodehi, Parsa Moradi, Soheil Mohajer, Mohammad Ali Maddah-Ali",
+        "tags": [
+          "Hanzaleh Akbari Nodehi",
+          "DeML",
+          "Incentive Design"
+        ],
+        "summary": {
+          "zh": "Akbari Nodehi等人在{{name}}论文中提出了一种去中心化机器学习框架VISTA，通过激励驱动的自适应阈值机制，在敌手主导环境中实现稳健聚合，并证明其收敛性可媲美标准SGD。",
+          "en": "Akbari Nodehi et al. proposed VISTA, a decentralized ML framework using incentive-driven adaptive thresholding for robust aggregation in adversary-dominated settings, achieving convergence comparable to standard SGD.",
+          "ja": "Akbari Nodehi らは{{name}}論文で、インセンティブ駆動型の適応的閾値メカニズムを用いた分散型MLフレームワークVISTAを提案し、敵対者支配環境でのロバストな集約を実現、標準SGDに匹敵する収束性を証明した。"
+        },
+        "slogan": {
+          "zh": "【ML论文】没有诚实多数也能收敛？VISTA 用激励对抗恶意节点"
+        },
+        "notes": {
+          "zh": [
+            "现有鲁棒聚合方法在敌手占多数时失效",
+            "VISTA将敌手转化为理性代理，平衡估计误差与奖励风险",
+            "自适应阈值利用优化历史动态调整，优于静态阈值",
+            "严格收敛分析表明无需诚实多数假设即可达到SGD渐近性能",
+            "数值实验验证了VISTA在敌手主导环境下的有效性",
+            "框架适用于去中心化学习中的安全与激励设计"
+          ],
+          "en": [
+            "Existing robust aggregation fails when adversaries are majority.",
+            "VISTA turns adversaries into rational agents balancing error vs. reward risk.",
+            "Adaptive thresholding using optimization history outperforms static thresholds.",
+            "Rigorous convergence analysis shows SGD-level performance without honest majority.",
+            "Numerical results confirm VISTA's effectiveness in adversary-dominated settings.",
+            "Framework applicable to security and incentive design in decentralized learning."
+          ],
+          "ja": [
+            "既存のロバスト集約手法は敵対者が多数派の場合に機能しない",
+            "VISTAは敵対者を合理的エージェントに変え、誤差と報酬リスクをバランス",
+            "最適化履歴を用いた適応的閾値が静的閾値より優れる",
+            "厳密な収束解析により、正直多数派なしでSGDレベルの性能を達成",
+            "数値実験で敵対者支配環境での有効性を確認",
+            "フレームワークは分散学習のセキュリティとインセンティブ設計に応用可能"
+          ]
+        }
+      }
+    ],
+    "qas": [
+      {
+        "level": "beginner",
+        "question": {
+          "zh": "VISTA是什么，它如何应对恶意节点？",
+          "en": "What is VISTA and how does it handle malicious nodes?",
+          "ja": "VISTAとは何で、悪意ノードにどう対処しますか？"
+        },
+        "answer": {
+          "zh": "VISTA是一种去中心化机器学习框架，用于在多数节点是恶意的情况下仍能安全训练。它通过激励方式让恶意节点理性选择，只接受相互一致的报告，否则拒绝并扣奖励。",
+          "en": "VISTA is a decentralized ML framework for safe training even when most nodes are malicious. It incentivizes malicious nodes to be rational, accepting only mutually consistent reports or rejecting them.",
+          "ja": "VISTAは、大多数のノードが悪意ある場合でも安全に学習できる分散型MLフレームワークです。悪意ノードを合理的にし、相互に一貫した報告のみを受け入れ、拒否時は報酬を没収します。"
+        }
+      },
+      {
+        "level": "intermediate",
+        "question": {
+          "zh": "VISTA的自适应阈值如何工作？",
+          "en": "How does VISTA's adaptive threshold work?",
+          "ja": "VISTAの適応的閾値はどのように機能しますか？"
+        },
+        "answer": {
+          "zh": "它根据优化历史动态调整接受阈值，在早期允许更多进展，后期提高准确性。",
+          "en": "It adjusts the acceptance threshold dynamically using optimization history, allowing faster early progress and higher accuracy later.",
+          "ja": "最適化履歴に基づき閾値を動的に調整し、初期は迅速な進展を、後期は高精度を実現します。"
+        }
+      },
+      {
+        "level": "expert",
+        "question": {
+          "zh": "VISTA与现有鲁棒聚合方法的关键区别？",
+          "en": "Key difference between VISTA and existing robust aggregation?",
+          "ja": "VISTAと既存のロバスト集約の主な違いは？"
+        },
+        "answer": {
+          "zh": "现有方法依赖诚实多数假设，VISTA通过激励设计将敌手转化为理性代理，无需此假设。",
+          "en": "Existing methods rely on honest-majority assumption; VISTA uses incentive design to turn adversaries into rational agents, removing that assumption.",
+          "ja": "既存手法は正直多数派仮定に依存するが、VISTAはインセンティブ設計で敵対者を合理的エージェントに変え、その仮定を不要にします。"
+        }
+      }
+    ]
   }
 ]
